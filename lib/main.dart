@@ -41,6 +41,6 @@ class MyApp extends StatelessWidget {
   Future<bool> _checkLoginStatus() async {
     // String? token = await TokenService.getToken('user');
     // return token != null && token.isNotEmpty;
-    return true;
+    return false;
   }
 }
