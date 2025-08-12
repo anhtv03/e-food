@@ -1,8 +1,11 @@
+import 'package:e_food/pages/home_page.dart';
 import 'package:e_food/pages/login_page.dart';
+import 'package:e_food/pages/history_page.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({super.key});
+  final String page;
+  const AppDrawer({super.key, required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -53,26 +56,35 @@ class AppDrawer extends StatelessWidget {
                   context: context,
                   icon: Icons.restaurant_menu,
                   iconColor: Colors.orange,
+                  isSelected: page == "home",
                   title: 'Món ăn trong tuần',
-                  isSelected: true,
                   onTap: () {
                     Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
                   },
                 ),
                 _buildMenuItem(
                   context: context,
                   icon: Icons.history,
                   iconColor: Colors.blue,
+                  isSelected: page == "history",
                   title: 'Lịch sử đặt món',
                   onTap: () {
                     Navigator.pop(context);
-                    _showSnackBar(context, 'Chức năng lịch sử đặt món');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HistoryPage()),
+                    );
                   },
                 ),
                 _buildMenuItem(
                   context: context,
                   icon: Icons.analytics_outlined,
                   iconColor: Colors.green,
+                  isSelected: page == "statistic",
                   title: 'Thống kê suất ăn',
                   onTap: () {
                     Navigator.pop(context);

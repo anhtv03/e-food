@@ -1,17 +1,21 @@
 import 'package:e_food/models/meal.dart';
 
-abstract class HomeEvent {}
+abstract class HomeEvent {
+  const HomeEvent();
+}
 
-class LoadHomeEvent extends HomeEvent {}
+class LoadHomeEvent extends HomeEvent {
+  const LoadHomeEvent();
+}
 
 class OrderMealEvent extends HomeEvent {
   final Meal meal;
 
-  OrderMealEvent({required this.meal});
+  const OrderMealEvent({required this.meal});
 }
 
 class CancelMealEvent extends HomeEvent {
   final Meal meal;
 
-  CancelMealEvent({required this.meal});
+  const CancelMealEvent({required this.meal});
 }

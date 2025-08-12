@@ -1,10 +1,11 @@
+import 'package:e_food/blocs/history_bloc/history_bloc.dart';
+import 'package:e_food/blocs/history_bloc/history_event.dart';
+import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/pages/home_page.dart';
 import 'package:e_food/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'blocs/home_bloc/home_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc()..add(LoadHomeEvent()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<HomeBloc>(
+          create: (context) => HomeBloc()..add(const LoadHomeEvent()),
+        ),
+        BlocProvider<HistoryBloc>(
+          create: (context) => HistoryBloc()..add(const LoadHistoryEvent()),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: FutureBuilder<bool>(

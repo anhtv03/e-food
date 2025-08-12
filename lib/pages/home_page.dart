@@ -2,7 +2,9 @@ import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/blocs/home_bloc/home_state.dart';
 import 'package:e_food/models/meal.dart';
-import 'package:e_food/pages/app_drawer.dart';
+import 'package:e_food/pages/modal/app_drawer.dart';
+import 'package:e_food/pages/modal/app_menu.dart';
+import 'package:e_food/pages/modal/notification_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -25,40 +27,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        backgroundColor: Color(0xFF3D4854),
-        elevation: 0,
-        leading: Container(
-          margin: EdgeInsets.only(left: 16),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.location_on, color: Colors.red, size: 20),
-              SizedBox(width: 4),
-            ],
-          ),
-        ),
-        title: Text(
-          'ĐẶT CƠM',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          Builder(
-            builder:
-                (context) => IconButton(
-                  onPressed: () {
-                    Scaffold.of(context).openEndDrawer();
-                  },
-                  icon: Icon(Icons.menu, color: Colors.white),
-                ),
-          ),
-        ],
-      ),
-      endDrawer: AppDrawer(),
+      appBar: AppMenu(),
+      endDrawer: AppDrawer(page: "home"),
       body: BlocConsumer<HomeBloc, HomeState>(
         listener: (context, state) {
           if (state is HomeError) {
@@ -341,9 +311,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.pop(context);
               context.read<HomeBloc>().add(OrderMealEvent(meal: meal));
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Đặt món "${meal.name}" thành công!')),
-              );
+              showSuccessDialog(context, "Cập nhật thành công");
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromRGBO(1, 157, 219, 1),
