@@ -273,9 +273,15 @@ class _HomePageState extends State<HomePage> {
                     'Ngày: ${DateFormat('dd/MM/yyyy').format(meal.serviceDate)}',
                     style: TextStyle(fontSize: 13, color: Colors.black),
                   ),
+                  SizedBox(height: 8),
                   // Action buttons
-                  SizedBox(width: 12),
-                  Column(children: [_buildActionButton(buttonState, meal)]),
+                  Row(
+                    children: [
+                      Expanded(child: _buildCancelButton(buttonState, meal)),
+                      SizedBox(width: 8),
+                      Expanded(child: _buildOrderButton(buttonState, meal)),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -305,65 +311,82 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Widget _buildActionButton(ButtonState buttonState, Meal meal) {
+  Widget _buildCancelButton(ButtonState buttonState, Meal meal) {
+    bool isEnabled = (buttonState == ButtonState.cancel);
+
+    return SizedBox(
+      height: 27,
+      child: ElevatedButton(
+        onPressed: isEnabled ? () => _showCancelConfirmDialog(meal) : null,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: isEnabled ? Colors.red : Colors.grey,
+          foregroundColor: Colors.white,
+          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          elevation: isEnabled ? 2 : 0,
+        ),
+        child: Text('Hủy món', style: TextStyle(fontSize: 12)),
+      ),
+    );
+  }
+
+  Widget _buildOrderButton(ButtonState buttonState, Meal meal) {
     switch (buttonState) {
       case ButtonState.order:
-        return ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-            context.read<HomeBloc>().add(OrderMealEvent(meal: meal));
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Đặt món "${meal.name}" thành công!')),
-            );
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromRGBO(1, 157, 219, 1),
-            foregroundColor: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
+        return SizedBox(
+          height: 27,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              context.read<HomeBloc>().add(OrderMealEvent(meal: meal));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Đặt món "${meal.name}" thành công!')),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color.fromRGBO(1, 157, 219, 1),
+              foregroundColor: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
+            child: Text('Đặt món', style: TextStyle(fontSize: 12)),
           ),
-          child: Text('Đặt món', style: TextStyle(fontSize: 12)),
         );
 
       case ButtonState.cancel:
-        return ElevatedButton(
-          onPressed: () => _showCancelConfirmDialog(meal),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
-            ),
-          ),
-          child: Text('Hủy món', style: TextStyle(fontSize: 12)),
-        );
-
       case ButtonState.ordered:
         return Container(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          height: 27,
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           decoration: BoxDecoration(
             color: Colors.grey,
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(10),
           ),
-          child: Text(
-            'Đã đặt',
-            style: TextStyle(fontSize: 12, color: Colors.white),
+          child: Center(
+            child: Text(
+              'Đã đặt',
+              style: TextStyle(fontSize: 12, color: Colors.white),
+            ),
           ),
         );
 
       case ButtonState.disabled:
         return Container(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          height: 27,
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           decoration: BoxDecoration(
             color: Colors.grey,
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(10),
           ),
-          child: Text(
-            'Đặt món',
-            style: TextStyle(fontSize: 12, color: Colors.white),
+          child: Center(
+            child: Text(
+              'Đặt món',
+              style: TextStyle(fontSize: 12, color: Colors.white),
+            ),
           ),
         );
     }

@@ -79,88 +79,102 @@ class RegisterPageState extends State<RegisterPage> {
                         child: Center(
                           child: SingleChildScrollView(
                             padding: EdgeInsets.all(12),
-                            child: Container(
-                              constraints: BoxConstraints(maxWidth: 350),
-                              padding: EdgeInsets.all(24),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(16.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.1),
-                                    blurRadius: 20,
-                                    offset: Offset(0, 10),
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      // Header
-                                      Text(
-                                        'Tạo tài khoản mới',
-                                        style: TextStyle(
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color.fromRGBO(0, 176, 35, 1),
-                                        ),
-                                        textAlign: TextAlign.center,
+                            child: FractionallySizedBox(
+                              widthFactor: 0.9,
+                              child: Container(
+                                padding: EdgeInsets.all(24),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withValues(
+                                        alpha: 0.1,
                                       ),
-                                      SizedBox(height: 16),
-                                      Divider(
-                                        height: 10,
-                                        thickness: 1,
-                                        color: Color.fromRGBO(0, 176, 35, 0.5),
-                                      ),
-                                      SizedBox(height: 16),
-
-                                      // Full name field
-                                      _buildTextField(
-                                        _fullNameController,
-                                        'Tên đầy đủ',
-                                        false,
-                                      ),
-                                      SizedBox(height: 16),
-
-                                      // Email field
-                                      _buildTextField(
-                                        _employeeIdController,
-                                        'Mã nhân viên',
-                                        false,
-                                      ),
-                                      SizedBox(height: 16),
-
-                                      // Username field
-                                      _buildTextField(
-                                        _usernameController,
-                                        'Tên tài khoản',
-                                        false,
-                                      ),
-                                      SizedBox(height: 16),
-
-                                      // Password field
-                                      _buildTextField(
-                                        _passwordController,
-                                        'Mật khẩu',
-                                        true,
-                                      ),
-                                      SizedBox(height: 16),
-
-                                      if (state is RegisterError)
-                                        _buildTextError(state.message),
-                                      SizedBox(height: 16),
-
-                                      // Register button
-                                      _buildRegisterButton(context, state),
-                                    ],
-                                  ),
-                                  if (state is RegisterLoading)
-                                    const Center(
-                                      child: CircularProgressIndicator(),
+                                      blurRadius: 20,
+                                      offset: Offset(0, 10),
                                     ),
-                                ],
+                                  ],
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        // Header
+                                        Text(
+                                          'Tạo tài khoản mới',
+                                          style: TextStyle(
+                                            fontSize: 28,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color.fromRGBO(
+                                              0,
+                                              176,
+                                              35,
+                                              1,
+                                            ),
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        SizedBox(height: 16),
+                                        Divider(
+                                          height: 10,
+                                          thickness: 1,
+                                          color: Color.fromRGBO(
+                                            0,
+                                            176,
+                                            35,
+                                            0.5,
+                                          ),
+                                        ),
+                                        SizedBox(height: 16),
+
+                                        // Full name field
+                                        _buildTextField(
+                                          _fullNameController,
+                                          'Tên đầy đủ',
+                                          false,
+                                        ),
+                                        SizedBox(height: 16),
+
+                                        // Email field
+                                        _buildTextField(
+                                          _employeeIdController,
+                                          'Mã nhân viên',
+                                          false,
+                                        ),
+                                        SizedBox(height: 16),
+
+                                        // Username field
+                                        _buildTextField(
+                                          _usernameController,
+                                          'Tên tài khoản',
+                                          false,
+                                        ),
+                                        SizedBox(height: 16),
+
+                                        // Password field
+                                        _buildTextField(
+                                          _passwordController,
+                                          'Mật khẩu',
+                                          true,
+                                        ),
+                                        SizedBox(height: 16),
+
+                                        if (state is RegisterError)
+                                          _buildTextError(state.message),
+                                        SizedBox(height: 16),
+
+                                        // Register button
+                                        _buildRegisterButton(context, state),
+                                      ],
+                                    ),
+                                    if (state is RegisterLoading)
+                                      const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
