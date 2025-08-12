@@ -23,7 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           name: 'Cơm gà',
           imageUrl: 'assets/images/com_ga.jpg',
           price: 25000,
-          serviceDate: DateTime(2025, 7, 28),
+          serviceDate: DateTime(2025, 8, 11),
           isOrdered: false,
         ),
         Meal(
@@ -31,7 +31,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           name: 'Phở gà',
           imageUrl: 'assets/images/pho_ga.jpg',
           price: 25000,
-          serviceDate: DateTime(2025, 7, 29),
+          serviceDate: DateTime(2025, 8, 12),
           isOrdered: true,
         ),
         Meal(
@@ -39,7 +39,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           name: 'Mỳ cay',
           imageUrl: 'assets/images/my_cay.jpg',
           price: 25000,
-          serviceDate: DateTime(2025, 7, 30),
+          serviceDate: DateTime(2025, 8, 13),
           isOrdered: false,
         ),
         Meal(
@@ -47,7 +47,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           name: 'Cơm rang',
           imageUrl: 'assets/images/com_rang.jpg',
           price: 25000,
-          serviceDate: DateTime(2025, 7, 31),
+          serviceDate: DateTime(2025, 8, 14),
           isOrdered: false,
         ),
         Meal(
@@ -55,7 +55,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           name: 'Cơm trộn',
           imageUrl: 'assets/images/com_tron.jpg',
           price: 25000,
-          serviceDate: DateTime(2025, 8, 1),
+          serviceDate: DateTime(2025, 8, 15),
           isOrdered: false,
         ),
       ];
