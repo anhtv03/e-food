@@ -4,7 +4,7 @@ import 'package:e_food/blocs/auth_bloc/login_bloc/login_state.dart';
 import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/pages/home_page.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:e_food/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -160,10 +160,6 @@ class LoginScreenState extends State<LoginPage> {
     _showSnackBar('Chức năng quên mật khẩu');
   }
 
-  void _handleRegister() {
-    _showSnackBar('Chuyển đến màn hình đăng ký');
-  }
-
   void _showSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(message), duration: Duration(seconds: 2)),
@@ -216,7 +212,6 @@ class LoginScreenState extends State<LoginPage> {
             state is LoginLoading
                 ? null
                 : () {
-                  print("vao state day");
                   context.read<LoginBloc>().add(
                     LoginHandleEvent(
                       username: _usernameController.text.trim(),
@@ -246,7 +241,10 @@ class LoginScreenState extends State<LoginPage> {
       height: 40,
       child: ElevatedButton(
         onPressed: () {
-          _handleRegister();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const RegisterPage()),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color.fromRGBO(0, 176, 35, 1),
