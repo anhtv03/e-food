@@ -40,7 +40,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           imageUrl: 'assets/images/my_cay.jpg',
           price: 25000,
           serviceDate: DateTime(2025, 8, 13),
-          isOrdered: false,
+          isOrdered: true,
         ),
         Meal(
           id: '4',

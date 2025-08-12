@@ -108,7 +108,13 @@ class RegisterPageState extends State<RegisterPage> {
                                         ),
                                         textAlign: TextAlign.center,
                                       ),
-                                      SizedBox(height: 32),
+                                      SizedBox(height: 16),
+                                      Divider(
+                                        height: 10,
+                                        thickness: 1,
+                                        color: Color.fromRGBO(0, 176, 35, 0.5),
+                                      ),
+                                      SizedBox(height: 16),
 
                                       // Full name field
                                       _buildTextField(

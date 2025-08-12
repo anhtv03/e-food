@@ -127,8 +127,14 @@ class LoginScreenState extends State<LoginPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 8),
+                              Divider(
+                                height: 10,
+                                thickness: 1,
+                                color: Color.fromRGBO(9, 50, 0, 1),
+                              ),
 
+                              SizedBox(height: 8),
                               // Register button
                               _buildRegisterButton(),
                             ],

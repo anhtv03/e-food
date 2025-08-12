@@ -2,6 +2,7 @@ import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/blocs/home_bloc/home_state.dart';
 import 'package:e_food/models/meal.dart';
+import 'package:e_food/pages/app_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -46,12 +47,18 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.menu, color: Colors.white),
+          Builder(
+            builder:
+                (context) => IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                  icon: Icon(Icons.menu, color: Colors.white),
+                ),
           ),
         ],
       ),
+      endDrawer: AppDrawer(),
       body: BlocConsumer<HomeBloc, HomeState>(
         listener: (context, state) {
           if (state is HomeError) {
@@ -105,6 +112,12 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(height: 4),
+                      Divider(
+                        height: 10,
+                        thickness: 1,
+                        color: Color.fromRGBO(9, 50, 0, 1),
                       ),
                       SizedBox(height: 4),
                       Text(
@@ -170,21 +183,18 @@ class _HomePageState extends State<HomePage> {
     );
     final currentTime = TimeOfDay.fromDateTime(now);
     final deadlineTime = TimeOfDay(hour: 10, minute: 0);
-
-    // Check if current time is before 10:00 AM
-    final isBeforeDeadline =
-        (currentTime.hour < deadlineTime.hour) ||
-        (currentTime.hour == deadlineTime.hour &&
-            currentTime.minute < deadlineTime.minute);
-
-    // Check if it's the same day as service date
-    final isSameDay = currentDate.isAtSameMomentAs(serviceDate);
+    final isAfterToday = serviceDate.isAfter(currentDate);
+    final isSameDayAndBeforeDeadline =
+        serviceDate.isAtSameMomentAs(currentDate) &&
+        ((currentTime.hour < deadlineTime.hour) ||
+            (currentTime.hour == deadlineTime.hour &&
+                currentTime.minute < deadlineTime.minute));
 
     // Determine button state
     ButtonState buttonState = _getButtonState(
       meal,
-      isSameDay,
-      isBeforeDeadline,
+      isAfterToday,
+      isSameDayAndBeforeDeadline,
     );
 
     return Container(
@@ -277,20 +287,20 @@ class _HomePageState extends State<HomePage> {
 
   ButtonState _getButtonState(
     Meal meal,
-    bool isSameDay,
-    bool isBeforeDeadline,
+    bool isAfterToday,
+    bool isSameDayAndBeforeDeadline,
   ) {
     if (meal.isOrdered) {
-      if (isSameDay && isBeforeDeadline) {
-        return ButtonState.cancel; // Show "Hủy món" button
+      if (isAfterToday || isSameDayAndBeforeDeadline) {
+        return ButtonState.cancel; // "Hủy món" khả dụng
       } else {
-        return ButtonState.ordered; // Show "Đã đặt" disabled button
+        return ButtonState.ordered; // "Đã đặt" không khả dụng
       }
     } else {
-      if (isSameDay && isBeforeDeadline) {
-        return ButtonState.order; // Show "Đặt món" active button
+      if (isAfterToday || isSameDayAndBeforeDeadline) {
+        return ButtonState.order; // "Đặt món" khả dụng
       } else {
-        return ButtonState.disabled; // Show "Đặt món" disabled button
+        return ButtonState.disabled; // "Đặt món" không khả dụng
       }
     }
   }
