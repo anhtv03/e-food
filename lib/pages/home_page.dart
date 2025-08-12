@@ -43,79 +43,87 @@ class _HomePageState extends State<HomePage> {
           }
 
           if (state is HomeLoaded) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Greeting section
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(16),
-                  color: Colors.white,
-                  child: Text(
-                    'Xin chào, ${state.userName}',
-                    style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+            return RefreshIndicator(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Greeting section
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(16),
+                    color: Colors.white,
+                    child: Text(
+                      'Xin chào, ${state.userName}',
+                      style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                    ),
                   ),
-                ),
 
-                // Header section
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-                  color: Colors.white,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.restaurant_menu,
-                            color: Colors.orange,
-                            size: 24,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            'Món ăn trong tuần này',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                  // Header section
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.restaurant_menu,
+                              color: Colors.orange,
+                              size: 24,
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Divider(
-                        height: 10,
-                        thickness: 1,
-                        color: Color.fromRGBO(9, 50, 0, 1),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        'Lưu ý: đặt cơm chậm nhất trước 10:00 AM',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold,
+                            SizedBox(width: 8),
+                            Text(
+                              'Món ăn trong tuần này',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 4),
+                        Divider(
+                          height: 10,
+                          thickness: 1,
+                          color: Color.fromRGBO(9, 50, 0, 1),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Lưu ý: đặt cơm chậm nhất trước 10:00 AM',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 8),
+                  SizedBox(height: 8),
 
-                // Meals list
-                Expanded(
-                  child: ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    itemCount: state.meals.length,
-                    itemBuilder: (context, index) {
-                      final meal = state.meals[index];
-                      return _buildMealCard(meal);
-                    },
+                  // Meals list
+                  Expanded(
+                    child: ListView.builder(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      itemCount: state.meals.length,
+                      itemBuilder: (context, index) {
+                        final meal = state.meals[index];
+                        return _buildMealCard(meal);
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
+              onRefresh: () async {
+                context.read<HomeBloc>().add(LoadHomeEvent());
+                await context.read<HomeBloc>().stream.firstWhere(
+                  (s) => s is HomeLoaded || s is HomeError,
+                );
+              },
             );
           }
 
@@ -309,7 +317,6 @@ class _HomePageState extends State<HomePage> {
           height: 27,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
               context.read<HomeBloc>().add(OrderMealEvent(meal: meal));
               showSuccessDialog(context, "Cập nhật thành công");
             },
@@ -378,11 +385,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.pop(context);
                   context.read<HomeBloc>().add(CancelMealEvent(meal: meal));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Hủy món "${meal.name}" thành công!'),
-                    ),
-                  );
+                  showSuccessDialog(context, "Cập nhật thành công");
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 child: Text('Xác nhận'),
