@@ -15,27 +15,27 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
     try {
       if (event.fullName.isEmpty) {
-        emit(RegisterError(message: 'Vui lòng nhập tên đầy đủ'));
+        emit(NameError(message: 'Vui lòng nhập tên đầy đủ'));
         return;
       }
 
       if (event.employeeId.isEmpty) {
-        emit(RegisterError(message: 'Vui lòng nhập mã nhân viên'));
+        emit(EmployeeError(message: 'Vui lòng nhập mã nhân viên'));
         return;
       }
 
       if (event.username.isEmpty) {
-        emit(RegisterError(message: 'Vui lòng nhập tên tài khoản'));
+        emit(UsernameError(message: 'Vui lòng nhập tên tài khoản'));
         return;
       }
 
       if (event.password.isEmpty) {
-        emit(RegisterError(message: 'Vui lòng nhập mật khẩu'));
+        emit(PasswordError(message: 'Vui lòng nhập mật khẩu'));
         return;
       }
 
       if (event.password.length < 6) {
-        emit(RegisterError(message: 'Mật khẩu phải có ít nhất 6 ký tự'));
+        emit(PasswordError(message: 'Mật khẩu phải có ít nhất 6 ký tự'));
         return;
       }
 

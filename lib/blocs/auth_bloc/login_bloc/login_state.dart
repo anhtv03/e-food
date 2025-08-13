@@ -15,3 +15,15 @@ class LoginError extends LoginState {
 
   LoginError({required this.message});
 }
+
+class UsernameError extends LoginState {
+  final String message;
+
+  UsernameError({required this.message});
+}
+
+class PasswordError extends LoginState {
+  final String message;
+
+  PasswordError({required this.message});
+}

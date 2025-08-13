@@ -15,12 +15,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     try {
       if (event.username.isEmpty) {
-        emit(LoginError(message: 'Tên đăng nhập không được để trống'));
+        emit(UsernameError(message: 'Tên đăng nhập không được để trống'));
         return;
       }
 
       if (event.password.isEmpty) {
-        emit(LoginError(message: 'Mật khẩu không được để trống'));
+        emit(PasswordError(message: 'Mật khẩu không được để trống'));
         return;
       }
 

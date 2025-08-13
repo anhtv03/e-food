@@ -135,7 +135,10 @@ class RegisterPageState extends State<RegisterPage> {
                                           'Tên đầy đủ',
                                           false,
                                         ),
-                                        SizedBox(height: 16),
+                                        SizedBox(height: 8),
+                                        if (state is NameError)
+                                          _buildTextError(state.message),
+                                        SizedBox(height: 8),
 
                                         // Email field
                                         _buildTextField(
@@ -143,7 +146,10 @@ class RegisterPageState extends State<RegisterPage> {
                                           'Mã nhân viên',
                                           false,
                                         ),
-                                        SizedBox(height: 16),
+                                        SizedBox(height: 8),
+                                        if (state is EmployeeError)
+                                          _buildTextError(state.message),
+                                        SizedBox(height: 8),
 
                                         // Username field
                                         _buildTextField(
@@ -151,7 +157,10 @@ class RegisterPageState extends State<RegisterPage> {
                                           'Tên tài khoản',
                                           false,
                                         ),
-                                        SizedBox(height: 16),
+                                        SizedBox(height: 8),
+                                        if (state is UsernameError)
+                                          _buildTextError(state.message),
+                                        SizedBox(height: 8),
 
                                         // Password field
                                         _buildTextField(
@@ -159,7 +168,10 @@ class RegisterPageState extends State<RegisterPage> {
                                           'Mật khẩu',
                                           true,
                                         ),
-                                        SizedBox(height: 16),
+                                        SizedBox(height: 8),
+                                        if (state is PasswordError)
+                                          _buildTextError(state.message),
+                                        SizedBox(height: 8),
 
                                         if (state is RegisterError)
                                           _buildTextError(state.message),
@@ -288,7 +300,7 @@ class RegisterPageState extends State<RegisterPage> {
           height: 1,
           color: Color.fromRGBO(236, 70, 34, 1),
         ),
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.left,
       ),
     );
   }

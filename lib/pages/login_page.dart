@@ -97,7 +97,10 @@ class LoginScreenState extends State<LoginPage> {
                                   'Tên đăng nhập',
                                   false,
                                 ),
-                                SizedBox(height: 16),
+                                SizedBox(height: 8),
+                                if (state is UsernameError)
+                                  _buildTextError(state.message, false),
+                                SizedBox(height: 8),
 
                                 // Password field
                                 _buildTextField(
@@ -105,27 +108,33 @@ class LoginScreenState extends State<LoginPage> {
                                   'Mật khẩu',
                                   true,
                                 ),
-                                SizedBox(height: 16),
+                                SizedBox(height: 8),
+                                if (state is PasswordError)
+                                  _buildTextError(state.message, false),
+                                SizedBox(height: 8),
 
                                 //Error field
                                 if (state is LoginError)
-                                  _buildTextError(state.message),
+                                  _buildTextError(state.message, true),
                                 SizedBox(height: 16),
 
                                 // Login button
                                 _buildLoginButton(context, state),
-                                SizedBox(height: 16),
+                                SizedBox(height: 8),
 
                                 // Forgot password
-                                TextButton(
-                                  onPressed: () {
-                                    _handleForgotPassword();
-                                  },
-                                  child: Text(
-                                    'Quên mật khẩu?',
-                                    style: TextStyle(
-                                      color: Colors.teal,
-                                      fontSize: 14,
+                                SizedBox(
+                                  height: 35,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      _handleForgotPassword();
+                                    },
+                                    child: Text(
+                                      'Quên mật khẩu?',
+                                      style: TextStyle(
+                                        color: Colors.teal,
+                                        fontSize: 14,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -166,12 +175,11 @@ class LoginScreenState extends State<LoginPage> {
 
   //========================handle logic==============================
   void _handleForgotPassword() {
-    _showSnackBar('Chức năng quên mật khẩu');
-  }
-
-  void _showSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), duration: Duration(seconds: 2)),
+      SnackBar(
+        content: Text('Chức năng quên mật khẩu'),
+        duration: Duration(seconds: 2),
+      ),
     );
   }
 
@@ -271,7 +279,7 @@ class LoginScreenState extends State<LoginPage> {
     );
   }
 
-  Widget _buildTextError(String? message) {
+  Widget _buildTextError(String? message, bool isCenter) {
     return SizedBox(
       width: double.infinity,
       child: Text(
@@ -281,7 +289,7 @@ class LoginScreenState extends State<LoginPage> {
           height: 1,
           color: Color.fromRGBO(236, 70, 34, 1),
         ),
-        textAlign: TextAlign.center,
+        textAlign: isCenter ? TextAlign.center : TextAlign.left,
       ),
     );
   }

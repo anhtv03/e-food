@@ -15,3 +15,27 @@ class RegisterError extends RegisterState {
 
   RegisterError({required this.message});
 }
+
+class NameError extends RegisterState {
+  final String message;
+
+  NameError({required this.message});
+}
+
+class EmployeeError extends RegisterState {
+  final String message;
+
+  EmployeeError({required this.message});
+}
+
+class UsernameError extends RegisterState {
+  final String message;
+
+  UsernameError({required this.message});
+}
+
+class PasswordError extends RegisterState {
+  final String message;
+
+  PasswordError({required this.message});
+}
