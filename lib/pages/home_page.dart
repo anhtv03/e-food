@@ -100,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        SizedBox(height: 4),
                       ],
                     ),
                   ),
@@ -222,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                 height: 94,
                 color: Colors.grey[200],
                 child:
-                    meal.imageUrl.startsWith('assets/')
+                    meal.imageUrl.startsWith('/images')
                         ? Image.asset(
                           meal.imageUrl,
                           fit: BoxFit.cover,
