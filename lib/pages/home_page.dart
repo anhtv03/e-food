@@ -223,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                 height: 94,
                 color: Colors.grey[200],
                 child:
-                    meal.imageUrl.startsWith('/images')
+                    meal.imageUrl.startsWith('assets')
                         ? Image.asset(
                           meal.imageUrl,
                           fit: BoxFit.cover,
