@@ -49,111 +49,109 @@ class LoginScreenState extends State<LoginPage> {
                 decoration: BoxDecoration(
                   color: Colors.black.withValues(alpha: 0.3),
                 ),
-                child: Center(
-                  child: SingleChildScrollView(
-                    padding: EdgeInsets.all(12),
-                    child: FractionallySizedBox(
-                      widthFactor: 0.9,
-                      child: Container(
-                        padding: EdgeInsets.all(24),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.1),
-                              blurRadius: 20,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Stack(
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                // Header
-                                Text(
-                                  'Xin chào!',
-                                  style: TextStyle(
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black87,
-                                  ),
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(vertical: 100, horizontal: 12),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.9,
+                    child: Container(
+                      padding: EdgeInsets.all(24),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.1),
+                            blurRadius: 20,
+                            offset: Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                      child: Stack(
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              // Header
+                              Text(
+                                'Xin chào!',
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87,
                                 ),
-                                SizedBox(height: 8),
-                                Text(
-                                  'Đăng nhập để tiếp tục',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey[600],
-                                  ),
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                'Đăng nhập để tiếp tục',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey[600],
                                 ),
-                                SizedBox(height: 32),
+                              ),
+                              SizedBox(height: 32),
 
-                                // Username field
-                                _buildTextField(
-                                  _usernameController,
-                                  'Tên đăng nhập',
-                                  false,
-                                ),
-                                SizedBox(height: 8),
-                                if (state is UsernameError)
-                                  _buildTextError(state.message, false),
-                                SizedBox(height: 8),
+                              // Username field
+                              _buildTextField(
+                                _usernameController,
+                                'Tên đăng nhập',
+                                false,
+                              ),
+                              SizedBox(height: 8),
+                              if (state is UsernameError)
+                                _buildTextError(state.message, false),
+                              SizedBox(height: 8),
 
-                                // Password field
-                                _buildTextField(
-                                  _passwordController,
-                                  'Mật khẩu',
-                                  true,
-                                ),
-                                SizedBox(height: 8),
-                                if (state is PasswordError)
-                                  _buildTextError(state.message, false),
-                                SizedBox(height: 8),
+                              // Password field
+                              _buildTextField(
+                                _passwordController,
+                                'Mật khẩu',
+                                true,
+                              ),
+                              SizedBox(height: 8),
+                              if (state is PasswordError)
+                                _buildTextError(state.message, false),
+                              SizedBox(height: 8),
 
-                                //Error field
-                                if (state is LoginError)
-                                  _buildTextError(state.message, true),
-                                SizedBox(height: 16),
+                              //Error field
+                              if (state is LoginError)
+                                _buildTextError(state.message, true),
+                              SizedBox(height: 16),
 
-                                // Login button
-                                _buildLoginButton(context, state),
-                                SizedBox(height: 8),
+                              // Login button
+                              _buildLoginButton(context, state),
+                              SizedBox(height: 8),
 
-                                // Forgot password
-                                SizedBox(
-                                  height: 35,
-                                  child: TextButton(
-                                    onPressed: () {
-                                      _handleForgotPassword();
-                                    },
-                                    child: Text(
-                                      'Quên mật khẩu?',
-                                      style: TextStyle(
-                                        color: Colors.teal,
-                                        fontSize: 14,
-                                      ),
+                              // Forgot password
+                              SizedBox(
+                                height: 35,
+                                child: TextButton(
+                                  onPressed: () {
+                                    _handleForgotPassword();
+                                  },
+                                  child: Text(
+                                    'Quên mật khẩu?',
+                                    style: TextStyle(
+                                      color: Colors.teal,
+                                      fontSize: 14,
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 8),
-                                Divider(
-                                  height: 10,
-                                  thickness: 1,
-                                  color: Color.fromRGBO(9, 50, 0, 1),
-                                ),
+                              ),
+                              SizedBox(height: 8),
+                              Divider(
+                                height: 10,
+                                thickness: 1,
+                                color: Color.fromRGBO(9, 50, 0, 1),
+                              ),
 
-                                SizedBox(height: 8),
-                                // Register button
-                                _buildRegisterButton(),
-                              ],
-                            ),
-                            if (state is LoginLoading)
-                              const Center(child: CircularProgressIndicator()),
-                          ],
-                        ),
+                              SizedBox(height: 8),
+                              // Register button
+                              _buildRegisterButton(),
+                            ],
+                          ),
+                          if (state is LoginLoading)
+                            const Center(child: CircularProgressIndicator()),
+                        ],
                       ),
                     ),
                   ),
