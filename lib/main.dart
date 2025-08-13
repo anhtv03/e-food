@@ -2,6 +2,8 @@ import 'package:e_food/blocs/history_bloc/history_bloc.dart';
 import 'package:e_food/blocs/history_bloc/history_event.dart';
 import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
+import 'package:e_food/blocs/statistic_bloc/statistic_bloc.dart';
+import 'package:e_food/blocs/statistic_bloc/statistic_event.dart';
 import 'package:e_food/pages/home_page.dart';
 import 'package:e_food/pages/login_page.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final now = DateTime.now();
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeBloc>(
@@ -23,6 +26,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<HistoryBloc>(
           create: (context) => HistoryBloc()..add(const LoadHistoryEvent()),
+        ),
+        BlocProvider<StatisticBloc>(
+          create:
+              (context) =>
+                  StatisticBloc()
+                    ..add(LoadStatisticEvent(month: now.month, year: now.year)),
         ),
       ],
       child: MaterialApp(

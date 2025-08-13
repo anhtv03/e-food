@@ -1,6 +1,7 @@
 import 'package:e_food/pages/home_page.dart';
 import 'package:e_food/pages/login_page.dart';
 import 'package:e_food/pages/history_page.dart';
+import 'package:e_food/pages/statistic_page.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -88,7 +89,10 @@ class AppDrawer extends StatelessWidget {
                   title: 'Thống kê suất ăn',
                   onTap: () {
                     Navigator.pop(context);
-                    _showSnackBar(context, 'Chức năng thống kê suất ăn');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => StatisticPage()),
+                    );
                   },
                 ),
                 _buildMenuItem(
