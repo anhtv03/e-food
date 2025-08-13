@@ -92,6 +92,7 @@ class _StatisticPageState extends State<StatisticPage> {
 
                 // Total amount section
                 _buildTotalAmountField(state),
+                SizedBox(height: 32),
               ],
             );
           },

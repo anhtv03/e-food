@@ -42,7 +42,7 @@ class StatisticBloc extends Bloc<StatisticEvent, StatisticState> {
     ];
 
     final statistics = <MealStatistic>[];
-    final mealCount = 10;
+    final mealCount = 30;
 
     for (int i = 0; i < mealCount; i++) {
       final day = (i + 1) * 3;
