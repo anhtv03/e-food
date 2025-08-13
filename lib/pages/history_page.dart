@@ -77,47 +77,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   SizedBox(height: 16),
 
                   // History table
-                  Center(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.3),
-                            spreadRadius: 3,
-                            blurRadius: 8,
-                            offset: Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          // Table header
-                          _buildTableHeader(),
-
-                          // Table content
-                          state.orderHistory.isEmpty
-                              ? _buildEmptyState()
-                              : ListView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: state.orderHistory.length,
-                                itemBuilder: (context, index) {
-                                  final order = state.orderHistory[index];
-                                  return _buildTableRow(
-                                    order,
-                                    index + 1,
-                                    state.orderHistory.length,
-                                  );
-                                },
-                              ),
-                        ],
-                      ),
-                    ),
-                  ),
-
+                  _buildHistoryTable(state),
                   SizedBox(height: 16),
                 ],
               );
@@ -158,6 +118,49 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   //========================handle UI==============================
+  Widget _buildHistoryTable(state) {
+    return Center(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withValues(alpha: 0.3),
+              spreadRadius: 3,
+              blurRadius: 8,
+              offset: Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            // Table header
+            _buildTableHeader(),
+
+            // Table content
+            state.orderHistory.isEmpty
+                ? _buildEmptyState()
+                : ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: state.orderHistory.length,
+                  itemBuilder: (context, index) {
+                    final order = state.orderHistory[index];
+                    return _buildTableRow(
+                      order,
+                      index + 1,
+                      state.orderHistory.length,
+                    );
+                  },
+                ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildTableHeader() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
