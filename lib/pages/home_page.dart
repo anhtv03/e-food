@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Greeting section
+                  // Header name user
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(16),
@@ -151,6 +151,28 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //========================handle logic==============================
+  MealState _getButtonState(
+    Meal meal,
+    bool isAfterToday,
+    bool isSameDayAndBeforeDeadline,
+  ) {
+    if (meal.isOrdered) {
+      if (isAfterToday || isSameDayAndBeforeDeadline) {
+        return MealState.cancel; // "Cancel" is available
+      } else {
+        return MealState.ordered; // "Ordered" is not available
+      }
+    } else {
+      if (isAfterToday || isSameDayAndBeforeDeadline) {
+        return MealState.order; // "Order" is available
+      } else {
+        return MealState.disabled; // "Order" is not available
+      }
+    }
+  }
+
+  //========================handle UI==============================
   Widget _buildMealCard(Meal meal) {
     final now = DateTime.now();
     final currentDate = DateTime(now.year, now.month, now.day);
@@ -168,8 +190,7 @@ class _HomePageState extends State<HomePage> {
             (currentTime.hour == deadlineTime.hour &&
                 currentTime.minute < deadlineTime.minute));
 
-    // Determine button state
-    ButtonState buttonState = _getButtonState(
+    MealState buttonState = _getButtonState(
       meal,
       isAfterToday,
       isSameDayAndBeforeDeadline,
@@ -269,28 +290,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  ButtonState _getButtonState(
-    Meal meal,
-    bool isAfterToday,
-    bool isSameDayAndBeforeDeadline,
-  ) {
-    if (meal.isOrdered) {
-      if (isAfterToday || isSameDayAndBeforeDeadline) {
-        return ButtonState.cancel; // "Hủy món" khả dụng
-      } else {
-        return ButtonState.ordered; // "Đã đặt" không khả dụng
-      }
-    } else {
-      if (isAfterToday || isSameDayAndBeforeDeadline) {
-        return ButtonState.order; // "Đặt món" khả dụng
-      } else {
-        return ButtonState.disabled; // "Đặt món" không khả dụng
-      }
-    }
-  }
-
-  Widget _buildCancelButton(ButtonState buttonState, Meal meal) {
-    bool isEnabled = (buttonState == ButtonState.cancel);
+  Widget _buildCancelButton(MealState buttonState, Meal meal) {
+    bool isEnabled = (buttonState == MealState.cancel);
 
     return SizedBox(
       height: 27,
@@ -310,9 +311,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildOrderButton(ButtonState buttonState, Meal meal) {
+  Widget _buildOrderButton(MealState buttonState, Meal meal) {
     switch (buttonState) {
-      case ButtonState.order:
+      case MealState.order:
         return SizedBox(
           height: 27,
           child: ElevatedButton(
@@ -332,8 +333,8 @@ class _HomePageState extends State<HomePage> {
           ),
         );
 
-      case ButtonState.cancel:
-      case ButtonState.ordered:
+      case MealState.cancel:
+      case MealState.ordered:
         return Container(
           height: 27,
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -349,7 +350,7 @@ class _HomePageState extends State<HomePage> {
           ),
         );
 
-      case ButtonState.disabled:
+      case MealState.disabled:
         return Container(
           height: 27,
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -394,11 +395,4 @@ class _HomePageState extends State<HomePage> {
           ),
     );
   }
-}
-
-enum ButtonState {
-  order, // Đặt món (active)
-  cancel, // Hủy món (active)
-  ordered, // Đã đặt (disabled)
-  disabled, // Đặt món (disabled)
 }

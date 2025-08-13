@@ -18,7 +18,6 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     try {
       await Future.delayed(Duration(seconds: 1));
 
-      // Sample data
       final orderHistory = [
         OrderHistory(
           id: '1',
@@ -164,7 +163,6 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
       try {
         await Future.delayed(Duration(milliseconds: 500));
 
-        // Sample refreshed data
         final orderHistory = [
           OrderHistory(
             id: '1',

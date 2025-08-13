@@ -107,6 +107,7 @@ class LoginScreenState extends State<LoginPage> {
                                 ),
                                 SizedBox(height: 16),
 
+                                //Error field
                                 if (state is LoginError)
                                   _buildTextError(state.message),
                                 SizedBox(height: 16),

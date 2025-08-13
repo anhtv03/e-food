@@ -27,7 +27,6 @@ class OrderHistory extends Equatable {
     price,
   ];
 
-  // Factory method to create from JSON
   factory OrderHistory.fromJson(Map<String, dynamic> json) {
     return OrderHistory(
       id: json['id'] ?? '',
@@ -39,7 +38,6 @@ class OrderHistory extends Equatable {
     );
   }
 
-  // Convert to JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,

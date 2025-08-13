@@ -16,7 +16,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       await Future.delayed(Duration(seconds: 1));
 
-      // Sample data
       final meals = [
         Meal(
           id: '1',
@@ -114,7 +113,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final currentState = state as HomeLoaded;
 
       try {
-        // Simulate API call
         await Future.delayed(Duration(milliseconds: 500));
 
         final updatedMeals =
@@ -140,7 +138,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final currentState = state as HomeLoaded;
 
       try {
-        // Simulate API call
         await Future.delayed(Duration(milliseconds: 500));
 
         final updatedMeals =

@@ -33,3 +33,10 @@ class Meal {
     );
   }
 }
+
+enum MealState {
+  order, // Ordered (active)
+  cancel, // Canceled (active)
+  ordered, // Ordered (disabled)
+  disabled, // Ordered (disabled)
+}

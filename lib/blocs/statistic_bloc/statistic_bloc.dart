@@ -15,7 +15,6 @@ class StatisticBloc extends Bloc<StatisticEvent, StatisticState> {
     emit(StatisticLoading());
 
     try {
-      // Simulate API delay
       await Future.delayed(Duration(milliseconds: 800));
       final statistics = _getSampleStatistics(event.month, event.year);
       double totalAmount = statistics.fold(0, (sum, meal) => sum + meal.price);
@@ -46,13 +45,13 @@ class StatisticBloc extends Bloc<StatisticEvent, StatisticState> {
     final mealCount = 10;
 
     for (int i = 0; i < mealCount; i++) {
-      final day = (i + 1) * 3; // Spread across the month
-      final adjustedDay = day > 28 ? 28 - i : day; // Ensure valid day
+      final day = (i + 1) * 3;
+      final adjustedDay = day > 28 ? 28 - i : day;
 
       statistics.add(
         MealStatistic(
           mealName: mealNames[i % mealNames.length],
-          price: 25000, // Fixed price as shown in design
+          price: 25000,
           serviceDate: DateTime(year, month, adjustedDay),
         ),
       );
