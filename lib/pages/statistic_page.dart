@@ -114,7 +114,6 @@ class _StatisticPageState extends State<StatisticPage> {
           ),
           SizedBox(width: 8),
           Container(
-            padding: EdgeInsets.only(left: 18),
             height: 28,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey[400]!),
@@ -127,7 +126,13 @@ class _StatisticPageState extends State<StatisticPage> {
                     months.map((month) {
                       return DropdownMenuItem<int>(
                         value: month,
-                        child: Text(month.toString()),
+                        child: SizedBox(
+                          width: 30,
+                          child: Text(
+                            month.toString(),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       );
                     }).toList(),
                 onChanged: (value) {
@@ -148,7 +153,6 @@ class _StatisticPageState extends State<StatisticPage> {
           ),
           SizedBox(width: 8),
           Container(
-            padding: EdgeInsets.only(left: 18),
             height: 28,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey[400]!),
@@ -161,7 +165,13 @@ class _StatisticPageState extends State<StatisticPage> {
                     years.map((year) {
                       return DropdownMenuItem<int>(
                         value: year,
-                        child: Text(year.toString()),
+                        child: SizedBox(
+                          width: 50,
+                          child: Text(
+                            year.toString(),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       );
                     }).toList(),
                 onChanged: (value) {
