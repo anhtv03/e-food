@@ -28,22 +28,23 @@ class _HistoryPageState extends State<HistoryPage> {
       backgroundColor: Colors.grey[100],
       appBar: AppMenu(),
       endDrawer: AppDrawer(page: "history"),
-      body: SingleChildScrollView(
-        child: BlocConsumer<HistoryBloc, HistoryState>(
-          listener: (context, state) {
-            if (state is HistoryError) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(state.message)));
-            }
-          },
-          builder: (context, state) {
-            if (state is HistoryLoading) {
-              return Center(child: CircularProgressIndicator());
-            }
+      body: BlocConsumer<HistoryBloc, HistoryState>(
+        listener: (context, state) {
+          if (state is HistoryError) {
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
+          }
+        },
+        builder: (context, state) {
+          if (state is HistoryLoading) {
+            return Center(child: CircularProgressIndicator());
+          }
 
-            if (state is HistoryLoaded) {
-              return RefreshIndicator(
+          if (state is HistoryLoaded) {
+            return RefreshIndicator(
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -82,45 +83,41 @@ class _HistoryPageState extends State<HistoryPage> {
                     SizedBox(height: 16),
                   ],
                 ),
-                onRefresh: () async {
-                  context.read<HistoryBloc>().add(LoadHistoryEvent());
-                  await context.read<HistoryBloc>().stream.firstWhere(
-                    (s) => s is HistoryLoaded || s is HistoryError,
-                  );
-                },
-              );
-            }
+              ),
+              onRefresh: () async {
+                context.read<HistoryBloc>().add(LoadHistoryEvent());
+                await context.read<HistoryBloc>().stream.firstWhere(
+                  (s) => s is HistoryLoaded || s is HistoryError,
+                );
+              },
+            );
+          }
 
-            if (state is HistoryError) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.error_outline,
-                      size: 64,
-                      color: Colors.grey[400],
-                    ),
-                    SizedBox(height: 16),
-                    Text(
-                      state.message,
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                    SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<HistoryBloc>().add(LoadHistoryEvent());
-                      },
-                      child: Text('Thử lại'),
-                    ),
-                  ],
-                ),
-              );
-            }
+          if (state is HistoryError) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.error_outline, size: 64, color: Colors.grey[400]),
+                  SizedBox(height: 16),
+                  Text(
+                    state.message,
+                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                  ),
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<HistoryBloc>().add(LoadHistoryEvent());
+                    },
+                    child: Text('Thử lại'),
+                  ),
+                ],
+              ),
+            );
+          }
 
-            return Container();
-          },
-        ),
+          return Container();
+        },
       ),
     );
   }
