@@ -219,7 +219,7 @@ class _HomePageState extends State<HomePage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Container(
-                width: 180,
+                width: 150,
                 height: 94,
                 color: Colors.grey[200],
                 child:

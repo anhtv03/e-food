@@ -43,43 +43,51 @@ class _HistoryPageState extends State<HistoryPage> {
             }
 
             if (state is HistoryLoaded) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Header section
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(16),
-                    color: Colors.white,
-                    child: Row(
-                      children: [
-                        Icon(Icons.access_time, color: Colors.blue, size: 24),
-                        SizedBox(width: 8),
-                        Text(
-                          'Lịch sử đặt món',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
+              return RefreshIndicator(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Header section
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.all(16),
+                      color: Colors.white,
+                      child: Row(
+                        children: [
+                          Icon(Icons.access_time, color: Colors.blue, size: 24),
+                          SizedBox(width: 8),
+                          Text(
+                            'Lịch sử đặt món',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
 
-                  Divider(
-                    height: 10,
-                    thickness: 1,
-                    indent: 20,
-                    endIndent: 20,
-                    color: Color.fromRGBO(9, 50, 0, 1),
-                  ),
-                  SizedBox(height: 16),
+                    Divider(
+                      height: 10,
+                      thickness: 1,
+                      indent: 20,
+                      endIndent: 20,
+                      color: Color.fromRGBO(9, 50, 0, 1),
+                    ),
+                    SizedBox(height: 16),
 
-                  // History table
-                  _buildHistoryTable(state),
-                  SizedBox(height: 16),
-                ],
+                    // History table
+                    _buildHistoryTable(state),
+                    SizedBox(height: 16),
+                  ],
+                ),
+                onRefresh: () async {
+                  context.read<HistoryBloc>().add(LoadHistoryEvent());
+                  await context.read<HistoryBloc>().stream.firstWhere(
+                    (s) => s is HistoryLoaded || s is HistoryError,
+                  );
+                },
               );
             }
 
