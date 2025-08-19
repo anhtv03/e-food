@@ -1,7 +1,7 @@
-import 'package:e_food/pages/home_page.dart';
-import 'package:e_food/pages/login_page.dart';
-import 'package:e_food/pages/history_page.dart';
-import 'package:e_food/pages/statistic_page.dart';
+import 'package:e_food/screens/home_screen.dart';
+import 'package:e_food/screens/login_screen.dart';
+import 'package:e_food/screens/history_screen.dart';
+import 'package:e_food/screens/statistic_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {

@@ -4,8 +4,8 @@ import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_bloc.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_event.dart';
-import 'package:e_food/pages/home_page.dart';
-import 'package:e_food/pages/login_page.dart';
+import 'package:e_food/screens/home_screen.dart';
+import 'package:e_food/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

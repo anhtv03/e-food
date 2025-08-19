@@ -23,7 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           imageUrl: 'assets/images/com_ga.jpg',
           price: 25000,
           serviceDate: DateTime(2025, 8, 11),
-          isOrdered: false,
+          isOrdered: true,
         ),
         Meal(
           id: '2',
@@ -87,7 +87,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           imageUrl: 'assets/images/com_rang.jpg',
           price: 25000,
           serviceDate: DateTime(2025, 8, 18),
-          isOrdered: false,
+          isOrdered: true,
         ),
         Meal(
           id: '5',
@@ -95,7 +95,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           imageUrl: 'assets/images/com_tron.jpg',
           price: 25000,
           serviceDate: DateTime(2025, 8, 20),
-          isOrdered: false,
+          isOrdered: true,
         ),
       ];
 
