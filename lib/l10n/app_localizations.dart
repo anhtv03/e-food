@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_vi.dart';
 
 // ignore_for_file: type=lint
 
@@ -90,9 +91,315 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('en')
+    Locale('en'),
+    Locale('vi')
   ];
 
+  /// The title of the application
+  ///
+  /// In en, this message translates to:
+  /// **'ORDER FOOD'**
+  String get appTitle;
+
+  /// Login button text
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// Login screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Hello!'**
+  String get loginTitle;
+
+  /// Login screen subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to continue'**
+  String get subLoginTitle;
+
+  /// Placeholder for username field
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get placeholderUsername;
+
+  /// Placeholder for password field
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get placeholderPassword;
+
+  /// Register button text
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// Come back button text
+  ///
+  /// In en, this message translates to:
+  /// **'Come back'**
+  String get comeBack;
+
+  /// FullName field label
+  ///
+  /// In en, this message translates to:
+  /// **'FullName'**
+  String get fullName;
+
+  /// FullName field label
+  ///
+  /// In en, this message translates to:
+  /// **'Employee Id'**
+  String get employeeId;
+
+  /// FullName field label
+  ///
+  /// In en, this message translates to:
+  /// **'Account Name'**
+  String get accountName;
+
+  /// Password field label
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @fullNameBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'FullName cannot be left blank'**
+  String get fullNameBlank;
+
+  /// Validation error message for employeeId
+  ///
+  /// In en, this message translates to:
+  /// **'Employee Id cannot be left blank'**
+  String get employeeIdBlank;
+
+  /// Validation error message for employeeId
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid EmployeeId'**
+  String get employeeIdInvalid;
+
+  /// No description provided for @usernameBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Username cannot be left blank'**
+  String get usernameBlank;
+
+  /// Validation error message for username
+  ///
+  /// In en, this message translates to:
+  /// **'Account already exists'**
+  String get usernameInvalid;
+
+  /// No description provided for @passwordBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot be left blank'**
+  String get passwordBlank;
+
+  /// Validation error message for password
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordTooShort;
+
+  /// Forgot password link text
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPassword;
+
+  /// Create new account button text
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Account'**
+  String get createAccount;
+
+  /// Weekly meals screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Meals for this week'**
+  String get weeklyMeals;
+
+  /// No description provided for @noteOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Note: Please place your meal order no later than 10:00 AM'**
+  String get noteOrder;
+
+  /// No.
+  ///
+  /// In en, this message translates to:
+  /// **'No.'**
+  String get no1;
+
+  /// Dish Name field label
+  ///
+  /// In en, this message translates to:
+  /// **'Dish Name'**
+  String get dishName;
+
+  /// Supply Date field label
+  ///
+  /// In en, this message translates to:
+  /// **'Supply Date'**
+  String get supplyDate;
+
+  /// Status field label
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// Amount field label
+  ///
+  /// In en, this message translates to:
+  /// **'Amount (VNĐ)'**
+  String get amount;
+
+  /// No description provided for @formatAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount: {amount}₫'**
+  String formatAmount(Object amount);
+
+  /// No description provided for @formatDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date: {date}'**
+  String formatDate(Object date);
+
+  /// Welcome message with user name
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome, {name}!'**
+  String welcomeUser(String name);
+
+  /// Display meal count with pluralization
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No meals} =1{1 meal} other{{count} meals}}'**
+  String mealCount(int count);
+
+  /// Success message for registration
+  ///
+  /// In en, this message translates to:
+  /// **'Registration successful'**
+  String get successRegister;
+
+  /// Fail message for registration
+  ///
+  /// In en, this message translates to:
+  /// **'Registration failed'**
+  String get failRegister;
+
+  /// Success message for login
+  ///
+  /// In en, this message translates to:
+  /// **'Login successful'**
+  String get successLogin;
+
+  /// Fail message for login
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed'**
+  String get failLogin;
+
+  /// No description provided for @mealStatistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Meal Statistics'**
+  String get mealStatistics;
+
+  /// No description provided for @orderHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Order History'**
+  String get orderHistory;
+
+  /// No description provided for @month.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get month;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @totalAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total amount for the month: {amount} VND'**
+  String totalAmount(String amount);
+
+  /// No description provided for @noData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data'**
+  String get noData;
+
+  /// No description provided for @order.
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get order;
+
+  /// No description provided for @ordered.
+  ///
+  /// In en, this message translates to:
+  /// **'Ordered'**
+  String get ordered;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @expired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get expired;
+
+  /// No description provided for @confirmCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Cancel Order'**
+  String get confirmCancel;
+
+  /// No description provided for @confirmOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Order'**
+  String get confirmOrder;
+
+  /// No description provided for @confirmMsgCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to cancel the meal {mealName}?'**
+  String confirmMsgCancel(Object mealName);
+
+  /// No description provided for @confirmMsgOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to order the meal {mealName}?'**
+  String confirmMsgOrder(Object mealName);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -104,7 +411,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'vi'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -116,6 +423,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en': return AppLocalizationsEn();
+    case 'vi': return AppLocalizationsVi();
   }
 
   throw FlutterError(

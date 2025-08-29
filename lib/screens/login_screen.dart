@@ -8,6 +8,7 @@ import 'package:e_food/screens/register_screen.dart';
 import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:e_food/l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -36,6 +37,7 @@ class LoginScreenState extends State<LoginPage> {
           }
         },
         builder: (context, state) {
+          final l10n = AppLocalizations.of(context);
           return Scaffold(
             body: Container(
               width: double.infinity,
@@ -74,7 +76,7 @@ class LoginScreenState extends State<LoginPage> {
                             children: [
                               // Header
                               Text(
-                                'Xin chào!',
+                                l10n.loginTitle,
                                 style: TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
@@ -83,7 +85,7 @@ class LoginScreenState extends State<LoginPage> {
                               ),
                               SizedBox(height: 8),
                               Text(
-                                'Đăng nhập để tiếp tục',
+                                l10n.subLoginTitle,
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: AppColors.grey600,
@@ -94,7 +96,7 @@ class LoginScreenState extends State<LoginPage> {
                               // Username field
                               _buildTextField(
                                 _usernameController,
-                                'Tên đăng nhập',
+                                l10n.placeholderUsername,
                                 false,
                               ),
                               SizedBox(height: 8),
@@ -105,7 +107,7 @@ class LoginScreenState extends State<LoginPage> {
                               // Password field
                               _buildTextField(
                                 _passwordController,
-                                'Mật khẩu',
+                                l10n.placeholderPassword,
                                 true,
                               ),
                               SizedBox(height: 8),
@@ -119,7 +121,7 @@ class LoginScreenState extends State<LoginPage> {
                               SizedBox(height: 16),
 
                               // Login button
-                              _buildLoginButton(context, state),
+                              _buildLoginButton(context, state, l10n),
                               SizedBox(height: 8),
 
                               // Forgot password
@@ -130,7 +132,7 @@ class LoginScreenState extends State<LoginPage> {
                                     _handleForgotPassword();
                                   },
                                   child: Text(
-                                    'Quên mật khẩu?',
+                                    l10n.forgotPassword,
                                     style: TextStyle(
                                       color: AppColors.teal,
                                       fontSize: 14,
@@ -147,7 +149,7 @@ class LoginScreenState extends State<LoginPage> {
 
                               SizedBox(height: 8),
                               // Register button
-                              _buildRegisterButton(),
+                              _buildRegisterButton(l10n),
                             ],
                           ),
                           if (state is LoginLoading)
@@ -219,7 +221,11 @@ class LoginScreenState extends State<LoginPage> {
     );
   }
 
-  Widget _buildLoginButton(BuildContext context, LoginState state) {
+  Widget _buildLoginButton(
+    BuildContext context,
+    LoginState state,
+    AppLocalizations l10n,
+  ) {
     return SizedBox(
       width: double.infinity,
       height: 40,
@@ -244,14 +250,14 @@ class LoginScreenState extends State<LoginPage> {
           ),
         ),
         child: Text(
-          'Login',
+          l10n.login,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
     );
   }
 
-  Widget _buildRegisterButton() {
+  Widget _buildRegisterButton(AppLocalizations l10n) {
     return SizedBox(
       width: 222,
       height: 40,
@@ -271,7 +277,7 @@ class LoginScreenState extends State<LoginPage> {
           ),
         ),
         child: Text(
-          'Tạo tài khoản mới',
+          l10n.createAccount,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
