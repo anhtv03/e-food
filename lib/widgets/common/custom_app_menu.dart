@@ -1,3 +1,4 @@
+import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppMenu extends StatelessWidget implements PreferredSizeWidget {
@@ -6,14 +7,14 @@ class AppMenu extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xFF3D4854),
+      backgroundColor: AppColors.backgroundMenu,
       elevation: 0,
       leading: Container(
         margin: EdgeInsets.only(left: 16),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.location_on, color: Colors.red, size: 20),
+            Icon(Icons.location_on, color: AppColors.red, size: 20),
             SizedBox(width: 4),
           ],
         ),

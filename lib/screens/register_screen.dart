@@ -1,6 +1,7 @@
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_bloc.dart';
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_event.dart';
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_state.dart';
+import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,7 +43,7 @@ class RegisterPageState extends State<RegisterPage> {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.3),
+                  color: AppColors.black.withValues(alpha: 0.3),
                 ),
                 child: SafeArea(
                   child: Column(
@@ -58,7 +59,7 @@ class RegisterPageState extends State<RegisterPage> {
                               },
                               icon: Icon(
                                 Icons.arrow_back,
-                                color: Colors.white,
+                                color: AppColors.white,
                                 size: 28,
                               ),
                             ),
@@ -66,7 +67,7 @@ class RegisterPageState extends State<RegisterPage> {
                             Text(
                               'Quay lại',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -83,11 +84,13 @@ class RegisterPageState extends State<RegisterPage> {
                             child: Container(
                               padding: EdgeInsets.all(24),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: AppColors.white,
                                 borderRadius: BorderRadius.circular(16.0),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.1),
+                                    color: AppColors.black.withValues(
+                                      alpha: 0.1,
+                                    ),
                                     blurRadius: 20,
                                     offset: Offset(0, 10),
                                   ),
@@ -104,7 +107,7 @@ class RegisterPageState extends State<RegisterPage> {
                                         style: TextStyle(
                                           fontSize: 28,
                                           fontWeight: FontWeight.bold,
-                                          color: Color.fromRGBO(0, 176, 35, 1),
+                                          color: AppColors.greenRegister,
                                         ),
                                         textAlign: TextAlign.center,
                                       ),
@@ -112,7 +115,7 @@ class RegisterPageState extends State<RegisterPage> {
                                       Divider(
                                         height: 10,
                                         thickness: 1,
-                                        color: Color.fromRGBO(0, 176, 35, 0.5),
+                                        color: AppColors.greenRegisterLight,
                                       ),
                                       SizedBox(height: 16),
 
@@ -212,16 +215,16 @@ class RegisterPageState extends State<RegisterPage> {
       obscureText: isPassword ? obscurePassword : false,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.grey[400]),
+        hintStyle: TextStyle(color: AppColors.grey400),
         filled: true,
-        fillColor: Colors.grey[50],
+        fillColor: AppColors.grey50,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: Colors.grey[300]!),
+          borderSide: BorderSide(color: AppColors.grey300),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: Colors.teal, width: 2),
+          borderSide: BorderSide(color: AppColors.teal, width: 2),
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         suffixIcon:
@@ -229,7 +232,7 @@ class RegisterPageState extends State<RegisterPage> {
                 ? IconButton(
                   icon: Icon(
                     obscurePassword ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.grey[400],
+                    color: AppColors.grey400,
                   ),
                   onPressed: () {
                     setState(() {
@@ -261,8 +264,8 @@ class RegisterPageState extends State<RegisterPage> {
                   );
                 },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromRGBO(0, 161, 205, 1),
-          foregroundColor: Colors.white,
+          backgroundColor: AppColors.lightBlueLogin,
+          foregroundColor: AppColors.white,
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -281,11 +284,7 @@ class RegisterPageState extends State<RegisterPage> {
       width: double.infinity,
       child: Text(
         message ?? '',
-        style: TextStyle(
-          fontSize: 12,
-          height: 1,
-          color: Color.fromRGBO(236, 70, 34, 1),
-        ),
+        style: TextStyle(fontSize: 12, height: 1, color: AppColors.errorRed),
         textAlign: TextAlign.left,
       ),
     );

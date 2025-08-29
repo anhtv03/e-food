@@ -5,6 +5,7 @@ import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/screens/home_screen.dart';
 import 'package:e_food/screens/register_screen.dart';
+import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,7 +48,7 @@ class LoginScreenState extends State<LoginPage> {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.3),
+                  color: AppColors.black.withValues(alpha: 0.3),
                 ),
                 child: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(vertical: 100, horizontal: 12),
@@ -56,11 +57,11 @@ class LoginScreenState extends State<LoginPage> {
                     child: Container(
                       padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(16.0),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.1),
+                            color: AppColors.black.withValues(alpha: 0.1),
                             blurRadius: 20,
                             offset: Offset(0, 10),
                           ),
@@ -77,7 +78,7 @@ class LoginScreenState extends State<LoginPage> {
                                 style: TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
+                                  color: AppColors.black,
                                 ),
                               ),
                               SizedBox(height: 8),
@@ -85,7 +86,7 @@ class LoginScreenState extends State<LoginPage> {
                                 'Đăng nhập để tiếp tục',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.grey[600],
+                                  color: AppColors.grey600,
                                 ),
                               ),
                               SizedBox(height: 32),
@@ -131,7 +132,7 @@ class LoginScreenState extends State<LoginPage> {
                                   child: Text(
                                     'Quên mật khẩu?',
                                     style: TextStyle(
-                                      color: Colors.teal,
+                                      color: AppColors.teal,
                                       fontSize: 14,
                                     ),
                                   ),
@@ -141,7 +142,7 @@ class LoginScreenState extends State<LoginPage> {
                               Divider(
                                 height: 10,
                                 thickness: 1,
-                                color: Color.fromRGBO(9, 50, 0, 1),
+                                color: AppColors.darkGreen,
                               ),
 
                               SizedBox(height: 8),
@@ -188,16 +189,16 @@ class LoginScreenState extends State<LoginPage> {
       obscureText: isPassword ? obscurePassword : false,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.grey[400]),
+        hintStyle: TextStyle(color: AppColors.grey400),
         filled: true,
-        fillColor: Colors.grey[50],
+        fillColor: AppColors.grey50,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: Colors.grey[300]!),
+          borderSide: BorderSide(color: AppColors.grey300),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: Colors.teal, width: 2),
+          borderSide: BorderSide(color: AppColors.teal, width: 2),
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         suffixIcon:
@@ -205,7 +206,7 @@ class LoginScreenState extends State<LoginPage> {
                 ? IconButton(
                   icon: Icon(
                     obscurePassword ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.grey[400],
+                    color: AppColors.grey400,
                   ),
                   onPressed: () {
                     setState(() {
@@ -235,8 +236,8 @@ class LoginScreenState extends State<LoginPage> {
                   );
                 },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromRGBO(0, 161, 205, 1),
-          foregroundColor: Colors.white,
+          backgroundColor: AppColors.lightBlueLogin,
+          foregroundColor: AppColors.white,
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -262,8 +263,8 @@ class LoginScreenState extends State<LoginPage> {
           );
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromRGBO(0, 176, 35, 1),
-          foregroundColor: Colors.white,
+          backgroundColor: AppColors.greenRegister,
+          foregroundColor: AppColors.white,
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -282,11 +283,7 @@ class LoginScreenState extends State<LoginPage> {
       width: double.infinity,
       child: Text(
         message ?? '',
-        style: TextStyle(
-          fontSize: 12,
-          height: 1,
-          color: Color.fromRGBO(236, 70, 34, 1),
-        ),
+        style: TextStyle(fontSize: 12, height: 1, color: AppColors.errorRed),
         textAlign: isCenter ? TextAlign.center : TextAlign.left,
       ),
     );

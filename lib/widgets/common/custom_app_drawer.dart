@@ -2,16 +2,18 @@ import 'package:e_food/screens/home_screen.dart';
 import 'package:e_food/screens/login_screen.dart';
 import 'package:e_food/screens/history_screen.dart';
 import 'package:e_food/screens/statistic_screen.dart';
+import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
   final String page;
+
   const AppDrawer({super.key, required this.page});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       child: Column(
         children: [
@@ -20,21 +22,21 @@ class AppDrawer extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.fromLTRB(16, 50, 16, 20),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               border: Border(
-                bottom: BorderSide(color: Colors.grey[200]!, width: 1),
+                bottom: BorderSide(color: AppColors.grey200, width: 1),
               ),
             ),
             child: Row(
               children: [
-                Icon(Icons.location_on, color: Colors.red, size: 24),
+                Icon(Icons.location_on, color: AppColors.red, size: 24),
                 SizedBox(width: 8),
                 Text(
                   'ĐẶT CƠM',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: AppColors.black,
                   ),
                 ),
                 Spacer(),
@@ -42,7 +44,7 @@ class AppDrawer extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.close, color: Colors.black54, size: 24),
+                  icon: Icon(Icons.close, color: AppColors.black54, size: 24),
                 ),
               ],
             ),
@@ -56,7 +58,7 @@ class AppDrawer extends StatelessWidget {
                 _buildMenuItem(
                   context: context,
                   icon: Icons.restaurant_menu,
-                  iconColor: Colors.orange,
+                  iconColor: AppColors.orange,
                   isSelected: page == "home" ? true : false,
                   title: 'Món ăn trong tuần',
                   onTap: () {
@@ -70,7 +72,7 @@ class AppDrawer extends StatelessWidget {
                 _buildMenuItem(
                   context: context,
                   icon: Icons.history,
-                  iconColor: Colors.blue,
+                  iconColor: AppColors.blue,
                   isSelected: page == "history" ? true : false,
                   title: 'Lịch sử đặt món',
                   onTap: () {
@@ -84,7 +86,7 @@ class AppDrawer extends StatelessWidget {
                 _buildMenuItem(
                   context: context,
                   icon: Icons.analytics_outlined,
-                  iconColor: Colors.green,
+                  iconColor: AppColors.green,
                   isSelected: page == "statistic",
                   title: 'Thống kê suất ăn',
                   onTap: () {
@@ -98,7 +100,7 @@ class AppDrawer extends StatelessWidget {
                 _buildMenuItem(
                   context: context,
                   icon: Icons.logout,
-                  iconColor: Colors.red,
+                  iconColor: AppColors.red,
                   title: 'Đăng xuất',
                   onTap: () {
                     Navigator.pop(context);
@@ -131,7 +133,7 @@ class AppDrawer extends StatelessWidget {
             color:
                 isSelected
                     ? iconColor.withValues(alpha: 0.1)
-                    : Colors.transparent,
+                    : AppColors.transparent,
             borderRadius: BorderRadius.zero,
           ),
           child: Icon(icon, color: iconColor, size: 20),
@@ -141,11 +143,11 @@ class AppDrawer extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-            color: isSelected ? Colors.black87 : Colors.black87,
+            color: AppColors.black87,
           ),
         ),
         selected: isSelected,
-        selectedTileColor: Colors.grey[50],
+        selectedTileColor: AppColors.grey50,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
         onTap: onTap,
@@ -173,7 +175,7 @@ class AppDrawer extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                style: ElevatedButton.styleFrom(backgroundColor: AppColors.red),
                 child: Text('Đăng xuất'),
               ),
             ],

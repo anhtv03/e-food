@@ -2,9 +2,10 @@ import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/blocs/home_bloc/home_state.dart';
 import 'package:e_food/models/meal.dart';
-import 'package:e_food/widgets/app_drawer.dart';
-import 'package:e_food/widgets/app_menu.dart';
-import 'package:e_food/widgets/notification_dialog.dart';
+import 'package:e_food/widgets/common/custom_app_drawer.dart';
+import 'package:e_food/widgets/common/custom_app_menu.dart';
+import 'package:e_food/widgets/common/notification_dialog.dart';
+import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: AppColors.grey100,
       appBar: AppMenu(),
       endDrawer: AppDrawer(page: "home"),
       body: BlocConsumer<HomeBloc, HomeState>(
@@ -51,10 +52,10 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(16),
-                    color: Colors.white,
+                    color: AppColors.white,
                     child: Text(
                       'Xin chào, ${state.userName}',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                      style: TextStyle(fontSize: 16, color: AppColors.grey700),
                     ),
                   ),
 
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-                    color: Colors.white,
+                    color: AppColors.white,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Icon(
                               Icons.restaurant_menu,
-                              color: Colors.orange,
+                              color: AppColors.orange,
                               size: 24,
                             ),
                             SizedBox(width: 8),
@@ -79,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black87,
+                                color: AppColors.black,
                               ),
                             ),
                           ],
@@ -88,14 +89,14 @@ class _HomePageState extends State<HomePage> {
                         Divider(
                           height: 10,
                           thickness: 1,
-                          color: Color.fromRGBO(9, 50, 0, 1),
+                          color: AppColors.darkGreen,
                         ),
                         SizedBox(height: 4),
                         Text(
                           'Lưu ý: đặt cơm chậm nhất trước 10:00 AM',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.black,
+                            color: AppColors.black,
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
                           ),
@@ -200,11 +201,11 @@ class _HomePageState extends State<HomePage> {
     return Container(
       margin: EdgeInsets.only(bottom: 6),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.1),
+            color: AppColors.grey.withValues(alpha: 0.1),
             spreadRadius: 1,
             blurRadius: 4,
             offset: Offset(0, 2),
@@ -221,7 +222,7 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: 150,
                 height: 94,
-                color: Colors.grey[200],
+                color: AppColors.grey200,
                 child:
                     meal.imageUrl.startsWith('assets')
                         ? Image.asset(
@@ -229,20 +230,20 @@ class _HomePageState extends State<HomePage> {
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
                             return Container(
-                              color: Colors.grey[300],
+                              color: AppColors.grey300,
                               child: Icon(
                                 Icons.restaurant,
-                                color: Colors.grey[600],
+                                color: AppColors.grey600,
                                 size: 40,
                               ),
                             );
                           },
                         )
                         : Container(
-                          color: Colors.grey[300],
+                          color: AppColors.grey300,
                           child: Icon(
                             Icons.restaurant,
-                            color: Colors.grey[600],
+                            color: AppColors.grey600,
                             size: 40,
                           ),
                         ),
@@ -260,18 +261,18 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                      color: AppColors.black,
                     ),
                   ),
                   SizedBox(height: 4),
                   Text(
                     'Giá: ${NumberFormat('#,###').format(meal.price)}₫',
-                    style: TextStyle(fontSize: 13, color: Colors.black),
+                    style: TextStyle(fontSize: 13, color: AppColors.black),
                   ),
                   SizedBox(height: 4),
                   Text(
                     'Ngày: ${DateFormat('dd/MM/yyyy').format(meal.serviceDate)}',
-                    style: TextStyle(fontSize: 13, color: Colors.black),
+                    style: TextStyle(fontSize: 13, color: AppColors.black),
                   ),
                   SizedBox(height: 8),
                   // Action buttons
@@ -299,8 +300,8 @@ class _HomePageState extends State<HomePage> {
       child: ElevatedButton(
         onPressed: isEnabled ? () => _showCancelConfirmDialog(meal) : null,
         style: ElevatedButton.styleFrom(
-          backgroundColor: isEnabled ? Colors.red : Colors.grey,
-          foregroundColor: Colors.white,
+          backgroundColor: isEnabled ? AppColors.red : AppColors.grey,
+          foregroundColor: AppColors.white,
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -323,8 +324,8 @@ class _HomePageState extends State<HomePage> {
               showSuccessDialog(context, "Cập nhật thành công");
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromRGBO(1, 157, 219, 1),
-              foregroundColor: Colors.white,
+              backgroundColor: AppColors.lightBlue,
+              foregroundColor: AppColors.white,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -340,13 +341,13 @@ class _HomePageState extends State<HomePage> {
           height: 27,
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: AppColors.grey,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
             child: Text(
               'Đã đặt',
-              style: TextStyle(fontSize: 12, color: Colors.white),
+              style: TextStyle(fontSize: 12, color: AppColors.white),
             ),
           ),
         );
@@ -356,13 +357,13 @@ class _HomePageState extends State<HomePage> {
           height: 27,
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: AppColors.grey,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
             child: Text(
               'Đặt món',
-              style: TextStyle(fontSize: 12, color: Colors.white),
+              style: TextStyle(fontSize: 12, color: AppColors.white),
             ),
           ),
         );
@@ -389,7 +390,7 @@ class _HomePageState extends State<HomePage> {
                   context.read<HomeBloc>().add(CancelMealEvent(meal: meal));
                   showSuccessDialog(context, "Cập nhật thành công");
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                style: ElevatedButton.styleFrom(backgroundColor: AppColors.red),
                 child: Text('Xác nhận'),
               ),
             ],

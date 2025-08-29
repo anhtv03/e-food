@@ -2,8 +2,9 @@ import 'package:e_food/blocs/history_bloc/history_bloc.dart';
 import 'package:e_food/blocs/history_bloc/history_event.dart';
 import 'package:e_food/blocs/history_bloc/history_state.dart';
 import 'package:e_food/models/history.dart';
-import 'package:e_food/widgets/app_drawer.dart';
-import 'package:e_food/widgets/app_menu.dart';
+import 'package:e_food/widgets/common/custom_app_drawer.dart';
+import 'package:e_food/widgets/common/custom_app_menu.dart';
+import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -25,7 +26,7 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: AppColors.grey100,
       appBar: AppMenu(),
       endDrawer: AppDrawer(page: "history"),
       body: BlocConsumer<HistoryBloc, HistoryState>(
@@ -52,17 +53,21 @@ class _HistoryPageState extends State<HistoryPage> {
                     Container(
                       width: double.infinity,
                       padding: EdgeInsets.all(16),
-                      color: Colors.white,
+                      color: AppColors.white,
                       child: Row(
                         children: [
-                          Icon(Icons.access_time, color: Colors.blue, size: 24),
+                          Icon(
+                            Icons.access_time,
+                            color: AppColors.blue,
+                            size: 24,
+                          ),
                           SizedBox(width: 8),
                           Text(
                             'Lịch sử đặt món',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black87,
+                              color: AppColors.black,
                             ),
                           ),
                         ],
@@ -74,7 +79,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       thickness: 1,
                       indent: 20,
                       endIndent: 20,
-                      color: Color.fromRGBO(9, 50, 0, 1),
+                      color: AppColors.darkGreen,
                     ),
                     SizedBox(height: 16),
 
@@ -98,11 +103,11 @@ class _HistoryPageState extends State<HistoryPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.error_outline, size: 64, color: Colors.grey[400]),
+                  Icon(Icons.error_outline, size: 64, color: AppColors.grey400),
                   SizedBox(height: 16),
                   Text(
                     state.message,
-                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                    style: TextStyle(fontSize: 16, color: AppColors.grey600),
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(
@@ -128,11 +133,11 @@ class _HistoryPageState extends State<HistoryPage> {
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.3),
+              color: AppColors.grey.withValues(alpha: 0.3),
               spreadRadius: 3,
               blurRadius: 8,
               offset: Offset(0, 4),
@@ -170,13 +175,13 @@ class _HistoryPageState extends State<HistoryPage> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.green[600],
+        color: AppColors.green600,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(6),
           topRight: Radius.circular(6),
         ),
         border: Border(
-          bottom: BorderSide(color: Colors.grey[400]!, width: 1.0),
+          bottom: BorderSide(color: AppColors.grey400, width: 1.0),
         ),
       ),
       child: Row(
@@ -189,7 +194,7 @@ class _HistoryPageState extends State<HistoryPage> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: AppColors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -205,7 +210,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: AppColors.white,
                 ),
               ),
             ),
@@ -219,7 +224,7 @@ class _HistoryPageState extends State<HistoryPage> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: AppColors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -233,7 +238,7 @@ class _HistoryPageState extends State<HistoryPage> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: AppColors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -246,7 +251,7 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget _buildTableRow(OrderHistory order, int index, int length) {
     return Container(
       decoration: BoxDecoration(
-        color: index % 2 == 0 ? Colors.grey[50] : Colors.white,
+        color: index % 2 == 0 ? AppColors.grey50 : AppColors.white,
         borderRadius:
             index == length
                 ? BorderRadius.only(
@@ -258,7 +263,7 @@ class _HistoryPageState extends State<HistoryPage> {
             index == length
                 ? null
                 : Border(
-                  bottom: BorderSide(color: Colors.grey[400]!, width: 1),
+                  bottom: BorderSide(color: AppColors.grey400, width: 1),
                 ),
       ),
       child: Padding(
@@ -270,7 +275,7 @@ class _HistoryPageState extends State<HistoryPage> {
               width: 40,
               child: Text(
                 index.toString(),
-                style: TextStyle(fontSize: 14, color: Colors.black87),
+                style: TextStyle(fontSize: 14, color: AppColors.black),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -282,7 +287,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 padding: EdgeInsets.only(left: 16),
                 child: Text(
                   order.mealName,
-                  style: TextStyle(fontSize: 14, color: Colors.black87),
+                  style: TextStyle(fontSize: 14, color: AppColors.black),
                 ),
               ),
             ),
@@ -292,7 +297,7 @@ class _HistoryPageState extends State<HistoryPage> {
               flex: 2,
               child: Text(
                 DateFormat('d/M/yyyy').format(order.serviceDate),
-                style: TextStyle(fontSize: 14, color: Colors.black87),
+                style: TextStyle(fontSize: 14, color: AppColors.black),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -311,7 +316,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     _getStatusText(order.status),
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.black,
+                      color: AppColors.black,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -329,16 +334,16 @@ class _HistoryPageState extends State<HistoryPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.history, size: 64, color: Colors.grey[400]),
+          Icon(Icons.history, size: 64, color: AppColors.grey400),
           SizedBox(height: 16),
           Text(
             'Chưa có lịch sử đặt món',
-            style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+            style: TextStyle(fontSize: 16, color: AppColors.grey600),
           ),
           SizedBox(height: 8),
           Text(
             'Hãy đặt món đầu tiên của bạn!',
-            style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+            style: TextStyle(fontSize: 14, color: AppColors.grey500),
           ),
         ],
       ),

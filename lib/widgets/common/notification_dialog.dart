@@ -1,3 +1,4 @@
+import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 Future<void> showSuccessDialog(BuildContext context, String message) {
@@ -17,7 +18,7 @@ Future<void> showSuccessDialog(BuildContext context, String message) {
               'Đồng ý',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color.fromRGBO(255, 100, 7, 1),
+                color: AppColors.deepOrange,
                 fontWeight: FontWeight.bold,
               ),
             ),
