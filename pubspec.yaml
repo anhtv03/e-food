@@ -27,5 +27,3 @@ flutter:
   generate: true
   assets:
     - assets/images/
-flutter_intl:
-  enabled: true
