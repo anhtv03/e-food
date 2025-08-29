@@ -2,203 +2,47 @@
   "@@locale": "en",
 
   "appTitle": "ORDER FOOD",
-  "@appTitle": {
-    "description": "The title of the application"
-  },
-
   "login": "Login",
-  "@login": {
-    "description": "Login button text"
-  },
-
   "loginTitle": "Hello!",
-  "@loginTitle": {
-    "description": "Login screen title"
-  },
-
   "subLoginTitle": "Sign in to continue",
-  "@subLoginTitle": {
-    "description": "Login screen subtitle"
-  },
-
   "placeholderUsername": "Username",
-  "@placeholderUsername": {
-    "description": "Placeholder for username field"
-  },
-
   "placeholderPassword": "Password",
-  "@placeholderPassword": {
-    "description": "Placeholder for password field"
-  },
-
   "register": "Register",
-  "@register": {
-    "description": "Register button text"
-  },
-
   "comeBack": "Come back",
-  "@comeBack": {
-    "description": "Come back button text"
-  },
-
   "fullName": "FullName",
-  "@fullName": {
-    "description": "FullName field label"
-  },
-
   "employeeId": "Employee Id",
-  "@employeeId": {
-    "description": "FullName field label"
-  },
-
   "accountName": "Account Name",
-  "@accountName": {
-    "description": "FullName field label"
-  },
-
   "password": "Password",
-  "@password": {
-    "description": "Password field label"
-  },
-
   "fullNameBlank": "FullName cannot be left blank",
-  "@fullNameError": {
-    "description": "Validation error message for fullName"
-  },
-
   "employeeIdBlank": "Employee Id cannot be left blank",
-  "@employeeIdBlank": {
-    "description": "Validation error message for employeeId"
-  },
-
   "employeeIdInvalid": "Invalid EmployeeId",
-  "@employeeIdInvalid": {
-    "description": "Validation error message for employeeId"
-  },
-
   "usernameBlank": "Username cannot be left blank",
-  "@usernameError": {
-    "description": "Validation error message for username"
-  },
-
   "usernameInvalid": "Account already exists",
-  "@usernameInvalid": {
-    "description": "Validation error message for username"
-  },
-
   "passwordBlank": "Password cannot be left blank",
-  "@passwordError": {
-    "description": "Validation error message for password"
-  },
-
   "passwordTooShort": "Password must be at least 6 characters",
-  "@passwordTooShort": {
-    "description": "Validation error message for password"
-  },
-
   "forgotPassword": "Forgot Password?",
-  "@forgotPassword": {
-    "description": "Forgot password link text"
-  },
-
   "createAccount": "Create New Account",
-  "@createAccount": {
-    "description": "Create new account button text"
-  },
-
   "weeklyMeals": "Meals for this week",
-  "@weeklyMeals": {
-    "description": "Weekly meals screen title"
-  },
-
   "noteOrder": "Note: Please place your meal order no later than 10:00 AM",
-
-  "no1": "No.",
-  "@no1": {
-    "description": "No."
-  },
-
+  "no": "No",
   "dishName": "Dish Name",
-  "@dishName": {
-    "description": "Dish Name field label"
-  },
-
   "supplyDate": "Supply Date",
-  "@supplyDate": {
-    "description": "Supply Date field label"
-  },
-
   "status": "Status",
-  "@status": {
-    "description": "Status field label"
-  },
-
   "amount": "Amount (VNĐ)",
-  "@amount": {
-    "description": "Amount field label"
-  },
-
   "formatAmount": "Amount: {amount}₫",
   "formatDate": "Date: {date}",
-
   "welcomeUser": "Welcome, {name}!",
-  "@welcomeUser": {
-    "description": "Welcome message with user name",
-    "placeholders": {
-      "name": {
-        "type": "String",
-        "example": "John"
-      }
-    }
-  },
-
   "mealCount": "{count, plural, =0{No meals} =1{1 meal} other{{count} meals}}",
-  "@mealCount": {
-    "description": "Display meal count with pluralization",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-
   "successRegister": "Registration successful",
-  "@successRegister": {
-    "description": "Success message for registration"
-  },
-
   "failRegister": "Registration failed",
-  "@failRegister": {
-    "description": "Fail message for registration"
-  },
-
   "successLogin": "Login successful",
-  "@successLogin": {
-    "description": "Success message for login"
-  },
-
   "failLogin": "Login failed",
-  "@failLogin": {
-    "description": "Fail message for login"
-  },
-
   "mealStatistics": "Meal Statistics",
   "orderHistory": "Order History",
-
   "month": "Month",
   "year": "Year",
   "search": "Search",
-
   "totalAmount": "Total amount for the month: {amount} VND",
-  "@totalAmount": {
-    "placeholders": {
-      "amount": {
-        "type": "String",
-        "example": "1.000.000"
-      }
-    }
-  },
-
   "noData": "No data",
   "order": "Order",
   "ordered": "Ordered",
