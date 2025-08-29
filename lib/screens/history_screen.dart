@@ -8,6 +8,7 @@ import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:e_food/l10n/app_localizations.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -25,6 +26,7 @@ class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: AppColors.grey100,
       appBar: AppMenu(),
@@ -63,7 +65,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           ),
                           SizedBox(width: 8),
                           Text(
-                            'Lịch sử đặt món',
+                            l10n.orderHistory,
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -84,7 +86,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     SizedBox(height: 16),
 
                     // History table
-                    _buildHistoryTable(state),
+                    _buildHistoryTable(state, l10n),
                     SizedBox(height: 16),
                   ],
                 ),
@@ -114,7 +116,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     onPressed: () {
                       context.read<HistoryBloc>().add(LoadHistoryEvent());
                     },
-                    child: Text('Thử lại'),
+                    child: Text(l10n.search),
                   ),
                 ],
               ),
@@ -128,7 +130,7 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   //========================handle UI==============================
-  Widget _buildHistoryTable(state) {
+  Widget _buildHistoryTable(state, AppLocalizations l10n) {
     return Center(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 16),
@@ -147,11 +149,11 @@ class _HistoryPageState extends State<HistoryPage> {
         child: Column(
           children: [
             // Table header
-            _buildTableHeader(),
+            _buildTableHeader(l10n),
 
             // Table content
             state.orderHistory.isEmpty
-                ? _buildEmptyState()
+                ? _buildEmptyState(l10n)
                 : ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -162,6 +164,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       order,
                       index + 1,
                       state.orderHistory.length,
+                      l10n,
                     );
                   },
                 ),
@@ -171,7 +174,7 @@ class _HistoryPageState extends State<HistoryPage> {
     );
   }
 
-  Widget _buildTableHeader() {
+  Widget _buildTableHeader(AppLocalizations l10n) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       decoration: BoxDecoration(
@@ -190,7 +193,7 @@ class _HistoryPageState extends State<HistoryPage> {
           SizedBox(
             width: 40,
             child: Text(
-              'STT',
+              l10n.no1,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
@@ -206,7 +209,7 @@ class _HistoryPageState extends State<HistoryPage> {
             child: Padding(
               padding: EdgeInsets.only(left: 16),
               child: Text(
-                'Tên món',
+                l10n.dishName,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -220,7 +223,7 @@ class _HistoryPageState extends State<HistoryPage> {
           Expanded(
             flex: 2,
             child: Text(
-              'Ngày cung cấp',
+              l10n.supplyDate,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
@@ -234,7 +237,7 @@ class _HistoryPageState extends State<HistoryPage> {
           Expanded(
             flex: 2,
             child: Text(
-              'Trạng thái',
+              l10n.status,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
@@ -248,7 +251,12 @@ class _HistoryPageState extends State<HistoryPage> {
     );
   }
 
-  Widget _buildTableRow(OrderHistory order, int index, int length) {
+  Widget _buildTableRow(
+    OrderHistory order,
+    int index,
+    int length,
+    AppLocalizations l10n,
+  ) {
     return Container(
       decoration: BoxDecoration(
         color: index % 2 == 0 ? AppColors.grey50 : AppColors.white,
@@ -313,7 +321,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    _getStatusText(order.status),
+                    _getStatusText(order.status, l10n),
                     style: TextStyle(
                       fontSize: 12,
                       color: AppColors.black,
@@ -329,7 +337,7 @@ class _HistoryPageState extends State<HistoryPage> {
     );
   }
 
-  Widget _buildEmptyState() {
+  Widget _buildEmptyState(AppLocalizations l10n) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -337,7 +345,7 @@ class _HistoryPageState extends State<HistoryPage> {
           Icon(Icons.history, size: 64, color: AppColors.grey400),
           SizedBox(height: 16),
           Text(
-            'Chưa có lịch sử đặt món',
+            l10n.noData,
             style: TextStyle(fontSize: 16, color: AppColors.grey600),
           ),
           SizedBox(height: 8),
@@ -351,13 +359,13 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 }
 
-String _getStatusText(OrderStatus status) {
+String _getStatusText(OrderStatus status, AppLocalizations l10n) {
   switch (status) {
     case OrderStatus.completed:
-      return 'Đã đặt';
+      return l10n.ordered;
     case OrderStatus.cancelled:
-      return 'Đã hủy';
+      return l10n.cancel;
     case OrderStatus.pending:
-      return 'Chờ xử lý';
+      return l10n.order;
   }
 }

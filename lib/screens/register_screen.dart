@@ -4,6 +4,7 @@ import 'package:e_food/blocs/auth_bloc/register_bloc/register_state.dart';
 import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:e_food/l10n/app_localizations.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -21,6 +22,7 @@ class RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return BlocProvider(
       create: (context) => RegisterBloc(),
       child: BlocConsumer<RegisterBloc, RegisterState>(
@@ -65,7 +67,7 @@ class RegisterPageState extends State<RegisterPage> {
                             ),
                             SizedBox(width: 8),
                             Text(
-                              'Quay lại',
+                              l10n.comeBack,
                               style: TextStyle(
                                 color: AppColors.white,
                                 fontSize: 16,
@@ -103,7 +105,7 @@ class RegisterPageState extends State<RegisterPage> {
                                     children: [
                                       // Header
                                       Text(
-                                        'Tạo tài khoản mới',
+                                        l10n.createAccount,
                                         style: TextStyle(
                                           fontSize: 28,
                                           fontWeight: FontWeight.bold,
@@ -122,7 +124,7 @@ class RegisterPageState extends State<RegisterPage> {
                                       // Full name field
                                       _buildTextField(
                                         _fullNameController,
-                                        'Tên đầy đủ',
+                                        l10n.fullName,
                                         false,
                                       ),
                                       SizedBox(height: 8),
@@ -133,7 +135,7 @@ class RegisterPageState extends State<RegisterPage> {
                                       // Email field
                                       _buildTextField(
                                         _employeeIdController,
-                                        'Mã nhân viên',
+                                        l10n.employeeId,
                                         false,
                                       ),
                                       SizedBox(height: 8),
@@ -144,7 +146,7 @@ class RegisterPageState extends State<RegisterPage> {
                                       // Username field
                                       _buildTextField(
                                         _usernameController,
-                                        'Tên tài khoản',
+                                        l10n.accountName,
                                         false,
                                       ),
                                       SizedBox(height: 8),
@@ -155,7 +157,7 @@ class RegisterPageState extends State<RegisterPage> {
                                       // Password field
                                       _buildTextField(
                                         _passwordController,
-                                        'Mật khẩu',
+                                        l10n.password,
                                         true,
                                       ),
                                       SizedBox(height: 8),
@@ -168,7 +170,11 @@ class RegisterPageState extends State<RegisterPage> {
                                       SizedBox(height: 16),
 
                                       // Register button
-                                      _buildRegisterButton(context, state),
+                                      _buildRegisterButton(
+                                        context,
+                                        state,
+                                        l10n,
+                                      ),
                                     ],
                                   ),
                                   if (state is RegisterLoading)
@@ -245,7 +251,11 @@ class RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _buildRegisterButton(BuildContext context, RegisterState state) {
+  Widget _buildRegisterButton(
+    BuildContext context,
+    RegisterState state,
+    AppLocalizations l10n,
+  ) {
     return SizedBox(
       width: double.infinity,
       height: 48,
@@ -272,7 +282,7 @@ class RegisterPageState extends State<RegisterPage> {
           ),
         ),
         child: Text(
-          'Đăng ký',
+          l10n.register,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),

@@ -9,6 +9,7 @@ import 'package:e_food/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:e_food/l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,6 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: AppColors.grey100,
       appBar: AppMenu(),
@@ -54,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(16),
                     color: AppColors.white,
                     child: Text(
-                      'Xin chào, ${state.userName}',
+                      l10n.welcomeUser(state.userName),
                       style: TextStyle(fontSize: 16, color: AppColors.grey700),
                     ),
                   ),
@@ -76,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             SizedBox(width: 8),
                             Text(
-                              'Món ăn trong tuần này',
+                              l10n.weeklyMeals,
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -93,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         SizedBox(height: 4),
                         Text(
-                          'Lưu ý: đặt cơm chậm nhất trước 10:00 AM',
+                          l10n.noteOrder,
                           style: TextStyle(
                             fontSize: 12,
                             color: AppColors.black,
@@ -114,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                       itemCount: state.meals.length,
                       itemBuilder: (context, index) {
                         final meal = state.meals[index];
-                        return _buildMealCard(meal);
+                        return _buildMealCard(meal, l10n);
                       },
                     ),
                   ),
@@ -140,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       context.read<HomeBloc>().add(LoadHomeEvent());
                     },
-                    child: Text('Thử lại'),
+                    child: Text(l10n.search),
                   ),
                 ],
               ),
@@ -175,7 +177,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   //========================handle UI==============================
-  Widget _buildMealCard(Meal meal) {
+  Widget _buildMealCard(Meal meal, AppLocalizations l10n) {
     final now = DateTime.now();
     final currentDate = DateTime(now.year, now.month, now.day);
     final serviceDate = DateTime(
@@ -266,21 +268,27 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'Giá: ${NumberFormat('#,###').format(meal.price)}₫',
+                    l10n.formatAmount(NumberFormat('#,###').format(meal.price)),
                     style: TextStyle(fontSize: 13, color: AppColors.black),
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'Ngày: ${DateFormat('dd/MM/yyyy').format(meal.serviceDate)}',
+                    l10n.formatDate(
+                      DateFormat('dd/MM/yyyy').format(meal.serviceDate),
+                    ),
                     style: TextStyle(fontSize: 13, color: AppColors.black),
                   ),
                   SizedBox(height: 8),
                   // Action buttons
                   Row(
                     children: [
-                      Expanded(child: _buildCancelButton(buttonState, meal)),
+                      Expanded(
+                        child: _buildCancelButton(buttonState, meal, l10n),
+                      ),
                       SizedBox(width: 8),
-                      Expanded(child: _buildOrderButton(buttonState, meal)),
+                      Expanded(
+                        child: _buildOrderButton(buttonState, meal, l10n),
+                      ),
                     ],
                   ),
                 ],
@@ -292,13 +300,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildCancelButton(MealState buttonState, Meal meal) {
+  Widget _buildCancelButton(
+    MealState buttonState,
+    Meal meal,
+    AppLocalizations l10n,
+  ) {
     bool isEnabled = (buttonState == MealState.cancel);
 
     return SizedBox(
       height: 27,
       child: ElevatedButton(
-        onPressed: isEnabled ? () => _showCancelConfirmDialog(meal) : null,
+        onPressed:
+            isEnabled ? () => _showCancelConfirmDialog(meal, l10n) : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: isEnabled ? AppColors.red : AppColors.grey,
           foregroundColor: AppColors.white,
@@ -308,12 +321,16 @@ class _HomePageState extends State<HomePage> {
           ),
           elevation: isEnabled ? 2 : 0,
         ),
-        child: Text('Hủy món', style: TextStyle(fontSize: 12)),
+        child: Text(l10n.cancel, style: TextStyle(fontSize: 12)),
       ),
     );
   }
 
-  Widget _buildOrderButton(MealState buttonState, Meal meal) {
+  Widget _buildOrderButton(
+    MealState buttonState,
+    Meal meal,
+    AppLocalizations l10n,
+  ) {
     switch (buttonState) {
       case MealState.order:
         return SizedBox(
@@ -331,7 +348,7 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            child: Text('Đặt món', style: TextStyle(fontSize: 12)),
+            child: Text(l10n.order, style: TextStyle(fontSize: 12)),
           ),
         );
 
@@ -346,7 +363,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Center(
             child: Text(
-              'Đã đặt',
+              l10n.ordered,
               style: TextStyle(fontSize: 12, color: AppColors.white),
             ),
           ),
@@ -362,7 +379,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Center(
             child: Text(
-              'Đặt món',
+              l10n.order,
               style: TextStyle(fontSize: 12, color: AppColors.white),
             ),
           ),
@@ -370,15 +387,13 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void _showCancelConfirmDialog(Meal meal) {
+  void _showCancelConfirmDialog(Meal meal, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text('Xác nhận hủy món'),
-            content: Text(
-              'Bạn có chắc chắn muốn hủy món "${meal.name}" không?',
-            ),
+            title: Text(l10n.confirmCancel),
+            content: Text(l10n.confirmMsgCancel(meal.name)),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),

@@ -7,6 +7,7 @@ import 'package:e_food/widgets/common/custom_app_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:e_food/l10n/app_localizations.dart';
 
 class StatisticPage extends StatefulWidget {
   const StatisticPage({super.key});
@@ -35,6 +36,7 @@ class _StatisticPageState extends State<StatisticPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppMenu(),
@@ -62,7 +64,7 @@ class _StatisticPageState extends State<StatisticPage> {
                       Icon(Icons.bar_chart, color: Colors.blue, size: 24),
                       SizedBox(width: 8),
                       Text(
-                        'Thống kê suất ăn',
+                        l10n.mealStatistics,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -83,15 +85,15 @@ class _StatisticPageState extends State<StatisticPage> {
                 SizedBox(height: 16),
 
                 // Filter section
-                _buildFilterField(),
+                _buildFilterField(l10n),
                 SizedBox(height: 16),
 
                 // Statistics table
-                _buildStatisticTable(state),
+                _buildStatisticTable(state, l10n),
                 SizedBox(height: 16),
 
                 // Total amount section
-                _buildTotalAmountField(state),
+                _buildTotalAmountField(state, l10n),
                 SizedBox(height: 32),
               ],
             );
@@ -102,7 +104,7 @@ class _StatisticPageState extends State<StatisticPage> {
   }
 
   //========================handle UI==============================
-  Widget _buildFilterField() {
+  Widget _buildFilterField(AppLocalizations l10n) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12),
       padding: EdgeInsets.all(12),
@@ -110,7 +112,7 @@ class _StatisticPageState extends State<StatisticPage> {
         children: [
           // Month dropdown
           Text(
-            'Tháng',
+            l10n.month,
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
           SizedBox(width: 8),
@@ -149,7 +151,7 @@ class _StatisticPageState extends State<StatisticPage> {
 
           // Year dropdown
           Text(
-            'Năm',
+            l10n.year,
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
           SizedBox(width: 8),
@@ -203,7 +205,7 @@ class _StatisticPageState extends State<StatisticPage> {
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
-              child: Text('Tìm kiếm', style: TextStyle(fontSize: 14)),
+              child: Text(l10n.search, style: TextStyle(fontSize: 14)),
             ),
           ),
         ],
@@ -211,7 +213,7 @@ class _StatisticPageState extends State<StatisticPage> {
     );
   }
 
-  Widget _buildStatisticTable(state) {
+  Widget _buildStatisticTable(state, AppLocalizations l10n) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
@@ -229,7 +231,7 @@ class _StatisticPageState extends State<StatisticPage> {
       child: Column(
         children: [
           // Table header
-          _buildTableHeader(),
+          _buildTableHeader(l10n),
 
           // Table content
           if (state is StatisticLoading)
@@ -239,7 +241,7 @@ class _StatisticPageState extends State<StatisticPage> {
             )
           else if (state is StatisticLoaded)
             state.mealStatistics.isEmpty
-                ? _buildEmptyState()
+                ? _buildEmptyState(l10n)
                 : Column(
                   children: [
                     ListView.builder(
@@ -252,6 +254,7 @@ class _StatisticPageState extends State<StatisticPage> {
                           meal,
                           index + 1,
                           state.mealStatistics.length,
+                          l10n,
                         );
                       },
                     ),
@@ -283,7 +286,7 @@ class _StatisticPageState extends State<StatisticPage> {
     );
   }
 
-  Widget _buildTableHeader() {
+  Widget _buildTableHeader(AppLocalizations l10n) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       decoration: BoxDecoration(
@@ -302,7 +305,7 @@ class _StatisticPageState extends State<StatisticPage> {
           SizedBox(
             width: 30,
             child: Text(
-              'STT',
+              l10n.no1,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -318,7 +321,7 @@ class _StatisticPageState extends State<StatisticPage> {
             child: Padding(
               padding: EdgeInsets.only(left: 12),
               child: Text(
-                'Tên món',
+                l10n.dishName,
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
@@ -332,7 +335,7 @@ class _StatisticPageState extends State<StatisticPage> {
           Expanded(
             flex: 2,
             child: Text(
-              'Giá (VNĐ)',
+              l10n.amount,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -346,7 +349,7 @@ class _StatisticPageState extends State<StatisticPage> {
           Expanded(
             flex: 2,
             child: Text(
-              'Ngày cung cấp',
+              l10n.supplyDate,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -360,7 +363,12 @@ class _StatisticPageState extends State<StatisticPage> {
     );
   }
 
-  Widget _buildTableRow(MealStatistic meal, int index, int length) {
+  Widget _buildTableRow(
+    MealStatistic meal,
+    int index,
+    int length,
+    AppLocalizations l10n,
+  ) {
     return Container(
       decoration: BoxDecoration(
         color: index % 2 == 0 ? Colors.grey[50] : Colors.white,
@@ -422,7 +430,7 @@ class _StatisticPageState extends State<StatisticPage> {
     );
   }
 
-  Widget _buildEmptyState() {
+  Widget _buildEmptyState(AppLocalizations l10n) {
     return Container(
       padding: EdgeInsets.all(40),
       child: Center(
@@ -432,7 +440,7 @@ class _StatisticPageState extends State<StatisticPage> {
             Icon(Icons.bar_chart, size: 64, color: Colors.grey[400]),
             SizedBox(height: 16),
             Text(
-              'Không có dữ liệu thống kê',
+              l10n.noData,
               style: TextStyle(fontSize: 16, color: Colors.grey[600]),
             ),
             SizedBox(height: 8),
@@ -446,16 +454,18 @@ class _StatisticPageState extends State<StatisticPage> {
     );
   }
 
-  Widget _buildTotalAmountField(state) {
+  Widget _buildTotalAmountField(state, AppLocalizations l10n) {
+    final amount =
+        (state is StatisticLoaded && state.mealStatistics.isNotEmpty)
+            ? NumberFormat('#,###').format(state.totalAmount)
+            : '0';
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16),
-      // padding: EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'Tổng tiền trong tháng: '
-            '${(state is StatisticLoaded && state.mealStatistics.isNotEmpty) ? '${NumberFormat('#,###').format(state.totalAmount)} VND' : '0 VND'}',
+            l10n.totalAmount(amount),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
