@@ -1,10 +1,14 @@
+import 'package:e_food/l10n/app_localizations.dart';
 import 'package:e_food/models/history.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 import 'history_event.dart';
 import 'history_state.dart';
 
 class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
-  HistoryBloc() : super(HistoryInitial()) {
+  final BuildContext context;
+
+  HistoryBloc({required this.context}) : super(HistoryInitial()) {
     on<LoadHistoryEvent>(_onLoadHistory);
     on<RefreshHistoryEvent>(_onRefreshHistory);
   }
@@ -14,6 +18,7 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     Emitter<HistoryState> emit,
   ) async {
     emit(HistoryLoading());
+    final localizations = AppLocalizations.of(context);
 
     try {
       await Future.delayed(Duration(seconds: 1));
@@ -151,7 +156,7 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
 
       emit(HistoryLoaded(orderHistory: orderHistory));
     } catch (e) {
-      emit(HistoryError(message: 'Không thể tải lịch sử đặt món'));
+      emit(HistoryError(message: localizations.loadFailedHistory));
     }
   }
 
@@ -159,6 +164,8 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     RefreshHistoryEvent event,
     Emitter<HistoryState> emit,
   ) async {
+    final localizations = AppLocalizations.of(context);
+
     if (state is HistoryLoaded) {
       try {
         await Future.delayed(Duration(milliseconds: 500));
@@ -208,7 +215,7 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
 
         emit(HistoryLoaded(orderHistory: orderHistory));
       } catch (e) {
-        emit(HistoryError(message: 'Không thể làm mới lịch sử'));
+        emit(HistoryError(message: localizations.failedRenewHistory));
       }
     } else {
       add(LoadHistoryEvent());

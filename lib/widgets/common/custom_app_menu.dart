@@ -1,4 +1,5 @@
 import 'package:e_food/constants/app_colors.dart';
+import 'package:e_food/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class AppMenu extends StatelessWidget implements PreferredSizeWidget {
@@ -6,6 +7,7 @@ class AppMenu extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     return AppBar(
       backgroundColor: AppColors.backgroundMenu,
       elevation: 0,
@@ -20,7 +22,7 @@ class AppMenu extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       title: Text(
-        'ĐẶT CƠM',
+        localizations.appTitle,
         style: TextStyle(
           color: Colors.white,
           fontSize: 16,

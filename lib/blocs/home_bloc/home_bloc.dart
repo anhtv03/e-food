@@ -1,10 +1,14 @@
+import 'package:e_food/l10n/app_localizations.dart';
 import 'package:e_food/models/meal.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 import 'home_event.dart';
 import 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeInitial()) {
+  final BuildContext context;
+
+  HomeBloc({required this.context}) : super(HomeInitial()) {
     on<LoadHomeEvent>(_onLoadHome);
     on<OrderMealEvent>(_onOrderMeal);
     on<CancelMealEvent>(_onCancelMeal);
@@ -12,6 +16,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _onLoadHome(LoadHomeEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoading());
+    final localizations = AppLocalizations.of(context);
 
     try {
       await Future.delayed(Duration(seconds: 1));
@@ -101,7 +106,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       emit(HomeLoaded(meals: meals, userName: 'Lê Văn Thành'));
     } catch (e) {
-      emit(HomeError(message: 'Không thể tải dữ liệu'));
+      emit(HomeError(message: localizations.noData));
     }
   }
 
@@ -109,6 +114,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     OrderMealEvent event,
     Emitter<HomeState> emit,
   ) async {
+    final localizations = AppLocalizations.of(context);
     if (state is HomeLoaded) {
       final currentState = state as HomeLoaded;
 
@@ -125,7 +131,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
         emit(currentState.copyWith(meals: updatedMeals));
       } catch (e) {
-        emit(HomeError(message: 'Không thể đặt món'));
+        emit(HomeError(message: localizations.cantOrder));
       }
     }
   }
@@ -134,6 +140,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     CancelMealEvent event,
     Emitter<HomeState> emit,
   ) async {
+    final localizations = AppLocalizations.of(context);
     if (state is HomeLoaded) {
       final currentState = state as HomeLoaded;
 
@@ -150,7 +157,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
         emit(currentState.copyWith(meals: updatedMeals));
       } catch (e) {
-        emit(HomeError(message: 'Không thể hủy món'));
+        emit(HomeError(message: localizations.cantCancel));
       }
     }
   }

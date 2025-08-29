@@ -305,7 +305,7 @@ class _StatisticPageState extends State<StatisticPage> {
           SizedBox(
             width: 30,
             child: Text(
-              l10n.no1,
+              l10n.no,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 {
   "@@locale": "en",
 
+
   "appTitle": "ORDER FOOD",
   "login": "Login",
   "loginTitle": "Hello!",
@@ -48,9 +49,24 @@
   "ordered": "Ordered",
   "cancel": "Cancel",
   "expired": "Expired",
-
   "confirmCancel": "Confirm Cancel Order",
   "confirmOrder": "Confirm Order",
   "confirmMsgCancel": "Are you sure you want to cancel the meal {mealName}?",
-  "confirmMsgOrder": "Are you sure you want to order the meal {mealName}?"
+  "confirmMsgOrder": "Are you sure you want to order the meal {mealName}?",
+
+  "usernameIsEmpty": "Username cannot be empty",
+  "passwordIsEmpty": "Password cannot be empty",
+  "incorrectInputLogin": "You entered an incorrect username or password!",
+  "loginFailedServer": "Login failed due to system error",
+  "fillFullName": "Please enter full name",
+  "fillEmployeeId": "Please enter employee ID",
+  "fillUsername": "Please enter username",
+  "fillPassword": "Please enter password",
+  "passwordMinCharacters": "Password must be at least 6 characters",
+  "registrationSuccessful": "Registration successful!",
+  "errorOccurred": "An error occurred. Please try again.",
+  "loadFailedHistory": "Failed to load order history",
+  "failedRenewHistory": "Failed to refresh history",
+  "cantOrder": "Cannot order",
+  "cantCancel": "Cannot cancel order"
 }

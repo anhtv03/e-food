@@ -193,7 +193,7 @@ class _HistoryPageState extends State<HistoryPage> {
           SizedBox(
             width: 40,
             child: Text(
-              l10n.no1,
+              l10n.no,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,

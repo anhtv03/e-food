@@ -78,7 +78,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noteOrder => 'Note: Please place your meal order no later than 10:00 AM';
 
   @override
-  String get no1 => 'No.';
+  String get no => 'No';
 
   @override
   String get dishName => 'Dish Name';
@@ -103,12 +103,12 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String welcomeUser(String name) {
+  String welcomeUser(Object name) {
     return 'Welcome, $name!';
   }
 
   @override
-  String mealCount(int count) {
+  String mealCount(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -147,7 +147,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search => 'Search';
 
   @override
-  String totalAmount(String amount) {
+  String totalAmount(Object amount) {
     return 'Total amount for the month: $amount VND';
   }
 
@@ -181,4 +181,49 @@ class AppLocalizationsEn extends AppLocalizations {
   String confirmMsgOrder(Object mealName) {
     return 'Are you sure you want to order the meal $mealName?';
   }
+
+  @override
+  String get usernameIsEmpty => 'Username cannot be empty';
+
+  @override
+  String get passwordIsEmpty => 'Password cannot be empty';
+
+  @override
+  String get incorrectInputLogin => 'You entered an incorrect username or password!';
+
+  @override
+  String get loginFailedServer => 'Login failed due to system error';
+
+  @override
+  String get fillFullName => 'Please enter full name';
+
+  @override
+  String get fillEmployeeId => 'Please enter employee ID';
+
+  @override
+  String get fillUsername => 'Please enter username';
+
+  @override
+  String get fillPassword => 'Please enter password';
+
+  @override
+  String get passwordMinCharacters => 'Password must be at least 6 characters';
+
+  @override
+  String get registrationSuccessful => 'Registration successful!';
+
+  @override
+  String get errorOccurred => 'An error occurred. Please try again.';
+
+  @override
+  String get loadFailedHistory => 'Failed to load order history';
+
+  @override
+  String get failedRenewHistory => 'Failed to refresh history';
+
+  @override
+  String get cantOrder => 'Cannot order';
+
+  @override
+  String get cantCancel => 'Cannot cancel order';
 }

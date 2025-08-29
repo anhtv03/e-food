@@ -1,3 +1,4 @@
+import 'package:e_food/l10n/app_localizations.dart';
 import 'package:e_food/screens/home_screen.dart';
 import 'package:e_food/screens/login_screen.dart';
 import 'package:e_food/screens/history_screen.dart';
@@ -12,6 +13,8 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+
     return Drawer(
       backgroundColor: AppColors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
@@ -32,7 +35,7 @@ class AppDrawer extends StatelessWidget {
                 Icon(Icons.location_on, color: AppColors.red, size: 24),
                 SizedBox(width: 8),
                 Text(
-                  'ĐẶT CƠM',
+                  localizations.appTitle,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -60,7 +63,7 @@ class AppDrawer extends StatelessWidget {
                   icon: Icons.restaurant_menu,
                   iconColor: AppColors.orange,
                   isSelected: page == "home" ? true : false,
-                  title: 'Món ăn trong tuần',
+                  title: localizations.weeklyMeals,
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.push(
@@ -74,7 +77,7 @@ class AppDrawer extends StatelessWidget {
                   icon: Icons.history,
                   iconColor: AppColors.blue,
                   isSelected: page == "history" ? true : false,
-                  title: 'Lịch sử đặt món',
+                  title: localizations.orderHistory,
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.push(
@@ -88,7 +91,7 @@ class AppDrawer extends StatelessWidget {
                   icon: Icons.analytics_outlined,
                   iconColor: AppColors.green,
                   isSelected: page == "statistic",
-                  title: 'Thống kê suất ăn',
+                  title: localizations.mealStatistics,
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.push(

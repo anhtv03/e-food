@@ -37,8 +37,8 @@
   "failRegister": "Đăng ký thất bại",
   "successLogin": "Đăng nhập thành công",
   "failLogin": "Đăng nhập thất bại",
-  "orderHistory": "Lịch sử đặt món",
   "mealStatistics": "Thống kê suất ăn",
+  "orderHistory": "Lịch sử đặt món",
   "month": "Tháng",
   "year": "Năm",
   "search": "Tìm kiếm",
@@ -48,10 +48,24 @@
   "ordered": "Đã đặt",
   "cancel": "Hủy món",
   "expired": "Hết hạn",
-
-
   "confirmCancel": "Xác nhận hủy món",
   "confirmOrder": "Xác nhận đặt món",
   "confirmMsgCancel": "Bạn có chắc chắn muốn huỷ món {mealName} không?",
-  "confirmMsgOrder": "Bạn có chắc chắn muốn đặt món {mealName} không?"
+  "confirmMsgOrder": "Bạn có chắc chắn muốn đặt món {mealName} không?",
+
+  "usernameIsEmpty": "Tên đăng nhập không được để trống",
+  "passwordIsEmpty": "Mật khẩu không được để trống",
+  "incorrectInputLogin": "Bạn nhập sai tên tài khoản hoặc mật khẩu!",
+  "loginFailedServer": "Đăng nhập thất bại do lỗi hệ thống",
+  "fillFullName": "Vui lòng nhập tên đầy đủ",
+  "fillEmployeeId": "Vui lòng nhập mã nhân viên",
+  "fillUsername": "Vui lòng nhập tên tài khoản",
+  "fillPassword": "Vui lòng nhập mật khẩu",
+  "passwordMinCharacters": "Mật khẩu phải có ít nhất 6 ký tự",
+  "registrationSuccessful": "Đăng ký thành công!",
+  "errorOccurred": "Đã có lỗi xảy ra. Vui lòng thử lại.",
+  "loadFailedHistory": "Không thể tải lịch sử đặt món",
+  "failedRenewHistory": "Không thể làm mới lịch sử",
+  "cantOrder": "Không thể đặt món",
+  "cantCancel": "Không thể hủy món"
 }

@@ -21,14 +21,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    Locale locale = const Locale('vi');
+    Locale locale = const Locale('en');
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeBloc>(
-          create: (context) => HomeBloc()..add(const LoadHomeEvent()),
+          create:
+              (context) =>
+                  HomeBloc(context: context)..add(const LoadHomeEvent()),
         ),
         BlocProvider<HistoryBloc>(
-          create: (context) => HistoryBloc()..add(const LoadHistoryEvent()),
+          create:
+              (context) =>
+                  HistoryBloc(context: context)..add(const LoadHistoryEvent()),
         ),
         BlocProvider<StatisticBloc>(
           create:

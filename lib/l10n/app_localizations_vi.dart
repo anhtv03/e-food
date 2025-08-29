@@ -78,7 +78,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get noteOrder => 'Lưu ý: đặt cơm chậm nhất trước 10:00 AM';
 
   @override
-  String get no1 => 'STT';
+  String get no => 'STT';
 
   @override
   String get dishName => 'Tên món';
@@ -103,12 +103,12 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String welcomeUser(String name) {
+  String welcomeUser(Object name) {
     return 'Xin chào, $name!';
   }
 
   @override
-  String mealCount(int count) {
+  String mealCount(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -147,7 +147,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get search => 'Tìm kiếm';
 
   @override
-  String totalAmount(String amount) {
+  String totalAmount(Object amount) {
     return 'Tổng tiền trong tháng: $amount VND';
   }
 
@@ -181,4 +181,49 @@ class AppLocalizationsVi extends AppLocalizations {
   String confirmMsgOrder(Object mealName) {
     return 'Bạn có chắc chắn muốn đặt món $mealName không?';
   }
+
+  @override
+  String get usernameIsEmpty => 'Tên đăng nhập không được để trống';
+
+  @override
+  String get passwordIsEmpty => 'Mật khẩu không được để trống';
+
+  @override
+  String get incorrectInputLogin => 'Bạn nhập sai tên tài khoản hoặc mật khẩu!';
+
+  @override
+  String get loginFailedServer => 'Đăng nhập thất bại do lỗi hệ thống';
+
+  @override
+  String get fillFullName => 'Vui lòng nhập tên đầy đủ';
+
+  @override
+  String get fillEmployeeId => 'Vui lòng nhập mã nhân viên';
+
+  @override
+  String get fillUsername => 'Vui lòng nhập tên tài khoản';
+
+  @override
+  String get fillPassword => 'Vui lòng nhập mật khẩu';
+
+  @override
+  String get passwordMinCharacters => 'Mật khẩu phải có ít nhất 6 ký tự';
+
+  @override
+  String get registrationSuccessful => 'Đăng ký thành công!';
+
+  @override
+  String get errorOccurred => 'Đã có lỗi xảy ra. Vui lòng thử lại.';
+
+  @override
+  String get loadFailedHistory => 'Không thể tải lịch sử đặt món';
+
+  @override
+  String get failedRenewHistory => 'Không thể làm mới lịch sử';
+
+  @override
+  String get cantOrder => 'Không thể đặt món';
+
+  @override
+  String get cantCancel => 'Không thể hủy món';
 }

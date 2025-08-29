@@ -1,9 +1,13 @@
 import 'package:e_food/blocs/auth_bloc/login_bloc/login_event.dart';
 import 'package:e_food/blocs/auth_bloc/login_bloc/login_state.dart';
+import 'package:e_food/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginInitial()) {
+  final BuildContext context;
+
+  LoginBloc({required this.context}) : super(LoginInitial()) {
     on<LoginHandleEvent>(_handleLogin);
   }
 
@@ -12,15 +16,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) async {
     emit(LoginLoading());
+    final localizations = AppLocalizations.of(context);
 
     try {
       if (event.username.isEmpty) {
-        emit(UsernameError(message: 'Tên đăng nhập không được để trống'));
+        emit(UsernameError(message: localizations.usernameIsEmpty));
         return;
       }
 
       if (event.password.isEmpty) {
-        emit(PasswordError(message: 'Mật khẩu không được để trống'));
+        emit(PasswordError(message: localizations.passwordIsEmpty));
         return;
       }
 
@@ -30,7 +35,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // await TokenService.saveToken('user', token);
         emit(LoginSuccess(token: token));
       } else {
-        emit(LoginError(message: 'Bạn nhập sai tên tài khoản hoặc mật khẩu!'));
+        emit(LoginError(message: localizations.incorrectInputLogin));
       }
 
       // final result = await AuthService.login(event.username, event.password);
@@ -45,8 +50,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         LoginError(
           message:
               message == 'Incorrect password' || message == 'Username not found'
-                  ? 'Bạn nhập sai tên tài khoản hoặc mật khẩu!'
-                  : 'Đăng nhập thất bại do lỗi hệ thống',
+                  ? localizations.incorrectInputLogin
+                  : localizations.loginFailedServer,
         ),
       );
     }

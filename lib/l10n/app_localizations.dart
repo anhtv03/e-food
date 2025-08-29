@@ -95,73 +95,73 @@ abstract class AppLocalizations {
     Locale('vi')
   ];
 
-  /// The title of the application
+  /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
   /// **'ORDER FOOD'**
   String get appTitle;
 
-  /// Login button text
+  /// No description provided for @login.
   ///
   /// In en, this message translates to:
   /// **'Login'**
   String get login;
 
-  /// Login screen title
+  /// No description provided for @loginTitle.
   ///
   /// In en, this message translates to:
   /// **'Hello!'**
   String get loginTitle;
 
-  /// Login screen subtitle
+  /// No description provided for @subLoginTitle.
   ///
   /// In en, this message translates to:
   /// **'Sign in to continue'**
   String get subLoginTitle;
 
-  /// Placeholder for username field
+  /// No description provided for @placeholderUsername.
   ///
   /// In en, this message translates to:
   /// **'Username'**
   String get placeholderUsername;
 
-  /// Placeholder for password field
+  /// No description provided for @placeholderPassword.
   ///
   /// In en, this message translates to:
   /// **'Password'**
   String get placeholderPassword;
 
-  /// Register button text
+  /// No description provided for @register.
   ///
   /// In en, this message translates to:
   /// **'Register'**
   String get register;
 
-  /// Come back button text
+  /// No description provided for @comeBack.
   ///
   /// In en, this message translates to:
   /// **'Come back'**
   String get comeBack;
 
-  /// FullName field label
+  /// No description provided for @fullName.
   ///
   /// In en, this message translates to:
   /// **'FullName'**
   String get fullName;
 
-  /// FullName field label
+  /// No description provided for @employeeId.
   ///
   /// In en, this message translates to:
   /// **'Employee Id'**
   String get employeeId;
 
-  /// FullName field label
+  /// No description provided for @accountName.
   ///
   /// In en, this message translates to:
   /// **'Account Name'**
   String get accountName;
 
-  /// Password field label
+  /// No description provided for @password.
   ///
   /// In en, this message translates to:
   /// **'Password'**
@@ -173,13 +173,13 @@ abstract class AppLocalizations {
   /// **'FullName cannot be left blank'**
   String get fullNameBlank;
 
-  /// Validation error message for employeeId
+  /// No description provided for @employeeIdBlank.
   ///
   /// In en, this message translates to:
   /// **'Employee Id cannot be left blank'**
   String get employeeIdBlank;
 
-  /// Validation error message for employeeId
+  /// No description provided for @employeeIdInvalid.
   ///
   /// In en, this message translates to:
   /// **'Invalid EmployeeId'**
@@ -191,7 +191,7 @@ abstract class AppLocalizations {
   /// **'Username cannot be left blank'**
   String get usernameBlank;
 
-  /// Validation error message for username
+  /// No description provided for @usernameInvalid.
   ///
   /// In en, this message translates to:
   /// **'Account already exists'**
@@ -203,25 +203,25 @@ abstract class AppLocalizations {
   /// **'Password cannot be left blank'**
   String get passwordBlank;
 
-  /// Validation error message for password
+  /// No description provided for @passwordTooShort.
   ///
   /// In en, this message translates to:
   /// **'Password must be at least 6 characters'**
   String get passwordTooShort;
 
-  /// Forgot password link text
+  /// No description provided for @forgotPassword.
   ///
   /// In en, this message translates to:
   /// **'Forgot Password?'**
   String get forgotPassword;
 
-  /// Create new account button text
+  /// No description provided for @createAccount.
   ///
   /// In en, this message translates to:
   /// **'Create New Account'**
   String get createAccount;
 
-  /// Weekly meals screen title
+  /// No description provided for @weeklyMeals.
   ///
   /// In en, this message translates to:
   /// **'Meals for this week'**
@@ -233,31 +233,31 @@ abstract class AppLocalizations {
   /// **'Note: Please place your meal order no later than 10:00 AM'**
   String get noteOrder;
 
-  /// No.
+  /// No description provided for @no.
   ///
   /// In en, this message translates to:
-  /// **'No.'**
-  String get no1;
+  /// **'No'**
+  String get no;
 
-  /// Dish Name field label
+  /// No description provided for @dishName.
   ///
   /// In en, this message translates to:
   /// **'Dish Name'**
   String get dishName;
 
-  /// Supply Date field label
+  /// No description provided for @supplyDate.
   ///
   /// In en, this message translates to:
   /// **'Supply Date'**
   String get supplyDate;
 
-  /// Status field label
+  /// No description provided for @status.
   ///
   /// In en, this message translates to:
   /// **'Status'**
   String get status;
 
-  /// Amount field label
+  /// No description provided for @amount.
   ///
   /// In en, this message translates to:
   /// **'Amount (VNĐ)'**
@@ -275,37 +275,37 @@ abstract class AppLocalizations {
   /// **'Date: {date}'**
   String formatDate(Object date);
 
-  /// Welcome message with user name
+  /// No description provided for @welcomeUser.
   ///
   /// In en, this message translates to:
   /// **'Welcome, {name}!'**
-  String welcomeUser(String name);
+  String welcomeUser(Object name);
 
-  /// Display meal count with pluralization
+  /// No description provided for @mealCount.
   ///
   /// In en, this message translates to:
   /// **'{count, plural, =0{No meals} =1{1 meal} other{{count} meals}}'**
-  String mealCount(int count);
+  String mealCount(num count);
 
-  /// Success message for registration
+  /// No description provided for @successRegister.
   ///
   /// In en, this message translates to:
   /// **'Registration successful'**
   String get successRegister;
 
-  /// Fail message for registration
+  /// No description provided for @failRegister.
   ///
   /// In en, this message translates to:
   /// **'Registration failed'**
   String get failRegister;
 
-  /// Success message for login
+  /// No description provided for @successLogin.
   ///
   /// In en, this message translates to:
   /// **'Login successful'**
   String get successLogin;
 
-  /// Fail message for login
+  /// No description provided for @failLogin.
   ///
   /// In en, this message translates to:
   /// **'Login failed'**
@@ -345,7 +345,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Total amount for the month: {amount} VND'**
-  String totalAmount(String amount);
+  String totalAmount(Object amount);
 
   /// No description provided for @noData.
   ///
@@ -400,6 +400,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Are you sure you want to order the meal {mealName}?'**
   String confirmMsgOrder(Object mealName);
+
+  /// No description provided for @usernameIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Username cannot be empty'**
+  String get usernameIsEmpty;
+
+  /// No description provided for @passwordIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot be empty'**
+  String get passwordIsEmpty;
+
+  /// No description provided for @incorrectInputLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'You entered an incorrect username or password!'**
+  String get incorrectInputLogin;
+
+  /// No description provided for @loginFailedServer.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed due to system error'**
+  String get loginFailedServer;
+
+  /// No description provided for @fillFullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter full name'**
+  String get fillFullName;
+
+  /// No description provided for @fillEmployeeId.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter employee ID'**
+  String get fillEmployeeId;
+
+  /// No description provided for @fillUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter username'**
+  String get fillUsername;
+
+  /// No description provided for @fillPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter password'**
+  String get fillPassword;
+
+  /// No description provided for @passwordMinCharacters.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordMinCharacters;
+
+  /// No description provided for @registrationSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration successful!'**
+  String get registrationSuccessful;
+
+  /// No description provided for @errorOccurred.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred. Please try again.'**
+  String get errorOccurred;
+
+  /// No description provided for @loadFailedHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load order history'**
+  String get loadFailedHistory;
+
+  /// No description provided for @failedRenewHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to refresh history'**
+  String get failedRenewHistory;
+
+  /// No description provided for @cantOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot order'**
+  String get cantOrder;
+
+  /// No description provided for @cantCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot cancel order'**
+  String get cantCancel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
