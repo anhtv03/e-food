@@ -3,9 +3,11 @@ import 'package:e_food/blocs/history_bloc/history_event.dart';
 import 'package:e_food/blocs/history_bloc/history_state.dart';
 import 'package:e_food/models/history.dart';
 import 'package:e_food/widgets/common/custom_app_drawer.dart';
+import 'package:e_food/widgets/common/custom_app_header.dart';
 import 'package:e_food/widgets/common/custom_app_menu.dart';
 import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/constants/app_text_styles.dart';
+import 'package:e_food/widgets/common/custom_app_table.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -45,52 +47,10 @@ class _HistoryPageState extends State<HistoryPage> {
         },
         builder: (context, state) {
           if (state is HistoryLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
-
           if (state is HistoryLoaded) {
             return RefreshIndicator(
-              child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Header section
-                    Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.all(16),
-                      color: AppColors.white,
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.access_time,
-                            color: AppColors.blue,
-                            size: 24,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            l10n.orderHistory,
-                            style: AppTextStyles.heading3,
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Divider(
-                      height: 10,
-                      thickness: 1,
-                      indent: 20,
-                      endIndent: 20,
-                      color: AppColors.darkGreen,
-                    ),
-                    SizedBox(height: 16),
-
-                    // History table
-                    _buildHistoryTable(state, l10n),
-                    SizedBox(height: 16),
-                  ],
-                ),
-              ),
               onRefresh: () async {
                 context.read<HistoryBloc>().add(
                   RefreshHistoryEvent(localizations: l10n),
@@ -99,141 +59,88 @@ class _HistoryPageState extends State<HistoryPage> {
                   (s) => s is HistoryLoaded || s is HistoryError,
                 );
               },
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppHeader(
+                      title: l10n.orderHistory,
+                      icon: Icons.access_time,
+                      iconColor: AppColors.blue,
+                    ),
+                    const Divider(
+                      height: 10,
+                      thickness: 1,
+                      indent: 20,
+                      endIndent: 20,
+                      color: AppColors.darkGreen,
+                    ),
+                    const SizedBox(height: 16),
+                    AppTable(
+                      header: TableHeader(
+                        noLabel: l10n.no,
+                        dishNameLabel: l10n.dishName,
+                        dateLabel: l10n.supplyDate,
+                        thirdColumnLabel: l10n.status,
+                        headerColor: AppColors.green600,
+                      ),
+                      rows:
+                          state.orderHistory.asMap().entries.map((entry) {
+                            final index = entry.key;
+                            final order = entry.value;
+                            return _buildTableRow(
+                              order,
+                              index + 1,
+                              state.orderHistory.length,
+                              l10n,
+                            );
+                          }).toList(),
+                      isLoading: false,
+                      emptyState: EmptyState(
+                        message: l10n.noData,
+                        subMessage: l10n.noOrdered,
+                        icon: Icons.history,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
             );
           }
-
           if (state is HistoryError) {
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.error_outline, size: 64, color: AppColors.grey400),
-                  SizedBox(height: 16),
+                  const Icon(
+                    Icons.error_outline,
+                    size: 64,
+                    color: AppColors.grey400,
+                  ),
+                  const SizedBox(height: 16),
                   Text(
                     state.message,
                     style: AppTextStyles.bodyLarge.copyWith(
                       color: AppColors.grey600,
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
                       context.read<HistoryBloc>().add(
                         LoadHistoryEvent(localizations: l10n),
                       );
                     },
-                    child: Text(l10n.search),
+                    child: Text(l10n.search, style: AppTextStyles.buttonMedium),
                   ),
                 ],
               ),
             );
           }
-
           return Container();
         },
-      ),
-    );
-  }
-
-  //========================handle UI==============================
-  Widget _buildHistoryTable(state, AppLocalizations l10n) {
-    return Center(
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.grey.withValues(alpha: 0.3),
-              spreadRadius: 3,
-              blurRadius: 8,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          children: [
-            // Table header
-            _buildTableHeader(l10n),
-
-            // Table content
-            state.orderHistory.isEmpty
-                ? _buildEmptyState(l10n)
-                : ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: state.orderHistory.length,
-                  itemBuilder: (context, index) {
-                    final order = state.orderHistory[index];
-                    return _buildTableRow(
-                      order,
-                      index + 1,
-                      state.orderHistory.length,
-                      l10n,
-                    );
-                  },
-                ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTableHeader(AppLocalizations l10n) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      decoration: BoxDecoration(
-        color: AppColors.green600,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(6),
-          topRight: Radius.circular(6),
-        ),
-        border: Border(
-          bottom: BorderSide(color: AppColors.grey400, width: 1.0),
-        ),
-      ),
-      child: Row(
-        children: [
-          // STT
-          SizedBox(
-            width: 40,
-            child: Text(
-              l10n.no,
-              style: AppTextStyles.tableHeader,
-              textAlign: TextAlign.center,
-            ),
-          ),
-
-          // Tên món
-          Expanded(
-            flex: 3,
-            child: Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: Text(l10n.dishName, style: AppTextStyles.tableHeader),
-            ),
-          ),
-
-          // Ngày cung cấp
-          Expanded(
-            flex: 2,
-            child: Text(
-              l10n.supplyDate,
-              style: AppTextStyles.tableHeader,
-              textAlign: TextAlign.center,
-            ),
-          ),
-
-          // Trạng thái
-          Expanded(
-            flex: 2,
-            child: Text(
-              l10n.status,
-              style: AppTextStyles.tableHeader,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -249,7 +156,7 @@ class _HistoryPageState extends State<HistoryPage> {
         color: index % 2 == 0 ? AppColors.grey50 : AppColors.white,
         borderRadius:
             index == length
-                ? BorderRadius.only(
+                ? const BorderRadius.only(
                   bottomLeft: Radius.circular(8),
                   bottomRight: Radius.circular(8),
                 )
@@ -257,15 +164,14 @@ class _HistoryPageState extends State<HistoryPage> {
         border:
             index == length
                 ? null
-                : Border(
+                : const Border(
                   bottom: BorderSide(color: AppColors.grey400, width: 1),
                 ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         child: Row(
           children: [
-            // STT
             SizedBox(
               width: 40,
               child: Text(
@@ -274,17 +180,13 @@ class _HistoryPageState extends State<HistoryPage> {
                 textAlign: TextAlign.center,
               ),
             ),
-
-            // Tên món
             Expanded(
               flex: 3,
               child: Padding(
-                padding: EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(order.mealName, style: AppTextStyles.tableCell),
               ),
             ),
-
-            // Ngày cung cấp
             Expanded(
               flex: 2,
               child: Text(
@@ -293,14 +195,15 @@ class _HistoryPageState extends State<HistoryPage> {
                 textAlign: TextAlign.center,
               ),
             ),
-
-            // Trạng thái
             Expanded(
               flex: 2,
               child: Container(
                 alignment: Alignment.center,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -311,32 +214,6 @@ class _HistoryPageState extends State<HistoryPage> {
                     ),
                   ),
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildEmptyState(AppLocalizations l10n) {
-    return Container(
-      padding: EdgeInsets.all(40),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.history, size: 64, color: AppColors.grey400),
-            SizedBox(height: 16),
-            Text(
-              l10n.noData,
-              style: AppTextStyles.bodyLarge.copyWith(color: AppColors.grey600),
-            ),
-            SizedBox(height: 8),
-            Text(
-              l10n.noOrdered,
-              style: AppTextStyles.bodyMedium.copyWith(
-                color: AppColors.grey500,
               ),
             ),
           ],

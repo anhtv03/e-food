@@ -241,4 +241,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chooseOtherYear => 'Please choose another month/year to view statistics';
+
+  @override
+  String get yes => 'Agree';
 }

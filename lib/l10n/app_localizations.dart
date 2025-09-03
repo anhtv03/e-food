@@ -520,6 +520,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please choose another month/year to view statistics'**
   String get chooseOtherYear;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Agree'**
+  String get yes;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

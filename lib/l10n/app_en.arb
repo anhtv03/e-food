@@ -73,5 +73,6 @@
   "updateSuccess": "Update successful",
   "confirm" : "Confirm",
   "unconfirm": "No",
-  "chooseOtherYear": "Please choose another month/year to view statistics"
+  "chooseOtherYear": "Please choose another month/year to view statistics",
+  "yes": "Agree"
 }

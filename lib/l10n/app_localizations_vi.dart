@@ -241,4 +241,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get chooseOtherYear => 'Hãy chọn tháng/năm khác để xem thống kê';
+
+  @override
+  String get yes => 'Đồng ý';
 }

@@ -72,5 +72,6 @@
   "updateSuccess": "Cập nhật thành công",
   "confirm" : "Xác nhận",
   "unconfirm": "Không",
-  "chooseOtherYear": "Hãy chọn tháng/năm khác để xem thống kê"
+  "chooseOtherYear": "Hãy chọn tháng/năm khác để xem thống kê",
+  "yes": "Đồng ý"
 }
