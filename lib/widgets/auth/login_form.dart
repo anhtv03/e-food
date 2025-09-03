@@ -1,4 +1,4 @@
-import 'package:e_food/constants/app_text_style.dart';
+import 'package:e_food/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:e_food/l10n/app_localizations.dart';
 import '../../constants/app_colors.dart';

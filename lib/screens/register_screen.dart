@@ -2,6 +2,7 @@ import 'package:e_food/blocs/auth_bloc/register_bloc/register_bloc.dart';
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_event.dart';
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_state.dart';
 import 'package:e_food/constants/app_colors.dart';
+import 'package:e_food/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_food/l10n/app_localizations.dart';
@@ -68,11 +69,7 @@ class RegisterPageState extends State<RegisterPage> {
                             SizedBox(width: 8),
                             Text(
                               l10n.comeBack,
-                              style: TextStyle(
-                                color: AppColors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              style: AppTextStyles.backButton,
                             ),
                           ],
                         ),
@@ -106,9 +103,7 @@ class RegisterPageState extends State<RegisterPage> {
                                       // Header
                                       Text(
                                         l10n.createAccount,
-                                        style: TextStyle(
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.bold,
+                                        style: AppTextStyles.authTitle.copyWith(
                                           color: AppColors.greenRegister,
                                         ),
                                         textAlign: TextAlign.center,
@@ -221,7 +216,7 @@ class RegisterPageState extends State<RegisterPage> {
       obscureText: isPassword ? obscurePassword : false,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: AppColors.grey400),
+        hintStyle: AppTextStyles.hint,
         filled: true,
         fillColor: AppColors.grey50,
         border: OutlineInputBorder(
@@ -281,10 +276,7 @@ class RegisterPageState extends State<RegisterPage> {
             borderRadius: BorderRadius.circular(8.0),
           ),
         ),
-        child: Text(
-          l10n.register,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        ),
+        child: Text(l10n.register, style: AppTextStyles.buttonLarge),
       ),
     );
   }
@@ -294,7 +286,7 @@ class RegisterPageState extends State<RegisterPage> {
       width: double.infinity,
       child: Text(
         message ?? '',
-        style: TextStyle(fontSize: 12, height: 1, color: AppColors.errorRed),
+        style: AppTextStyles.error,
         textAlign: TextAlign.left,
       ),
     );

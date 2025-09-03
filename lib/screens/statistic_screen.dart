@@ -2,6 +2,7 @@ import 'package:e_food/blocs/statistic_bloc/statistic_bloc.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_event.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_state.dart';
 import 'package:e_food/constants/app_colors.dart';
+import 'package:e_food/constants/app_text_styles.dart';
 import 'package:e_food/models/meal_statistic.dart';
 import 'package:e_food/widgets/common/custom_app_drawer.dart';
 import 'package:e_food/widgets/common/custom_app_menu.dart';
@@ -64,14 +65,7 @@ class _StatisticPageState extends State<StatisticPage> {
                     children: [
                       Icon(Icons.bar_chart, color: AppColors.blue, size: 24),
                       SizedBox(width: 8),
-                      Text(
-                        l10n.mealStatistics,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.black,
-                        ),
-                      ),
+                      Text(l10n.mealStatistics, style: AppTextStyles.heading3),
                     ],
                   ),
                 ),
@@ -114,7 +108,9 @@ class _StatisticPageState extends State<StatisticPage> {
           // Month dropdown
           Text(
             l10n.month,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            style: AppTextStyles.bodyMedium.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
           ),
           SizedBox(width: 8),
           Container(
@@ -134,6 +130,7 @@ class _StatisticPageState extends State<StatisticPage> {
                           width: 30,
                           child: Text(
                             month.toString(),
+                            style: AppTextStyles.bodyMedium,
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -153,7 +150,9 @@ class _StatisticPageState extends State<StatisticPage> {
           // Year dropdown
           Text(
             l10n.year,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            style: AppTextStyles.bodyMedium.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
           ),
           SizedBox(width: 8),
           Container(
@@ -173,6 +172,7 @@ class _StatisticPageState extends State<StatisticPage> {
                           width: 50,
                           child: Text(
                             year.toString(),
+                            style: AppTextStyles.bodyMedium,
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -206,7 +206,7 @@ class _StatisticPageState extends State<StatisticPage> {
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
-              child: Text(l10n.search, style: TextStyle(fontSize: 14)),
+              child: Text(l10n.search, style: AppTextStyles.buttonMedium),
             ),
           ),
         ],
@@ -276,7 +276,9 @@ class _StatisticPageState extends State<StatisticPage> {
                     SizedBox(height: 16),
                     Text(
                       state.message,
-                      style: TextStyle(fontSize: 14, color: AppColors.grey600),
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        color: AppColors.grey600,
+                      ),
                     ),
                   ],
                 ),
@@ -307,11 +309,7 @@ class _StatisticPageState extends State<StatisticPage> {
             width: 30,
             child: Text(
               l10n.no,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: AppColors.white,
-              ),
+              style: AppTextStyles.tableHeader.copyWith(fontSize: 12),
               textAlign: TextAlign.center,
             ),
           ),
@@ -323,11 +321,7 @@ class _StatisticPageState extends State<StatisticPage> {
               padding: EdgeInsets.only(left: 12),
               child: Text(
                 l10n.dishName,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.white,
-                ),
+                style: AppTextStyles.tableHeader.copyWith(fontSize: 12),
               ),
             ),
           ),
@@ -337,11 +331,7 @@ class _StatisticPageState extends State<StatisticPage> {
             flex: 2,
             child: Text(
               l10n.amount,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: AppColors.white,
-              ),
+              style: AppTextStyles.tableHeader.copyWith(fontSize: 12),
               textAlign: TextAlign.center,
             ),
           ),
@@ -351,11 +341,7 @@ class _StatisticPageState extends State<StatisticPage> {
             flex: 2,
             child: Text(
               l10n.supplyDate,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: AppColors.white,
-              ),
+              style: AppTextStyles.tableHeader.copyWith(fontSize: 12),
               textAlign: TextAlign.center,
             ),
           ),
@@ -389,7 +375,7 @@ class _StatisticPageState extends State<StatisticPage> {
               width: 30,
               child: Text(
                 index.toString(),
-                style: TextStyle(fontSize: 12, color: AppColors.black),
+                style: AppTextStyles.tableCell.copyWith(fontSize: 12),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -401,7 +387,7 @@ class _StatisticPageState extends State<StatisticPage> {
                 padding: EdgeInsets.only(left: 12),
                 child: Text(
                   meal.mealName,
-                  style: TextStyle(fontSize: 12, color: AppColors.black),
+                  style: AppTextStyles.tableCell.copyWith(fontSize: 12),
                 ),
               ),
             ),
@@ -411,7 +397,7 @@ class _StatisticPageState extends State<StatisticPage> {
               flex: 2,
               child: Text(
                 '${NumberFormat('#,###').format(meal.price)} VND',
-                style: TextStyle(fontSize: 12, color: AppColors.black),
+                style: AppTextStyles.tableCell.copyWith(fontSize: 12),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -421,7 +407,7 @@ class _StatisticPageState extends State<StatisticPage> {
               flex: 2,
               child: Text(
                 DateFormat('d/M/yyyy').format(meal.serviceDate),
-                style: TextStyle(fontSize: 12, color: AppColors.black),
+                style: AppTextStyles.tableCell.copyWith(fontSize: 12),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -442,12 +428,14 @@ class _StatisticPageState extends State<StatisticPage> {
             SizedBox(height: 16),
             Text(
               l10n.noData,
-              style: TextStyle(fontSize: 16, color: AppColors.grey600),
+              style: AppTextStyles.bodyLarge.copyWith(color: AppColors.grey600),
             ),
             SizedBox(height: 8),
             Text(
               l10n.chooseOtherYear,
-              style: TextStyle(fontSize: 14, color: AppColors.grey500),
+              style: AppTextStyles.bodyMedium.copyWith(
+                color: AppColors.grey500,
+              ),
             ),
           ],
         ),
@@ -467,10 +455,8 @@ class _StatisticPageState extends State<StatisticPage> {
         children: [
           Text(
             l10n.totalAmount(amount),
-            style: TextStyle(
-              fontSize: 16,
+            style: AppTextStyles.bodyLarge.copyWith(
               fontWeight: FontWeight.w700,
-              color: AppColors.black,
             ),
           ),
         ],

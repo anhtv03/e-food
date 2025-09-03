@@ -6,6 +6,7 @@ import 'package:e_food/widgets/common/custom_app_drawer.dart';
 import 'package:e_food/widgets/common/custom_app_menu.dart';
 import 'package:e_food/widgets/common/notification_dialog.dart';
 import 'package:e_food/constants/app_colors.dart';
+import 'package:e_food/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                     color: AppColors.white,
                     child: Text(
                       l10n.welcomeUser(state.userName),
-                      style: TextStyle(fontSize: 16, color: AppColors.grey700),
+                      style: AppTextStyles.subtitle,
                     ),
                   ),
 
@@ -82,11 +83,7 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(width: 8),
                             Text(
                               l10n.weeklyMeals,
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.black,
-                              ),
+                              style: AppTextStyles.heading2,
                             ),
                           ],
                         ),
@@ -97,15 +94,7 @@ class _HomePageState extends State<HomePage> {
                           color: AppColors.darkGreen,
                         ),
                         SizedBox(height: 4),
-                        Text(
-                          l10n.noteOrder,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: AppColors.black,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        Text(l10n.noteOrder, style: AppTextStyles.note),
                         SizedBox(height: 4),
                       ],
                     ),
@@ -141,7 +130,12 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(state.message),
+                  Text(
+                    state.message,
+                    style: AppTextStyles.bodyLarge.copyWith(
+                      color: AppColors.grey600,
+                    ),
+                  ),
                   SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
@@ -267,23 +261,21 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     meal.name,
-                    style: TextStyle(
-                      fontSize: 13,
+                    style: AppTextStyles.bodySmall.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: AppColors.black,
                     ),
                   ),
                   SizedBox(height: 4),
                   Text(
                     l10n.formatAmount(NumberFormat('#,###').format(meal.price)),
-                    style: TextStyle(fontSize: 13, color: AppColors.black),
+                    style: AppTextStyles.bodySmall,
                   ),
                   SizedBox(height: 4),
                   Text(
                     l10n.formatDate(
                       DateFormat('dd/MM/yyyy').format(meal.serviceDate),
                     ),
-                    style: TextStyle(fontSize: 13, color: AppColors.black),
+                    style: AppTextStyles.bodySmall,
                   ),
                   SizedBox(height: 8),
                   // Action buttons
@@ -328,7 +320,7 @@ class _HomePageState extends State<HomePage> {
           ),
           elevation: isEnabled ? 2 : 0,
         ),
-        child: Text(l10n.cancel, style: TextStyle(fontSize: 12)),
+        child: Text(l10n.cancel, style: AppTextStyles.buttonSmall),
       ),
     );
   }
@@ -357,7 +349,7 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            child: Text(l10n.order, style: TextStyle(fontSize: 12)),
+            child: Text(l10n.order, style: AppTextStyles.buttonSmall),
           ),
         );
 
@@ -373,7 +365,7 @@ class _HomePageState extends State<HomePage> {
           child: Center(
             child: Text(
               l10n.ordered,
-              style: TextStyle(fontSize: 12, color: AppColors.white),
+              style: AppTextStyles.buttonSmall.copyWith(color: AppColors.white),
             ),
           ),
         );
@@ -389,7 +381,7 @@ class _HomePageState extends State<HomePage> {
           child: Center(
             child: Text(
               l10n.order,
-              style: TextStyle(fontSize: 12, color: AppColors.white),
+              style: AppTextStyles.buttonSmall.copyWith(color: AppColors.white),
             ),
           ),
         );
@@ -401,12 +393,15 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text(l10n.confirmCancel),
-            content: Text(l10n.confirmMsgCancel(meal.name)),
+            title: Text(l10n.confirmCancel, style: AppTextStyles.heading4),
+            content: Text(
+              l10n.confirmMsgCancel(meal.name),
+              style: AppTextStyles.bodyMedium,
+            ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text(l10n.unconfirm),
+                child: Text(l10n.unconfirm, style: AppTextStyles.linkText),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -417,7 +412,12 @@ class _HomePageState extends State<HomePage> {
                   showSuccessDialog(context, l10n.updateSuccess);
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: AppColors.red),
-                child: Text(l10n.confirm),
+                child: Text(
+                  l10n.confirm,
+                  style: AppTextStyles.buttonMedium.copyWith(
+                    color: AppColors.white,
+                  ),
+                ),
               ),
             ],
           ),

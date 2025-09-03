@@ -5,6 +5,7 @@ import 'package:e_food/models/history.dart';
 import 'package:e_food/widgets/common/custom_app_drawer.dart';
 import 'package:e_food/widgets/common/custom_app_menu.dart';
 import 'package:e_food/constants/app_colors.dart';
+import 'package:e_food/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -69,11 +70,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           SizedBox(width: 8),
                           Text(
                             l10n.orderHistory,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.black,
-                            ),
+                            style: AppTextStyles.heading3,
                           ),
                         ],
                       ),
@@ -114,7 +111,9 @@ class _HistoryPageState extends State<HistoryPage> {
                   SizedBox(height: 16),
                   Text(
                     state.message,
-                    style: TextStyle(fontSize: 16, color: AppColors.grey600),
+                    style: AppTextStyles.bodyLarge.copyWith(
+                      color: AppColors.grey600,
+                    ),
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(
@@ -201,11 +200,7 @@ class _HistoryPageState extends State<HistoryPage> {
             width: 40,
             child: Text(
               l10n.no,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: AppColors.white,
-              ),
+              style: AppTextStyles.tableHeader,
               textAlign: TextAlign.center,
             ),
           ),
@@ -215,14 +210,7 @@ class _HistoryPageState extends State<HistoryPage> {
             flex: 3,
             child: Padding(
               padding: EdgeInsets.only(left: 16),
-              child: Text(
-                l10n.dishName,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.white,
-                ),
-              ),
+              child: Text(l10n.dishName, style: AppTextStyles.tableHeader),
             ),
           ),
 
@@ -231,11 +219,7 @@ class _HistoryPageState extends State<HistoryPage> {
             flex: 2,
             child: Text(
               l10n.supplyDate,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: AppColors.white,
-              ),
+              style: AppTextStyles.tableHeader,
               textAlign: TextAlign.center,
             ),
           ),
@@ -245,11 +229,7 @@ class _HistoryPageState extends State<HistoryPage> {
             flex: 2,
             child: Text(
               l10n.status,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: AppColors.white,
-              ),
+              style: AppTextStyles.tableHeader,
               textAlign: TextAlign.center,
             ),
           ),
@@ -290,7 +270,7 @@ class _HistoryPageState extends State<HistoryPage> {
               width: 40,
               child: Text(
                 index.toString(),
-                style: TextStyle(fontSize: 14, color: AppColors.black),
+                style: AppTextStyles.tableCell,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -300,10 +280,7 @@ class _HistoryPageState extends State<HistoryPage> {
               flex: 3,
               child: Padding(
                 padding: EdgeInsets.only(left: 16),
-                child: Text(
-                  order.mealName,
-                  style: TextStyle(fontSize: 14, color: AppColors.black),
-                ),
+                child: Text(order.mealName, style: AppTextStyles.tableCell),
               ),
             ),
 
@@ -312,7 +289,7 @@ class _HistoryPageState extends State<HistoryPage> {
               flex: 2,
               child: Text(
                 DateFormat('d/M/yyyy').format(order.serviceDate),
-                style: TextStyle(fontSize: 14, color: AppColors.black),
+                style: AppTextStyles.tableCell,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -329,9 +306,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   ),
                   child: Text(
                     _getStatusText(order.status, l10n),
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: AppColors.black,
+                    style: AppTextStyles.bodyXSmall.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -345,22 +320,27 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   Widget _buildEmptyState(AppLocalizations l10n) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.history, size: 64, color: AppColors.grey400),
-          SizedBox(height: 16),
-          Text(
-            l10n.noData,
-            style: TextStyle(fontSize: 16, color: AppColors.grey600),
-          ),
-          SizedBox(height: 8),
-          Text(
-            l10n.noOrdered,
-            style: TextStyle(fontSize: 14, color: AppColors.grey500),
-          ),
-        ],
+    return Container(
+      padding: EdgeInsets.all(40),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.history, size: 64, color: AppColors.grey400),
+            SizedBox(height: 16),
+            Text(
+              l10n.noData,
+              style: AppTextStyles.bodyLarge.copyWith(color: AppColors.grey600),
+            ),
+            SizedBox(height: 8),
+            Text(
+              l10n.noOrdered,
+              style: AppTextStyles.bodyMedium.copyWith(
+                color: AppColors.grey500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
