@@ -350,7 +350,7 @@ class _HistoryPageState extends State<HistoryPage> {
           ),
           SizedBox(height: 8),
           Text(
-            'Hãy đặt món đầu tiên của bạn!',
+            l10n.noOrdered,
             style: TextStyle(fontSize: 14, color: AppColors.grey500),
           ),
         ],

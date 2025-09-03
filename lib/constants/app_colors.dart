@@ -31,4 +31,6 @@ class AppColors {
   static const Color greenRegister = Color(0xFF00B023);
   static const Color errorRed = Color(0xFFEC4622);
   static const Color greenRegisterLight = Color(0x80_00B023);
+  static const Color blue600 = Color(0xFF1976D2);
+  static const Color buttonBlue = Color(0xFF4E89FF);
 }

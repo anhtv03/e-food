@@ -226,4 +226,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cantCancel => 'Cannot cancel order';
+
+  @override
+  String get noOrdered => 'Please place your first order!';
+
+  @override
+  String get updateSuccess => 'Update successful';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get unconfirm => 'No';
+
+  @override
+  String get chooseOtherYear => 'Please choose another month/year to view statistics';
 }

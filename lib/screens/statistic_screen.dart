@@ -1,6 +1,7 @@
 import 'package:e_food/blocs/statistic_bloc/statistic_bloc.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_event.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_state.dart';
+import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/models/meal_statistic.dart';
 import 'package:e_food/widgets/common/custom_app_drawer.dart';
 import 'package:e_food/widgets/common/custom_app_menu.dart';
@@ -38,7 +39,7 @@ class _StatisticPageState extends State<StatisticPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: AppColors.grey100,
       appBar: AppMenu(),
       endDrawer: AppDrawer(page: "statistic"),
       body: SingleChildScrollView(
@@ -58,17 +59,17 @@ class _StatisticPageState extends State<StatisticPage> {
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(16),
-                  color: Colors.white,
+                  color: AppColors.white,
                   child: Row(
                     children: [
-                      Icon(Icons.bar_chart, color: Colors.blue, size: 24),
+                      Icon(Icons.bar_chart, color: AppColors.blue, size: 24),
                       SizedBox(width: 8),
                       Text(
                         l10n.mealStatistics,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black87,
+                          color: AppColors.black,
                         ),
                       ),
                     ],
@@ -80,7 +81,7 @@ class _StatisticPageState extends State<StatisticPage> {
                   thickness: 1,
                   indent: 20,
                   endIndent: 20,
-                  color: Color.fromRGBO(9, 50, 0, 1),
+                  color: AppColors.darkGreen,
                 ),
                 SizedBox(height: 16),
 
@@ -119,7 +120,7 @@ class _StatisticPageState extends State<StatisticPage> {
           Container(
             height: 28,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[400]!),
+              border: Border.all(color: AppColors.grey400),
               borderRadius: BorderRadius.circular(4),
             ),
             child: DropdownButtonHideUnderline(
@@ -158,7 +159,7 @@ class _StatisticPageState extends State<StatisticPage> {
           Container(
             height: 28,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[400]!),
+              border: Border.all(color: AppColors.grey400),
               borderRadius: BorderRadius.circular(4),
             ),
             child: DropdownButtonHideUnderline(
@@ -198,8 +199,8 @@ class _StatisticPageState extends State<StatisticPage> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromRGBO(78, 137, 255, 1),
-                foregroundColor: Colors.white,
+                backgroundColor: AppColors.buttonBlue,
+                foregroundColor: AppColors.white,
                 padding: EdgeInsets.symmetric(horizontal: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4),
@@ -217,11 +218,11 @@ class _StatisticPageState extends State<StatisticPage> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.3),
+            color: AppColors.grey.withValues(alpha: 0.3),
             spreadRadius: 3,
             blurRadius: 8,
             offset: Offset(0, 4),
@@ -270,12 +271,12 @@ class _StatisticPageState extends State<StatisticPage> {
                     Icon(
                       Icons.error_outline,
                       size: 48,
-                      color: Colors.grey[400],
+                      color: AppColors.grey400,
                     ),
                     SizedBox(height: 16),
                     Text(
                       state.message,
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      style: TextStyle(fontSize: 14, color: AppColors.grey600),
                     ),
                   ],
                 ),
@@ -290,13 +291,13 @@ class _StatisticPageState extends State<StatisticPage> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.blue[600],
+        color: AppColors.blue600,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(6),
           topRight: Radius.circular(6),
         ),
         border: Border(
-          bottom: BorderSide(color: Colors.grey[400]!, width: 1.0),
+          bottom: BorderSide(color: AppColors.grey400, width: 1.0),
         ),
       ),
       child: Row(
@@ -309,7 +310,7 @@ class _StatisticPageState extends State<StatisticPage> {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: AppColors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -325,7 +326,7 @@ class _StatisticPageState extends State<StatisticPage> {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: AppColors.white,
                 ),
               ),
             ),
@@ -339,7 +340,7 @@ class _StatisticPageState extends State<StatisticPage> {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: AppColors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -353,7 +354,7 @@ class _StatisticPageState extends State<StatisticPage> {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: AppColors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -371,12 +372,12 @@ class _StatisticPageState extends State<StatisticPage> {
   ) {
     return Container(
       decoration: BoxDecoration(
-        color: index % 2 == 0 ? Colors.grey[50] : Colors.white,
+        color: index % 2 == 0 ? AppColors.grey50 : AppColors.white,
         border:
             index == length
                 ? null
                 : Border(
-                  bottom: BorderSide(color: Colors.grey[400]!, width: 1),
+                  bottom: BorderSide(color: AppColors.grey400, width: 1),
                 ),
       ),
       child: Padding(
@@ -388,7 +389,7 @@ class _StatisticPageState extends State<StatisticPage> {
               width: 30,
               child: Text(
                 index.toString(),
-                style: TextStyle(fontSize: 12, color: Colors.black87),
+                style: TextStyle(fontSize: 12, color: AppColors.black),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -400,7 +401,7 @@ class _StatisticPageState extends State<StatisticPage> {
                 padding: EdgeInsets.only(left: 12),
                 child: Text(
                   meal.mealName,
-                  style: TextStyle(fontSize: 12, color: Colors.black87),
+                  style: TextStyle(fontSize: 12, color: AppColors.black),
                 ),
               ),
             ),
@@ -410,7 +411,7 @@ class _StatisticPageState extends State<StatisticPage> {
               flex: 2,
               child: Text(
                 '${NumberFormat('#,###').format(meal.price)} VND',
-                style: TextStyle(fontSize: 12, color: Colors.black87),
+                style: TextStyle(fontSize: 12, color: AppColors.black),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -420,7 +421,7 @@ class _StatisticPageState extends State<StatisticPage> {
               flex: 2,
               child: Text(
                 DateFormat('d/M/yyyy').format(meal.serviceDate),
-                style: TextStyle(fontSize: 12, color: Colors.black87),
+                style: TextStyle(fontSize: 12, color: AppColors.black),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -437,16 +438,16 @@ class _StatisticPageState extends State<StatisticPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.bar_chart, size: 64, color: Colors.grey[400]),
+            Icon(Icons.bar_chart, size: 64, color: AppColors.grey400),
             SizedBox(height: 16),
             Text(
               l10n.noData,
-              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+              style: TextStyle(fontSize: 16, color: AppColors.grey600),
             ),
             SizedBox(height: 8),
             Text(
-              'Hãy chọn tháng/năm khác để xem thống kê',
-              style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+              l10n.chooseOtherYear,
+              style: TextStyle(fontSize: 14, color: AppColors.grey500),
             ),
           ],
         ),
@@ -469,7 +470,7 @@ class _StatisticPageState extends State<StatisticPage> {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
-              color: Colors.black87,
+              color: AppColors.black,
             ),
           ),
         ],

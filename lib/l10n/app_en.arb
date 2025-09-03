@@ -68,5 +68,10 @@
   "loadFailedHistory": "Failed to load order history",
   "failedRenewHistory": "Failed to refresh history",
   "cantOrder": "Cannot order",
-  "cantCancel": "Cannot cancel order"
+  "cantCancel": "Cannot cancel order",
+  "noOrdered" : "Please place your first order!",
+  "updateSuccess": "Update successful",
+  "confirm" : "Confirm",
+  "unconfirm": "No",
+  "chooseOtherYear": "Please choose another month/year to view statistics"
 }

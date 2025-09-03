@@ -338,7 +338,7 @@ class _HomePageState extends State<HomePage> {
           child: ElevatedButton(
             onPressed: () {
               context.read<HomeBloc>().add(OrderMealEvent(meal: meal));
-              showSuccessDialog(context, "Cập nhật thành công");
+              showSuccessDialog(context, l10n.updateSuccess);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.lightBlue,
@@ -397,16 +397,16 @@ class _HomePageState extends State<HomePage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Không'),
+                child: Text(l10n.unconfirm),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                   context.read<HomeBloc>().add(CancelMealEvent(meal: meal));
-                  showSuccessDialog(context, "Cập nhật thành công");
+                  showSuccessDialog(context, l10n.updateSuccess);
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: AppColors.red),
-                child: Text('Xác nhận'),
+                child: Text(l10n.confirm),
               ),
             ],
           ),

@@ -226,4 +226,19 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get cantCancel => 'Không thể hủy món';
+
+  @override
+  String get noOrdered => 'Hãy đặt món đầu tiên của bạn!';
+
+  @override
+  String get updateSuccess => 'Cập nhật thành công';
+
+  @override
+  String get confirm => 'Xác nhận';
+
+  @override
+  String get unconfirm => 'Không';
+
+  @override
+  String get chooseOtherYear => 'Hãy chọn tháng/năm khác để xem thống kê';
 }

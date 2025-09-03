@@ -20,6 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     try {
       await Future.delayed(Duration(seconds: 1));
+      print("home_bloc: bat dau loadhome");
 
       final meals = [
         Meal(

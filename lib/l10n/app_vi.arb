@@ -67,5 +67,10 @@
   "loadFailedHistory": "Không thể tải lịch sử đặt món",
   "failedRenewHistory": "Không thể làm mới lịch sử",
   "cantOrder": "Không thể đặt món",
-  "cantCancel": "Không thể hủy món"
+  "cantCancel": "Không thể hủy món",
+  "noOrdered" : "Hãy đặt món đầu tiên của bạn!",
+  "updateSuccess": "Cập nhật thành công",
+  "confirm" : "Xác nhận",
+  "unconfirm": "Không",
+  "chooseOtherYear": "Hãy chọn tháng/năm khác để xem thống kê"
 }

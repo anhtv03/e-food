@@ -490,6 +490,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cannot cancel order'**
   String get cantCancel;
+
+  /// No description provided for @noOrdered.
+  ///
+  /// In en, this message translates to:
+  /// **'Please place your first order!'**
+  String get noOrdered;
+
+  /// No description provided for @updateSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Update successful'**
+  String get updateSuccess;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @unconfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get unconfirm;
+
+  /// No description provided for @chooseOtherYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose another month/year to view statistics'**
+  String get chooseOtherYear;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
