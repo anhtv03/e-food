@@ -3,6 +3,7 @@ import 'package:e_food/blocs/auth_bloc/login_bloc/login_event.dart';
 import 'package:e_food/blocs/auth_bloc/login_bloc/login_state.dart';
 import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
+import 'package:e_food/constants/app_assets.dart';
 import 'package:e_food/screens/home_screen.dart';
 import 'package:e_food/screens/register_screen.dart';
 import 'package:e_food/constants/app_colors.dart';
@@ -43,7 +44,7 @@ class LoginScreenState extends State<LoginPage> {
               height: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/background_1.jpg'),
+                  image: AssetImage(AppAssets.backgroundLogin),
                   fit: BoxFit.cover,
                 ),
               ),

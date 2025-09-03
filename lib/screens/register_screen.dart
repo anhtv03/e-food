@@ -1,6 +1,7 @@
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_bloc.dart';
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_event.dart';
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_state.dart';
+import 'package:e_food/constants/app_assets.dart';
 import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/constants/app_text_styles.dart';
 import 'package:e_food/widgets/auth/register_form.dart';
@@ -41,7 +42,7 @@ class RegisterPageState extends State<RegisterPage> {
               height: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/background_2.jpg'),
+                  image: AssetImage(AppAssets.backgroundRegister),
                   fit: BoxFit.cover,
                 ),
               ),
