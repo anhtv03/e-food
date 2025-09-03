@@ -3,6 +3,7 @@ import 'package:e_food/blocs/auth_bloc/register_bloc/register_event.dart';
 import 'package:e_food/blocs/auth_bloc/register_bloc/register_state.dart';
 import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/constants/app_text_styles.dart';
+import 'package:e_food/widgets/auth/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_food/l10n/app_localizations.dart';
@@ -97,80 +98,33 @@ class RegisterPageState extends State<RegisterPage> {
                               ),
                               child: Stack(
                                 children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      // Header
-                                      Text(
-                                        l10n.createAccount,
-                                        style: AppTextStyles.authTitle.copyWith(
-                                          color: AppColors.greenRegister,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(height: 16),
-                                      Divider(
-                                        height: 10,
-                                        thickness: 1,
-                                        color: AppColors.greenRegisterLight,
-                                      ),
-                                      SizedBox(height: 16),
-
-                                      // Full name field
-                                      _buildTextField(
-                                        _fullNameController,
-                                        l10n.fullName,
-                                        false,
-                                      ),
-                                      SizedBox(height: 8),
-                                      if (state is NameError)
-                                        _buildTextError(state.message),
-                                      SizedBox(height: 8),
-
-                                      // Email field
-                                      _buildTextField(
-                                        _employeeIdController,
-                                        l10n.employeeId,
-                                        false,
-                                      ),
-                                      SizedBox(height: 8),
-                                      if (state is EmployeeError)
-                                        _buildTextError(state.message),
-                                      SizedBox(height: 8),
-
-                                      // Username field
-                                      _buildTextField(
-                                        _usernameController,
-                                        l10n.accountName,
-                                        false,
-                                      ),
-                                      SizedBox(height: 8),
-                                      if (state is UsernameError)
-                                        _buildTextError(state.message),
-                                      SizedBox(height: 8),
-
-                                      // Password field
-                                      _buildTextField(
-                                        _passwordController,
-                                        l10n.password,
-                                        true,
-                                      ),
-                                      SizedBox(height: 8),
-                                      if (state is PasswordError)
-                                        _buildTextError(state.message),
-                                      SizedBox(height: 8),
-
-                                      if (state is RegisterError)
-                                        _buildTextError(state.message),
-                                      SizedBox(height: 16),
-
-                                      // Register button
-                                      _buildRegisterButton(
-                                        context,
-                                        state,
-                                        l10n,
-                                      ),
-                                    ],
+                                  RegisterForm(
+                                    fullNameController: _fullNameController,
+                                    employeeIdController: _employeeIdController,
+                                    usernameController: _usernameController,
+                                    passwordController: _passwordController,
+                                    onRegister: () => _handleRegister(context),
+                                    isLoading: state is RegisterLoading,
+                                    nameError:
+                                        state is NameError
+                                            ? state.message
+                                            : null,
+                                    employeeError:
+                                        state is EmployeeError
+                                            ? state.message
+                                            : null,
+                                    usernameError:
+                                        state is UsernameError
+                                            ? state.message
+                                            : null,
+                                    passwordError:
+                                        state is PasswordError
+                                            ? state.message
+                                            : null,
+                                    generalError:
+                                        state is RegisterError
+                                            ? state.message
+                                            : null,
                                   ),
                                   if (state is RegisterLoading)
                                     const Center(
@@ -209,85 +163,13 @@ class RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  //========================handle UI==============================
-  Widget _buildTextField(controller, hintText, bool isPassword) {
-    return TextField(
-      controller: controller,
-      obscureText: isPassword ? obscurePassword : false,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: AppTextStyles.hint,
-        filled: true,
-        fillColor: AppColors.grey50,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: AppColors.grey300),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: AppColors.teal, width: 2),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        suffixIcon:
-            isPassword
-                ? IconButton(
-                  icon: Icon(
-                    obscurePassword ? Icons.visibility_off : Icons.visibility,
-                    color: AppColors.grey400,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      obscurePassword = !obscurePassword;
-                    });
-                  },
-                )
-                : null,
-      ),
-    );
-  }
-
-  Widget _buildRegisterButton(
-    BuildContext context,
-    RegisterState state,
-    AppLocalizations l10n,
-  ) {
-    return SizedBox(
-      width: double.infinity,
-      height: 48,
-      child: ElevatedButton(
-        onPressed:
-            state is RegisterLoading
-                ? null
-                : () {
-                  context.read<RegisterBloc>().add(
-                    RegisterHandleEvent(
-                      fullName: _fullNameController.text.trim(),
-                      employeeId: _employeeIdController.text.trim(),
-                      username: _usernameController.text.trim(),
-                      password: _passwordController.text,
-                    ),
-                  );
-                },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.lightBlueLogin,
-          foregroundColor: AppColors.white,
-          elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
-        child: Text(l10n.register, style: AppTextStyles.buttonLarge),
-      ),
-    );
-  }
-
-  Widget _buildTextError(String? message) {
-    return SizedBox(
-      width: double.infinity,
-      child: Text(
-        message ?? '',
-        style: AppTextStyles.error,
-        textAlign: TextAlign.left,
+  void _handleRegister(BuildContext context) {
+    context.read<RegisterBloc>().add(
+      RegisterHandleEvent(
+        fullName: _fullNameController.text.trim(),
+        employeeId: _employeeIdController.text.trim(),
+        username: _usernameController.text.trim(),
+        password: _passwordController.text,
       ),
     );
   }

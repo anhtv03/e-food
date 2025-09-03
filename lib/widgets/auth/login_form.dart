@@ -1,4 +1,5 @@
 import 'package:e_food/constants/app_text_styles.dart';
+import 'package:e_food/widgets/common/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:e_food/l10n/app_localizations.dart';
 import '../../constants/app_colors.dart';
@@ -42,19 +43,30 @@ class LoginForm extends StatelessWidget {
         const SizedBox(height: 32),
 
         // Username field
-        _buildTextField(usernameController, l10n.placeholderUsername, false),
+        CustomTextField.buildTextField(
+          usernameController,
+          l10n.placeholderUsername,
+          false,
+        ),
         const SizedBox(height: 8),
-        if (usernameError != null) _buildTextError(usernameError!, false),
+        if (usernameError != null)
+          CustomTextField.buildTextError(usernameError!, false),
         const SizedBox(height: 8),
 
         // Password field
-        _buildTextField(passwordController, l10n.placeholderPassword, true),
+        CustomTextField.buildTextField(
+          passwordController,
+          l10n.placeholderPassword,
+          true,
+        ),
         const SizedBox(height: 8),
-        if (passwordError != null) _buildTextError(passwordError!, false),
+        if (passwordError != null)
+          CustomTextField.buildTextError(passwordError!, false),
         const SizedBox(height: 8),
 
         // General error
-        if (generalError != null) _buildTextError(generalError!, true),
+        if (generalError != null)
+          CustomTextField.buildTextError(generalError!, true),
         const SizedBox(height: 16),
 
         // Login button
@@ -83,40 +95,7 @@ class LoginForm extends StatelessWidget {
     );
   }
 
-  //========================handle UI==============================
-  Widget _buildTextField(controller, hintText, bool isPassword) {
-    return TextField(
-      controller: controller,
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(color: AppColors.grey400),
-        filled: true,
-        fillColor: AppColors.grey50,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: AppColors.grey300),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: AppColors.teal, width: 2),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-      ),
-    );
-  }
-
-  Widget _buildTextError(String? message, bool isCenter) {
-    return SizedBox(
-      width: double.infinity,
-      child: Text(
-        message ?? '',
-        style: TextStyle(fontSize: 12, height: 1, color: AppColors.errorRed),
-        textAlign: isCenter ? TextAlign.center : TextAlign.left,
-      ),
-    );
-  }
-
+  //========================handle UI=============================
   Widget _buildLoginButton(
     String text,
     VoidCallback? onPressed,
