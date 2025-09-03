@@ -22,7 +22,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    context.read<HomeBloc>().add(LoadHomeEvent());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final l10n = AppLocalizations.of(context);
+      context.read<HomeBloc>().add(LoadHomeEvent(localizations: l10n));
+    });
   }
 
   @override
@@ -123,7 +126,9 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               onRefresh: () async {
-                context.read<HomeBloc>().add(LoadHomeEvent());
+                context.read<HomeBloc>().add(
+                  LoadHomeEvent(localizations: l10n),
+                );
                 await context.read<HomeBloc>().stream.firstWhere(
                   (s) => s is HomeLoaded || s is HomeError,
                 );
@@ -140,7 +145,9 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<HomeBloc>().add(LoadHomeEvent());
+                      context.read<HomeBloc>().add(
+                        LoadHomeEvent(localizations: l10n),
+                      );
                     },
                     child: Text(l10n.search),
                   ),
@@ -337,7 +344,9 @@ class _HomePageState extends State<HomePage> {
           height: 27,
           child: ElevatedButton(
             onPressed: () {
-              context.read<HomeBloc>().add(OrderMealEvent(meal: meal));
+              context.read<HomeBloc>().add(
+                OrderMealEvent(meal: meal, localizations: l10n),
+              );
               showSuccessDialog(context, l10n.updateSuccess);
             },
             style: ElevatedButton.styleFrom(
@@ -402,7 +411,9 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  context.read<HomeBloc>().add(CancelMealEvent(meal: meal));
+                  context.read<HomeBloc>().add(
+                    CancelMealEvent(meal: meal, localizations: l10n),
+                  );
                   showSuccessDialog(context, l10n.updateSuccess);
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: AppColors.red),

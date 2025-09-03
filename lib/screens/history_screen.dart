@@ -21,7 +21,10 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   void initState() {
     super.initState();
-    context.read<HistoryBloc>().add(LoadHistoryEvent());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final l10n = AppLocalizations.of(context);
+      context.read<HistoryBloc>().add(LoadHistoryEvent(localizations: l10n));
+    });
   }
 
   @override
@@ -92,7 +95,9 @@ class _HistoryPageState extends State<HistoryPage> {
                 ),
               ),
               onRefresh: () async {
-                context.read<HistoryBloc>().add(LoadHistoryEvent());
+                context.read<HistoryBloc>().add(
+                  RefreshHistoryEvent(localizations: l10n),
+                );
                 await context.read<HistoryBloc>().stream.firstWhere(
                   (s) => s is HistoryLoaded || s is HistoryError,
                 );
@@ -114,7 +119,9 @@ class _HistoryPageState extends State<HistoryPage> {
                   SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<HistoryBloc>().add(LoadHistoryEvent());
+                      context.read<HistoryBloc>().add(
+                        LoadHistoryEvent(localizations: l10n),
+                      );
                     },
                     child: Text(l10n.search),
                   ),

@@ -1,14 +1,10 @@
-import 'package:e_food/l10n/app_localizations.dart';
 import 'package:e_food/models/meal.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/material.dart';
 import 'home_event.dart';
 import 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final BuildContext context;
-
-  HomeBloc({required this.context}) : super(HomeInitial()) {
+  HomeBloc() : super(HomeInitial()) {
     on<LoadHomeEvent>(_onLoadHome);
     on<OrderMealEvent>(_onOrderMeal);
     on<CancelMealEvent>(_onCancelMeal);
@@ -16,11 +12,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _onLoadHome(LoadHomeEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoading());
-    final localizations = AppLocalizations.of(context);
 
     try {
       await Future.delayed(Duration(seconds: 1));
-      print("home_bloc: bat dau loadhome");
 
       final meals = [
         Meal(
@@ -64,7 +58,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           isOrdered: false,
         ),
         Meal(
-          id: '1',
+          id: '6',
           name: 'Cơm gà',
           imageUrl: 'assets/images/com_ga.jpg',
           price: 25000,
@@ -72,7 +66,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           isOrdered: false,
         ),
         Meal(
-          id: '2',
+          id: '7',
           name: 'Phở gà',
           imageUrl: 'assets/images/pho_ga.jpg',
           price: 25000,
@@ -80,7 +74,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           isOrdered: false,
         ),
         Meal(
-          id: '3',
+          id: '8',
           name: 'Mỳ cay',
           imageUrl: 'assets/images/my_cay.jpg',
           price: 25000,
@@ -88,15 +82,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           isOrdered: false,
         ),
         Meal(
-          id: '4',
+          id: '9',
           name: 'Cơm rang',
           imageUrl: 'assets/images/com_rang.jpg',
           price: 25000,
-          serviceDate: DateTime(2025, 8, 18),
+          serviceDate: DateTime(2025, 8, 19),
           isOrdered: true,
         ),
         Meal(
-          id: '5',
+          id: '10',
           name: 'Cơm trộn',
           imageUrl: 'assets/images/com_tron.jpg',
           price: 25000,
@@ -107,7 +101,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       emit(HomeLoaded(meals: meals, userName: 'Lê Văn Thành'));
     } catch (e) {
-      emit(HomeError(message: localizations.noData));
+      final errorMessage = event.localizations?.cantCancel;
+      emit(HomeError(message: errorMessage!));
     }
   }
 
@@ -115,7 +110,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     OrderMealEvent event,
     Emitter<HomeState> emit,
   ) async {
-    final localizations = AppLocalizations.of(context);
     if (state is HomeLoaded) {
       final currentState = state as HomeLoaded;
 
@@ -124,7 +118,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
         final updatedMeals =
             currentState.meals.map((meal) {
-              if (meal.id == event.meal.id) {
+              if (meal.id == event.meal.id &&
+                  meal.serviceDate.isAtSameMomentAs(event.meal.serviceDate)) {
                 return meal.copyWith(isOrdered: true);
               }
               return meal;
@@ -132,7 +127,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
         emit(currentState.copyWith(meals: updatedMeals));
       } catch (e) {
-        emit(HomeError(message: localizations.cantOrder));
+        final errorMessage = event.localizations?.cantCancel;
+        emit(HomeError(message: errorMessage!));
       }
     }
   }
@@ -141,7 +137,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     CancelMealEvent event,
     Emitter<HomeState> emit,
   ) async {
-    final localizations = AppLocalizations.of(context);
     if (state is HomeLoaded) {
       final currentState = state as HomeLoaded;
 
@@ -150,7 +145,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
         final updatedMeals =
             currentState.meals.map((meal) {
-              if (meal.id == event.meal.id) {
+              if (meal.id == event.meal.id &&
+                  meal.serviceDate.isAtSameMomentAs(event.meal.serviceDate)) {
                 return meal.copyWith(isOrdered: false);
               }
               return meal;
@@ -158,7 +154,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
         emit(currentState.copyWith(meals: updatedMeals));
       } catch (e) {
-        emit(HomeError(message: localizations.cantCancel));
+        final errorMessage = event.localizations?.cantCancel;
+        emit(HomeError(message: errorMessage!));
       }
     }
   }

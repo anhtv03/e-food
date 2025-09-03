@@ -6,9 +6,9 @@ import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/screens/home_screen.dart';
 import 'package:e_food/screens/register_screen.dart';
 import 'package:e_food/constants/app_colors.dart';
+import 'package:e_food/widgets/auth/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:e_food/l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -37,7 +37,6 @@ class LoginScreenState extends State<LoginPage> {
           }
         },
         builder: (context, state) {
-          final l10n = AppLocalizations.of(context);
           return Scaffold(
             body: Container(
               width: double.infinity,
@@ -71,86 +70,18 @@ class LoginScreenState extends State<LoginPage> {
                       ),
                       child: Stack(
                         children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              // Header
-                              Text(
-                                l10n.loginTitle,
-                                style: TextStyle(
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.black,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                l10n.subLoginTitle,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: AppColors.grey600,
-                                ),
-                              ),
-                              SizedBox(height: 32),
-
-                              // Username field
-                              _buildTextField(
-                                _usernameController,
-                                l10n.placeholderUsername,
-                                false,
-                              ),
-                              SizedBox(height: 8),
-                              if (state is UsernameError)
-                                _buildTextError(state.message, false),
-                              SizedBox(height: 8),
-
-                              // Password field
-                              _buildTextField(
-                                _passwordController,
-                                l10n.placeholderPassword,
-                                true,
-                              ),
-                              SizedBox(height: 8),
-                              if (state is PasswordError)
-                                _buildTextError(state.message, false),
-                              SizedBox(height: 8),
-
-                              //Error field
-                              if (state is LoginError)
-                                _buildTextError(state.message, true),
-                              SizedBox(height: 16),
-
-                              // Login button
-                              _buildLoginButton(context, state, l10n),
-                              SizedBox(height: 8),
-
-                              // Forgot password
-                              SizedBox(
-                                height: 35,
-                                child: TextButton(
-                                  onPressed: () {
-                                    _handleForgotPassword();
-                                  },
-                                  child: Text(
-                                    l10n.forgotPassword,
-                                    style: TextStyle(
-                                      color: AppColors.teal,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              Divider(
-                                height: 10,
-                                thickness: 1,
-                                color: AppColors.darkGreen,
-                              ),
-
-                              SizedBox(height: 8),
-                              // Register button
-                              _buildRegisterButton(l10n),
-                            ],
+                          LoginForm(
+                            usernameController: _usernameController,
+                            passwordController: _passwordController,
+                            onLogin: () => _handleLogin(context),
+                            onRegister: _handleNavigateToRegister,
+                            isLoading: state is LoginLoading,
+                            usernameError:
+                                state is UsernameError ? state.message : null,
+                            passwordError:
+                                state is PasswordError ? state.message : null,
+                            generalError:
+                                state is LoginError ? state.message : null,
                           ),
                           if (state is LoginLoading)
                             const Center(child: CircularProgressIndicator()),
@@ -175,123 +106,19 @@ class LoginScreenState extends State<LoginPage> {
   }
 
   //========================handle logic==============================
-  void _handleForgotPassword() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Chức năng quên mật khẩu'),
-        duration: Duration(seconds: 2),
-      ),
+  void _handleNavigateToRegister() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const RegisterPage()),
     );
   }
 
-  //========================handle UI==============================
-  Widget _buildTextField(controller, hintText, bool isPassword) {
-    return TextField(
-      controller: controller,
-      obscureText: isPassword ? obscurePassword : false,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(color: AppColors.grey400),
-        filled: true,
-        fillColor: AppColors.grey50,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: AppColors.grey300),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: AppColors.teal, width: 2),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        suffixIcon:
-            isPassword
-                ? IconButton(
-                  icon: Icon(
-                    obscurePassword ? Icons.visibility_off : Icons.visibility,
-                    color: AppColors.grey400,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      obscurePassword = !obscurePassword;
-                    });
-                  },
-                )
-                : null,
-      ),
-    );
-  }
+  void _handleLogin(BuildContext context) {
+    final username = _usernameController.text.trim();
+    final password = _passwordController.text;
 
-  Widget _buildLoginButton(
-    BuildContext context,
-    LoginState state,
-    AppLocalizations l10n,
-  ) {
-    return SizedBox(
-      width: double.infinity,
-      height: 40,
-      child: ElevatedButton(
-        onPressed:
-            state is LoginLoading
-                ? null
-                : () {
-                  context.read<LoginBloc>().add(
-                    LoginHandleEvent(
-                      username: _usernameController.text.trim(),
-                      password: _passwordController.text,
-                    ),
-                  );
-                },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.lightBlueLogin,
-          foregroundColor: AppColors.white,
-          elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
-        child: Text(
-          l10n.login,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildRegisterButton(AppLocalizations l10n) {
-    return SizedBox(
-      width: 222,
-      height: 40,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const RegisterPage()),
-          );
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.greenRegister,
-          foregroundColor: AppColors.white,
-          elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
-        child: Text(
-          l10n.createAccount,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextError(String? message, bool isCenter) {
-    return SizedBox(
-      width: double.infinity,
-      child: Text(
-        message ?? '',
-        style: TextStyle(fontSize: 12, height: 1, color: AppColors.errorRed),
-        textAlign: isCenter ? TextAlign.center : TextAlign.left,
-      ),
+    context.read<LoginBloc>().add(
+      LoginHandleEvent(username: username, password: password),
     );
   }
 }

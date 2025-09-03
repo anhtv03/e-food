@@ -1,7 +1,5 @@
 import 'package:e_food/blocs/history_bloc/history_bloc.dart';
-import 'package:e_food/blocs/history_bloc/history_event.dart';
 import 'package:e_food/blocs/home_bloc/home_bloc.dart';
-import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_bloc.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_event.dart';
 import 'package:e_food/l10n/app_localizations.dart';
@@ -21,19 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    Locale locale = const Locale('en');
+    Locale locale = const Locale('vi');
     return MultiBlocProvider(
       providers: [
-        BlocProvider<HomeBloc>(
-          create:
-              (context) =>
-                  HomeBloc(context: context)..add(const LoadHomeEvent()),
-        ),
-        BlocProvider<HistoryBloc>(
-          create:
-              (context) =>
-                  HistoryBloc(context: context)..add(const LoadHistoryEvent()),
-        ),
+        BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
+        BlocProvider<HistoryBloc>(create: (context) => HistoryBloc()),
         BlocProvider<StatisticBloc>(
           create:
               (context) =>
