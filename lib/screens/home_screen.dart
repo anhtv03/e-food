@@ -73,8 +73,11 @@ class _HomePageState extends State<HomePage> {
                     icon: Icons.restaurant_menu,
                     iconColor: AppColors.orange,
                   ),
-                  SizedBox(height: 4),
-                  Text(l10n.noteOrder, style: AppTextStyles.note),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(l10n.noteOrder, style: AppTextStyles.note),
+                  ),
                   SizedBox(height: 4),
 
                   // Meals list

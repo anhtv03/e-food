@@ -1,7 +1,7 @@
 class Meal {
   final String id;
   final String name;
-  final String imageUrl;
+  final String? imageUrl;
   final double price;
   final DateTime serviceDate;
   final bool isOrdered;
@@ -9,7 +9,7 @@ class Meal {
   Meal({
     required this.id,
     required this.name,
-    required this.imageUrl,
+    this.imageUrl,
     required this.price,
     required this.serviceDate,
     this.isOrdered = false,
@@ -30,6 +30,17 @@ class Meal {
       price: price ?? this.price,
       serviceDate: serviceDate ?? this.serviceDate,
       isOrdered: isOrdered ?? this.isOrdered,
+    );
+  }
+
+  factory Meal.fromJson(Map<String, dynamic> json) {
+    return Meal(
+      id: (json["id"] as num).toString(),
+      name: json["name_food"] as String,
+      imageUrl: json["image_url"] as String,
+      price: (json["price"] as num).toDouble(),
+      serviceDate: DateTime.parse(json["available_date"] as String),
+      isOrdered: (json["is_ordered"] as num) == 1,
     );
   }
 }

@@ -75,7 +75,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get weeklyMeals => 'Meals for this week';
 
   @override
-  String get noteOrder => 'Note: Please place your meal order no later than 10:00 AM';
+  String get noteOrder =>
+      'Note: Please place your meal order no later than 10:00 AM';
 
   @override
   String get no => 'No';
@@ -189,7 +190,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordIsEmpty => 'Password cannot be empty';
 
   @override
-  String get incorrectInputLogin => 'You entered an incorrect username or password!';
+  String get incorrectInputLogin =>
+      'You entered an incorrect username or password!';
 
   @override
   String get loginFailedServer => 'Login failed due to system error';
@@ -240,7 +242,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unconfirm => 'No';
 
   @override
-  String get chooseOtherYear => 'Please choose another month/year to view statistics';
+  String get chooseOtherYear =>
+      'Please choose another month/year to view statistics';
 
   @override
   String get yes => 'Agree';

@@ -1,4 +1,6 @@
-import 'package:e_food/models/meal.dart';
+import 'package:e_food/services/food_service.dart';
+import 'package:e_food/services/token_service.dart';
+import 'package:e_food/services/user_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_event.dart';
 import 'home_state.dart';
@@ -15,91 +17,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     try {
       await Future.delayed(Duration(seconds: 1));
+      String token = await TokenService.getToken('user') as String;
+      var userResult = await UserService.getUser(token);
+      var meals = await FoodService.getFoodItemsOnThisWeek(token);
 
-      final meals = [
-        Meal(
-          id: '1',
-          name: 'Cơm gà',
-          imageUrl: 'assets/images/com_ga.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 11),
-          isOrdered: true,
-        ),
-        Meal(
-          id: '2',
-          name: 'Phở gà',
-          imageUrl: 'assets/images/pho_ga.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 12),
-          isOrdered: true,
-        ),
-        Meal(
-          id: '3',
-          name: 'Mỳ cay',
-          imageUrl: 'assets/images/my_cay.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 13),
-          isOrdered: false,
-        ),
-        Meal(
-          id: '4',
-          name: 'Cơm rang',
-          imageUrl: 'assets/images/com_rang.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 14),
-          isOrdered: false,
-        ),
-        Meal(
-          id: '5',
-          name: 'Cơm trộn',
-          imageUrl: 'assets/images/com_tron.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 15),
-          isOrdered: false,
-        ),
-        Meal(
-          id: '6',
-          name: 'Cơm gà',
-          imageUrl: 'assets/images/com_ga.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 16),
-          isOrdered: false,
-        ),
-        Meal(
-          id: '7',
-          name: 'Phở gà',
-          imageUrl: 'assets/images/pho_ga.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 17),
-          isOrdered: false,
-        ),
-        Meal(
-          id: '8',
-          name: 'Mỳ cay',
-          imageUrl: 'assets/images/my_cay.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 18),
-          isOrdered: false,
-        ),
-        Meal(
-          id: '9',
-          name: 'Cơm rang',
-          imageUrl: 'assets/images/com_rang.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 19),
-          isOrdered: true,
-        ),
-        Meal(
-          id: '10',
-          name: 'Cơm trộn',
-          imageUrl: 'assets/images/com_tron.jpg',
-          price: 25000,
-          serviceDate: DateTime(2025, 9, 20),
-          isOrdered: true,
-        ),
-      ];
-
-      emit(HomeLoaded(meals: meals, userName: 'Lê Văn Thành'));
+      emit(HomeLoaded(meals: meals.data, userName: userResult.data.fullName));
     } catch (e) {
       final errorMessage = event.localizations?.cantCancel;
       emit(HomeError(message: errorMessage!));

@@ -1,3 +1,4 @@
+import 'package:e_food/constants/api_constants.dart';
 import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/constants/app_text_styles.dart';
 import 'package:e_food/models/meal.dart';
@@ -40,24 +41,34 @@ class MealCard extends StatelessWidget {
                 height: 94,
                 color: AppColors.grey200,
                 child:
-                    meal.imageUrl.startsWith('assets')
-                        ? Image.asset(
-                          meal.imageUrl,
+                    meal.imageUrl != null
+                        ? Image.network(
+                          RouteConstants.getImageUrl(meal.imageUrl!),
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
                             return Container(
                               color: AppColors.grey300,
-                              child: Icon(
+                              child: const Icon(
                                 Icons.restaurant,
                                 color: AppColors.grey600,
                                 size: 40,
                               ),
                             );
                           },
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  AppColors.grey600,
+                                ),
+                              ),
+                            );
+                          },
                         )
                         : Container(
                           color: AppColors.grey300,
-                          child: Icon(
+                          child: const Icon(
                             Icons.restaurant,
                             color: AppColors.grey600,
                             size: 40,
