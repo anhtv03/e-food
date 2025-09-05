@@ -57,13 +57,15 @@ class OrderService {
     );
     final body = jsonDecode(res.body) as Map<String, dynamic>;
     if (res.statusCode == 200) {
-      return {
-        'success': body["success"],
-        'data':
-            (body['data'] as List<dynamic>)
-                .map((item) => OrderHistory.fromJson(item))
-                .toList(),
-      };
+      final orders =
+          (body['data'] as List<dynamic>)
+              .map(
+                (item) => OrderHistory.fromJson(item as Map<String, dynamic>),
+              )
+              .toList();
+
+      orders.sort((a, b) => b.orderDate.compareTo(a.orderDate));
+      return {'success': body["success"], 'data': orders};
     } else {
       throw Exception(body['message']);
     }
