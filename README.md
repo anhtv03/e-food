@@ -1,74 +1,74 @@
-# E-Food - Ứng dụng Đặt Cơm
+# E-Food - Food Ordering App
 
-<img src="assets/images/background_1.jpg" width="200" alt="Login Background"/>
+## 📖 Introduction
 
-## 📖 Giới thiệu
+E-Food is a mobile application built with Flutter, which helps users easily order food online. The application supports multiple languages ​​(Vietnamese and English) and provides a friendly user interface.
 
-E-Food là một ứng dụng di động được xây dựng bằng Flutter, giúp người dùng dễ dàng đặt món ăn trực tuyến. Ứng dụng hỗ trợ đa ngôn ngữ (Tiếng Việt và Tiếng Anh) và cung cấp giao diện người dùng thân thiện.
+## ✨ Main features
 
-## ✨ Tính năng chính
+- 🔐 **User authentication**: Login/Register account
+- 🍽️ **Order**: View and order food for the week
+- 📊 **Statistics**: Track order and spending history
+- 📱 **Interface**: Friendly, responsive UI/UX
+- 🌐 **Multilingual**: Supports Vietnamese and English
 
-- 🔐 **Xác thực người dùng**: Đăng nhập/Đăng ký tài khoản
-- 🍽️ **Đặt món**: Xem và đặt món ăn trong tuần
-- 📊 **Thống kê**: Theo dõi lịch sử đặt món và chi tiêu
-- 📱 **Giao diện**: UI/UX thân thiện, responsive
-- 🌐 **Đa ngôn ngữ**: Hỗ trợ Tiếng Việt và Tiếng Anh
+## 🛠️ Technology used
 
-## 🛠️ Công nghệ sử dụng
+- **Flutter**: Application development framework
+- **Bloc Pattern**: State management
+- **Shared Preferences**: Local storage
+- **HTTP**: API communication
+- **Intl**: Multilingual
 
-- **Flutter**: Framework phát triển ứng dụng
-- **Bloc Pattern**: Quản lý state
-- **Shared Preferences**: Lưu trữ local
-- **HTTP**: Giao tiếp API
-- **Intl**: Đa ngôn ngữ
+## 🚀 Install and Run the App
 
-## 🚀 Cài đặt và Chạy ứng dụng
-
-### Yêu cầu hệ thống
+### System Requirements
 - Flutter SDK ^3.7.2
 - Dart SDK
 - Android Studio/VS Code
 
-### Các bước cài đặt
+### Installation steps
 
 1. Clone repository:
 ```
-bash git clone [repository-url]
-``` 
+bash git clone https://github.com/anhtv03/e-food
+```
 
-2. Cài đặt dependencies:
+2. Install dependencies:
 ```
 bash flutter pub get
-``` 
+```
 
-3. Chạy ứng dụng:
+3. Run the application:
 ```
 bash flutter run
-``` 
-
-## 🏗️ Cấu trúc project
 ```
-lib/ 
-   ├── blocs/ # Business Logic Components 
-   ├── constants/ # Các hằng số, màu sắc, styles 
-   ├── l10n/ # Đa ngôn ngữ 
-   ├── models/ # Data models 
-   ├── screens/ # Màn hình ứng dụng 
-   ├── services/ # Services (API, local storage) 
-   └── widgets/ # Các widget tái sử dụng
-``` 
 
-## 🔧 Cấu hình
+## 🏗️ Project structure
+```
+lib/
+   ├── blocs/ # Business Logic Components
+   ├── constants/ # Constants, colors, styles
+   ├── l10n/ # Multilingual
+   ├── models/ # Data models
+   ├── screens/ # Application screens
+   ├── services/ # Services (API, local storage)
+   └── widgets/ # Reusable widgets
+```
+
+## 🔧 Configuration
 
 ### API Configuration
-Cấu hình API endpoint trong `lib/constants/api_constants.dart`:
+Configure API endpoint in `lib/constants/api_constants.dart`:
+
 ```
 dart static const String baseUrl = '[http://your-api-endpoint](http://your-api-endpoint)';
-``` 
 
-### Ngôn ngữ
-Thêm/sửa các chuỗi trong:
-- `lib/l10n/app_en.arb` (Tiếng Anh)
-- `lib/l10n/app_vi.arb` (Tiếng Việt)
+```
+
+### Language
+Add/edit strings in:
+- `lib/l10n/app_en.arb` (English)
+- `lib/l10n/app_vi.arb` (Vietnamese)
 
 
