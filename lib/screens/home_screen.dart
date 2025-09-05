@@ -98,7 +98,11 @@ class _HomePageState extends State<HomePage> {
                               showSuccessDialog(context, l10n.updateSuccess);
                             },
                             onCancel:
-                                () => _showCancelConfirmDialog(meal, l10n),
+                                () => showCancelConfirmDialog(
+                                  context,
+                                  meal,
+                                  l10n,
+                                ),
                           ),
                         );
                       },
@@ -170,41 +174,5 @@ class _HomePageState extends State<HomePage> {
         return MealState.expired;
       }
     }
-  }
-
-  void _showCancelConfirmDialog(Meal meal, AppLocalizations l10n) {
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text(l10n.confirmCancel, style: AppTextStyles.heading4),
-            content: Text(
-              l10n.confirmMsgCancel(meal.name),
-              style: AppTextStyles.bodyMedium,
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(l10n.unconfirm, style: AppTextStyles.linkText),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  context.read<HomeBloc>().add(
-                    CancelMealEvent(meal: meal, localizations: l10n),
-                  );
-                  showSuccessDialog(context, l10n.updateSuccess);
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.red),
-                child: Text(
-                  l10n.confirm,
-                  style: AppTextStyles.buttonMedium.copyWith(
-                    color: AppColors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-    );
   }
 }
