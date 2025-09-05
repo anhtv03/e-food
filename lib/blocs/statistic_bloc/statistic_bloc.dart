@@ -1,4 +1,6 @@
 import 'package:e_food/models/meal_statistic.dart';
+import 'package:e_food/services/order_service.dart';
+import 'package:e_food/services/token_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_event.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_state.dart';
@@ -16,49 +18,24 @@ class StatisticBloc extends Bloc<StatisticEvent, StatisticState> {
 
     try {
       await Future.delayed(Duration(milliseconds: 800));
-      final statistics = _getSampleStatistics(event.month, event.year);
-      double totalAmount = statistics.fold(0, (sum, meal) => sum + meal.price);
+      String token = await TokenService.getToken('user') as String;
+      final statistics = await OrderService.getAllOrderByUserIdForMonthYear(
+        token,
+        event.month,
+        event.year,
+      );
+
+      final totalAmount = (statistics['data'] as List<MealStatistic>)
+          .fold<double>(0, (sum, meal) => sum + meal.totalPrice);
 
       emit(
-        StatisticLoaded(mealStatistics: statistics, totalAmount: totalAmount),
+        StatisticLoaded(
+          mealStatistics: statistics['data'] as List<MealStatistic>,
+          totalAmount: totalAmount,
+        ),
       );
     } catch (e) {
       emit(StatisticError(message: e.toString()));
     }
-  }
-
-  List<MealStatistic> _getSampleStatistics(int month, int year) {
-    final mealNames = [
-      'Cơm gà',
-      'Miến xào',
-      'Cơm trộn',
-      'Mỳ xào',
-      'Phở bò',
-      'Bún chả',
-      'Cơm sườn',
-      'Bánh mì',
-      'Bún bò',
-      'Cháo gà',
-    ];
-
-    final statistics = <MealStatistic>[];
-    final mealCount = 30;
-
-    for (int i = 0; i < mealCount; i++) {
-      final day = (i + 1) * 3;
-      final adjustedDay = day > 28 ? 28 - i : day;
-
-      statistics.add(
-        MealStatistic(
-          mealName: mealNames[i % mealNames.length],
-          price: 25000,
-          serviceDate: DateTime(year, month, adjustedDay),
-        ),
-      );
-    }
-
-    statistics.sort((a, b) => b.serviceDate.compareTo(a.serviceDate));
-
-    return statistics;
   }
 }

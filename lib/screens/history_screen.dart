@@ -184,13 +184,13 @@ class _HistoryPageState extends State<HistoryPage> {
               flex: 3,
               child: Padding(
                 padding: const EdgeInsets.only(left: 16),
-                child: Text(order.mealName, style: AppTextStyles.tableCell),
+                child: Text(order.foodName, style: AppTextStyles.tableCell),
               ),
             ),
             Expanded(
               flex: 2,
               child: Text(
-                DateFormat('d/M/yyyy').format(order.serviceDate),
+                DateFormat('d/M/yyyy').format(order.orderDate),
                 style: AppTextStyles.tableCell,
                 textAlign: TextAlign.center,
               ),
@@ -208,7 +208,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    _getStatusText(order.status, l10n),
+                    order.status == "ordered" ? l10n.ordered : l10n.order,
                     style: AppTextStyles.bodyXSmall.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
@@ -220,16 +220,5 @@ class _HistoryPageState extends State<HistoryPage> {
         ),
       ),
     );
-  }
-}
-
-String _getStatusText(OrderStatus status, AppLocalizations l10n) {
-  switch (status) {
-    case OrderStatus.completed:
-      return l10n.ordered;
-    case OrderStatus.cancelled:
-      return l10n.cancel;
-    case OrderStatus.pending:
-      return l10n.order;
   }
 }

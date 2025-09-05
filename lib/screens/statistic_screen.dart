@@ -170,7 +170,7 @@ class _StatisticPageState extends State<StatisticPage> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 12),
                 child: Text(
-                  meal.mealName,
+                  meal.foodName,
                   style: AppTextStyles.tableCell.copyWith(fontSize: 12),
                 ),
               ),
@@ -178,7 +178,7 @@ class _StatisticPageState extends State<StatisticPage> {
             Expanded(
               flex: 2,
               child: Text(
-                '${NumberFormat('#,###').format(meal.price)} VND',
+                DateFormat('d/M/yyyy').format(meal.orderDate),
                 style: AppTextStyles.tableCell.copyWith(fontSize: 12),
                 textAlign: TextAlign.center,
               ),
@@ -186,7 +186,7 @@ class _StatisticPageState extends State<StatisticPage> {
             Expanded(
               flex: 2,
               child: Text(
-                DateFormat('d/M/yyyy').format(meal.serviceDate),
+                '${NumberFormat('#,###').format(meal.price)} VND',
                 style: AppTextStyles.tableCell.copyWith(fontSize: 12),
                 textAlign: TextAlign.center,
               ),
