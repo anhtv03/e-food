@@ -32,14 +32,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
 
       final result = await AuthService.login(event.username, event.password);
-      print(result);
 
       await TokenService.saveToken('user', result["token"]);
-      print("save token thanh cong");
       emit(LoginSuccess(token: result["token"]));
     } catch (e) {
       String message = e.toString().replaceAll('Exception: ', '');
-      print(e.toString());
       emit(
         LoginError(
           message:

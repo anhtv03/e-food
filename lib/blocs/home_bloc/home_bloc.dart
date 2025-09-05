@@ -1,4 +1,5 @@
 import 'package:e_food/services/food_service.dart';
+import 'package:e_food/services/order_service.dart';
 import 'package:e_food/services/token_service.dart';
 import 'package:e_food/services/user_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,17 +38,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       try {
         await Future.delayed(Duration(milliseconds: 500));
+        String token = await TokenService.getToken('user') as String;
+        await OrderService.createOrder(token, event.meal.id);
 
-        final updatedMeals =
-            currentState.meals.map((meal) {
-              if (meal.id == event.meal.id &&
-                  meal.serviceDate.isAtSameMomentAs(event.meal.serviceDate)) {
-                return meal.copyWith(isOrdered: true);
-              }
-              return meal;
-            }).toList();
-
-        emit(currentState.copyWith(meals: updatedMeals));
+        final meals = await FoodService.getFoodItemsOnThisWeek(token);
+        emit(currentState.copyWith(meals: meals.data));
       } catch (e) {
         final errorMessage = event.localizations?.cantCancel;
         emit(HomeError(message: errorMessage!));
@@ -64,17 +59,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       try {
         await Future.delayed(Duration(milliseconds: 500));
+        String token = await TokenService.getToken('user') as String;
+        await OrderService.cancelOrder(token, event.meal.id);
 
-        final updatedMeals =
-            currentState.meals.map((meal) {
-              if (meal.id == event.meal.id &&
-                  meal.serviceDate.isAtSameMomentAs(event.meal.serviceDate)) {
-                return meal.copyWith(isOrdered: false);
-              }
-              return meal;
-            }).toList();
-
-        emit(currentState.copyWith(meals: updatedMeals));
+        final meals = await FoodService.getFoodItemsOnThisWeek(token);
+        emit(currentState.copyWith(meals: meals.data));
       } catch (e) {
         final errorMessage = event.localizations?.cantCancel;
         emit(HomeError(message: errorMessage!));

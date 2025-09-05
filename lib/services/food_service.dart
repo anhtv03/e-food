@@ -11,7 +11,6 @@ class FoodService {
       headers: {'Authorization': 'Bearer $token', 'accept': 'application/json'},
     );
     final body = jsonDecode(res.body) as Map<String, dynamic>;
-    print('FoodService: ${body}');
     if (res.statusCode == 200) {
       return ResponseList.fromJson(
         body,
