@@ -97,7 +97,7 @@ class _StatisticPageState extends State<StatisticPage> {
                     dishNameLabel: l10n.dishName,
                     dateLabel: l10n.supplyDate,
                     thirdColumnLabel: l10n.amount,
-                    headerColor: AppColors.blue600,
+                    headerColor: AppColors.blueHeader,
                   ),
                   rows:
                       state is StatisticLoaded
@@ -138,7 +138,7 @@ class _StatisticPageState extends State<StatisticPage> {
   Widget _buildTableRow(MealStatistic meal, int index, int length) {
     return Container(
       decoration: BoxDecoration(
-        color: index % 2 == 0 ? AppColors.grey50 : AppColors.white,
+        color: AppColors.white,
         borderRadius:
             index == length
                 ? const BorderRadius.only(

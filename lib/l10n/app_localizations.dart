@@ -100,470 +100,470 @@ abstract class AppLocalizations {
 
   /// No description provided for @appTitle.
   ///
-  /// In en, this message translates to:
-  /// **'ORDER FOOD'**
+  /// In vi, this message translates to:
+  /// **'ĐẶT CƠM'**
   String get appTitle;
 
   /// No description provided for @login.
   ///
-  /// In en, this message translates to:
-  /// **'Login'**
+  /// In vi, this message translates to:
+  /// **'Đăng nhập'**
   String get login;
 
   /// No description provided for @logout.
   ///
-  /// In en, this message translates to:
-  /// **'Log out'**
+  /// In vi, this message translates to:
+  /// **'Đăng xuất'**
   String get logout;
 
   /// No description provided for @loginTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Hello!'**
+  /// In vi, this message translates to:
+  /// **'Xin chào!'**
   String get loginTitle;
 
   /// No description provided for @subLoginTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Sign in to continue'**
+  /// In vi, this message translates to:
+  /// **'Đăng nhập để tiếp tục'**
   String get subLoginTitle;
 
   /// No description provided for @placeholderUsername.
   ///
-  /// In en, this message translates to:
-  /// **'Username'**
+  /// In vi, this message translates to:
+  /// **'Tên đăng nhập'**
   String get placeholderUsername;
 
   /// No description provided for @placeholderPassword.
   ///
-  /// In en, this message translates to:
-  /// **'Password'**
+  /// In vi, this message translates to:
+  /// **'Mật khẩu'**
   String get placeholderPassword;
 
   /// No description provided for @register.
   ///
-  /// In en, this message translates to:
-  /// **'Register'**
+  /// In vi, this message translates to:
+  /// **'Đăng ký'**
   String get register;
 
   /// No description provided for @comeBack.
   ///
-  /// In en, this message translates to:
-  /// **'Come back'**
+  /// In vi, this message translates to:
+  /// **'Quay lại'**
   String get comeBack;
 
   /// No description provided for @fullName.
   ///
-  /// In en, this message translates to:
-  /// **'FullName'**
+  /// In vi, this message translates to:
+  /// **'Tên đầy đủ'**
   String get fullName;
 
   /// No description provided for @employeeId.
   ///
-  /// In en, this message translates to:
-  /// **'Employee Id'**
+  /// In vi, this message translates to:
+  /// **'Mã nhân viên'**
   String get employeeId;
 
   /// No description provided for @accountName.
   ///
-  /// In en, this message translates to:
-  /// **'Account Name'**
+  /// In vi, this message translates to:
+  /// **'Tên tài khoản'**
   String get accountName;
 
   /// No description provided for @password.
   ///
-  /// In en, this message translates to:
-  /// **'Password'**
+  /// In vi, this message translates to:
+  /// **'Mật khẩu'**
   String get password;
 
   /// No description provided for @fullNameBlank.
   ///
-  /// In en, this message translates to:
-  /// **'FullName cannot be left blank'**
+  /// In vi, this message translates to:
+  /// **'Tên đầy đủ không được để trống'**
   String get fullNameBlank;
 
   /// No description provided for @employeeIdBlank.
   ///
-  /// In en, this message translates to:
-  /// **'Employee Id cannot be left blank'**
+  /// In vi, this message translates to:
+  /// **'Mã nhân viên không được để trống'**
   String get employeeIdBlank;
 
   /// No description provided for @employeeIdInvalid.
   ///
-  /// In en, this message translates to:
-  /// **'Invalid EmployeeId'**
+  /// In vi, this message translates to:
+  /// **'Mã nhân viên không hợp lệ'**
   String get employeeIdInvalid;
 
   /// No description provided for @usernameBlank.
   ///
-  /// In en, this message translates to:
-  /// **'Username cannot be left blank'**
+  /// In vi, this message translates to:
+  /// **'Tên tài khoản không được để trống'**
   String get usernameBlank;
 
   /// No description provided for @usernameInvalid.
   ///
-  /// In en, this message translates to:
-  /// **'Account already exists'**
+  /// In vi, this message translates to:
+  /// **'Tên tài khoản đã tồn tại'**
   String get usernameInvalid;
 
   /// No description provided for @passwordBlank.
   ///
-  /// In en, this message translates to:
-  /// **'Password cannot be left blank'**
+  /// In vi, this message translates to:
+  /// **'Mật khẩu không được để trống'**
   String get passwordBlank;
 
   /// No description provided for @passwordTooShort.
   ///
-  /// In en, this message translates to:
-  /// **'Password must be at least 6 characters'**
+  /// In vi, this message translates to:
+  /// **'Mật khẩu phải có ít nhất 6 ký tự'**
   String get passwordTooShort;
 
   /// No description provided for @forgotPassword.
   ///
-  /// In en, this message translates to:
-  /// **'Forgot Password?'**
+  /// In vi, this message translates to:
+  /// **'Quên mật khẩu?'**
   String get forgotPassword;
 
   /// No description provided for @createAccount.
   ///
-  /// In en, this message translates to:
-  /// **'Create New Account'**
+  /// In vi, this message translates to:
+  /// **'Tạo tài khoản mới'**
   String get createAccount;
 
   /// No description provided for @weeklyMeals.
   ///
-  /// In en, this message translates to:
-  /// **'Meals for this week'**
+  /// In vi, this message translates to:
+  /// **'Món ăn trong tuần này'**
   String get weeklyMeals;
 
   /// No description provided for @noteOrder.
   ///
-  /// In en, this message translates to:
-  /// **'Note: Please place your meal order no later than 10:00 AM'**
+  /// In vi, this message translates to:
+  /// **'Lưu ý: đặt cơm chậm nhất trước 10:00 AM'**
   String get noteOrder;
 
   /// No description provided for @no.
   ///
-  /// In en, this message translates to:
-  /// **'No'**
+  /// In vi, this message translates to:
+  /// **'STT'**
   String get no;
 
   /// No description provided for @dishName.
   ///
-  /// In en, this message translates to:
-  /// **'Dish Name'**
+  /// In vi, this message translates to:
+  /// **'Tên món'**
   String get dishName;
 
   /// No description provided for @supplyDate.
   ///
-  /// In en, this message translates to:
-  /// **'Supply Date'**
+  /// In vi, this message translates to:
+  /// **'Ngày cung cấp'**
   String get supplyDate;
 
   /// No description provided for @status.
   ///
-  /// In en, this message translates to:
-  /// **'Status'**
+  /// In vi, this message translates to:
+  /// **'Trạng thái'**
   String get status;
 
   /// No description provided for @amount.
   ///
-  /// In en, this message translates to:
-  /// **'Amount (VNĐ)'**
+  /// In vi, this message translates to:
+  /// **'Giá (VNĐ)'**
   String get amount;
 
   /// No description provided for @formatAmount.
   ///
-  /// In en, this message translates to:
-  /// **'Amount: {amount}₫'**
+  /// In vi, this message translates to:
+  /// **'Giá: {amount}₫'**
   String formatAmount(Object amount);
 
   /// No description provided for @formatDate.
   ///
-  /// In en, this message translates to:
-  /// **'Date: {date}'**
+  /// In vi, this message translates to:
+  /// **'Ngày: {date}'**
   String formatDate(Object date);
 
   /// No description provided for @welcomeUser.
   ///
-  /// In en, this message translates to:
-  /// **'Welcome, {name}!'**
+  /// In vi, this message translates to:
+  /// **'Xin chào, {name}!'**
   String welcomeUser(Object name);
 
   /// No description provided for @mealCount.
   ///
-  /// In en, this message translates to:
-  /// **'{count, plural, =0{No meals} =1{1 meal} other{{count} meals}}'**
+  /// In vi, this message translates to:
+  /// **'{count, plural, =0{Không có bữa ăn nào} =1{1 bữa ăn} other{{count} bữa ăn}}'**
   String mealCount(num count);
 
   /// No description provided for @successRegister.
   ///
-  /// In en, this message translates to:
-  /// **'Registration successful'**
+  /// In vi, this message translates to:
+  /// **'Đăng ký thành công'**
   String get successRegister;
 
   /// No description provided for @failRegister.
   ///
-  /// In en, this message translates to:
-  /// **'Registration failed'**
+  /// In vi, this message translates to:
+  /// **'Đăng ký thất bại'**
   String get failRegister;
 
   /// No description provided for @successLogin.
   ///
-  /// In en, this message translates to:
-  /// **'Login successful'**
+  /// In vi, this message translates to:
+  /// **'Đăng nhập thành công'**
   String get successLogin;
 
   /// No description provided for @failLogin.
   ///
-  /// In en, this message translates to:
-  /// **'Login failed'**
+  /// In vi, this message translates to:
+  /// **'Đăng nhập thất bại'**
   String get failLogin;
 
   /// No description provided for @mealStatistics.
   ///
-  /// In en, this message translates to:
-  /// **'Meal Statistics'**
+  /// In vi, this message translates to:
+  /// **'Thống kê suất ăn'**
   String get mealStatistics;
 
   /// No description provided for @orderHistory.
   ///
-  /// In en, this message translates to:
-  /// **'Order History'**
+  /// In vi, this message translates to:
+  /// **'Lịch sử đặt món'**
   String get orderHistory;
 
   /// No description provided for @month.
   ///
-  /// In en, this message translates to:
-  /// **'Month'**
+  /// In vi, this message translates to:
+  /// **'Tháng'**
   String get month;
 
   /// No description provided for @year.
   ///
-  /// In en, this message translates to:
-  /// **'Year'**
+  /// In vi, this message translates to:
+  /// **'Năm'**
   String get year;
 
   /// No description provided for @search.
   ///
-  /// In en, this message translates to:
-  /// **'Search'**
+  /// In vi, this message translates to:
+  /// **'Tìm kiếm'**
   String get search;
 
   /// No description provided for @totalAmount.
   ///
-  /// In en, this message translates to:
-  /// **'Total amount for the month: {amount} VND'**
+  /// In vi, this message translates to:
+  /// **'Tổng tiền trong tháng: {amount} VND'**
   String totalAmount(Object amount);
 
   /// No description provided for @noData.
   ///
-  /// In en, this message translates to:
-  /// **'No data'**
+  /// In vi, this message translates to:
+  /// **'Không có dữ liệu'**
   String get noData;
 
   /// No description provided for @order.
   ///
-  /// In en, this message translates to:
-  /// **'Order'**
+  /// In vi, this message translates to:
+  /// **'Đặt món'**
   String get order;
 
   /// No description provided for @ordered.
   ///
-  /// In en, this message translates to:
-  /// **'Ordered'**
+  /// In vi, this message translates to:
+  /// **'Đã đặt'**
   String get ordered;
 
   /// No description provided for @cancel.
   ///
-  /// In en, this message translates to:
-  /// **'Cancel'**
+  /// In vi, this message translates to:
+  /// **'Hủy món'**
   String get cancel;
 
   /// No description provided for @expired.
   ///
-  /// In en, this message translates to:
-  /// **'Expired'**
+  /// In vi, this message translates to:
+  /// **'Hết hạn'**
   String get expired;
 
   /// No description provided for @confirmCancel.
   ///
-  /// In en, this message translates to:
-  /// **'Confirm Cancel Order'**
+  /// In vi, this message translates to:
+  /// **'Xác nhận hủy món'**
   String get confirmCancel;
 
   /// No description provided for @confirmOrder.
   ///
-  /// In en, this message translates to:
-  /// **'Confirm Order'**
+  /// In vi, this message translates to:
+  /// **'Xác nhận đặt món'**
   String get confirmOrder;
 
   /// No description provided for @confirmMsgCancel.
   ///
-  /// In en, this message translates to:
-  /// **'Are you sure you want to cancel the meal {mealName}?'**
+  /// In vi, this message translates to:
+  /// **'Bạn có chắc chắn muốn huỷ món {mealName} không?'**
   String confirmMsgCancel(Object mealName);
 
   /// No description provided for @confirmMsgOrder.
   ///
-  /// In en, this message translates to:
-  /// **'Are you sure you want to order the meal {mealName}?'**
+  /// In vi, this message translates to:
+  /// **'Bạn có chắc chắn muốn đặt món {mealName} không?'**
   String confirmMsgOrder(Object mealName);
 
   /// No description provided for @usernameIsEmpty.
   ///
-  /// In en, this message translates to:
-  /// **'Username cannot be empty'**
+  /// In vi, this message translates to:
+  /// **'Tên đăng nhập không được để trống'**
   String get usernameIsEmpty;
 
   /// No description provided for @passwordIsEmpty.
   ///
-  /// In en, this message translates to:
-  /// **'Password cannot be empty'**
+  /// In vi, this message translates to:
+  /// **'Mật khẩu không được để trống'**
   String get passwordIsEmpty;
 
   /// No description provided for @incorrectInputLogin.
   ///
-  /// In en, this message translates to:
-  /// **'You entered an incorrect username or password!'**
+  /// In vi, this message translates to:
+  /// **'Bạn nhập sai tên tài khoản hoặc mật khẩu!'**
   String get incorrectInputLogin;
 
   /// No description provided for @loginFailedServer.
   ///
-  /// In en, this message translates to:
-  /// **'Login failed due to system error'**
+  /// In vi, this message translates to:
+  /// **'Đăng nhập thất bại do lỗi hệ thống'**
   String get loginFailedServer;
 
   /// No description provided for @fillFullName.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter full name'**
+  /// In vi, this message translates to:
+  /// **'Vui lòng nhập tên đầy đủ'**
   String get fillFullName;
 
   /// No description provided for @fillEmployeeId.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter employee ID'**
+  /// In vi, this message translates to:
+  /// **'Vui lòng nhập mã nhân viên'**
   String get fillEmployeeId;
 
   /// No description provided for @fillUsername.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter username'**
+  /// In vi, this message translates to:
+  /// **'Vui lòng nhập tên tài khoản'**
   String get fillUsername;
 
   /// No description provided for @fillPassword.
   ///
-  /// In en, this message translates to:
-  /// **'Please enter password'**
+  /// In vi, this message translates to:
+  /// **'Vui lòng nhập mật khẩu'**
   String get fillPassword;
 
   /// No description provided for @passwordMinCharacters.
   ///
-  /// In en, this message translates to:
-  /// **'Password must be at least 6 characters'**
+  /// In vi, this message translates to:
+  /// **'Mật khẩu phải có ít nhất 6 ký tự'**
   String get passwordMinCharacters;
 
   /// No description provided for @registrationSuccessful.
   ///
-  /// In en, this message translates to:
-  /// **'Registration successful!'**
+  /// In vi, this message translates to:
+  /// **'Đăng ký thành công!'**
   String get registrationSuccessful;
 
   /// No description provided for @errorOccurred.
   ///
-  /// In en, this message translates to:
-  /// **'An error occurred. Please try again.'**
+  /// In vi, this message translates to:
+  /// **'Đã có lỗi xảy ra. Vui lòng thử lại.'**
   String get errorOccurred;
 
   /// No description provided for @loadFailedHistory.
   ///
-  /// In en, this message translates to:
-  /// **'Failed to load order history'**
+  /// In vi, this message translates to:
+  /// **'Không thể tải lịch sử đặt món'**
   String get loadFailedHistory;
 
   /// No description provided for @failedRenewHistory.
   ///
-  /// In en, this message translates to:
-  /// **'Failed to refresh history'**
+  /// In vi, this message translates to:
+  /// **'Không thể làm mới lịch sử'**
   String get failedRenewHistory;
 
   /// No description provided for @cantOrder.
   ///
-  /// In en, this message translates to:
-  /// **'Cannot order'**
+  /// In vi, this message translates to:
+  /// **'Không thể đặt món'**
   String get cantOrder;
 
   /// No description provided for @cantCancel.
   ///
-  /// In en, this message translates to:
-  /// **'Cannot cancel order'**
+  /// In vi, this message translates to:
+  /// **'Không thể hủy món'**
   String get cantCancel;
 
   /// No description provided for @noOrdered.
   ///
-  /// In en, this message translates to:
-  /// **'Please place your first order!'**
+  /// In vi, this message translates to:
+  /// **'Hãy đặt món đầu tiên của bạn!'**
   String get noOrdered;
 
   /// No description provided for @updateSuccess.
   ///
-  /// In en, this message translates to:
-  /// **'Update successful'**
+  /// In vi, this message translates to:
+  /// **'Cập nhật thành công'**
   String get updateSuccess;
 
   /// No description provided for @confirm.
   ///
-  /// In en, this message translates to:
-  /// **'Confirm'**
+  /// In vi, this message translates to:
+  /// **'Xác nhận'**
   String get confirm;
 
   /// No description provided for @unconfirm.
   ///
-  /// In en, this message translates to:
-  /// **'No'**
+  /// In vi, this message translates to:
+  /// **'Không'**
   String get unconfirm;
 
   /// No description provided for @chooseOtherYear.
   ///
-  /// In en, this message translates to:
-  /// **'Please choose another month/year to view statistics'**
+  /// In vi, this message translates to:
+  /// **'Hãy chọn tháng/năm khác để xem thống kê'**
   String get chooseOtherYear;
 
   /// No description provided for @yes.
   ///
-  /// In en, this message translates to:
-  /// **'Agree'**
+  /// In vi, this message translates to:
+  /// **'Đồng ý'**
   String get yes;
 
   /// No description provided for @usernameExisted.
   ///
-  /// In en, this message translates to:
-  /// **'Username already exists'**
+  /// In vi, this message translates to:
+  /// **'Tên đăng nhập đã tồn tại'**
   String get usernameExisted;
 
   /// No description provided for @employeeCodeExisted.
   ///
-  /// In en, this message translates to:
-  /// **'Employee ID already exists, please check again!'**
+  /// In vi, this message translates to:
+  /// **'Mã nhân viên đã tồn tại, vui lòng kiểm tra lại!'**
   String get employeeCodeExisted;
 
   /// No description provided for @confirmLogout.
   ///
-  /// In en, this message translates to:
-  /// **'Are you sure you want to log out?'**
+  /// In vi, this message translates to:
+  /// **'Bạn có chắc chắn muốn đăng xuất không?'**
   String get confirmLogout;
 
   /// No description provided for @logoutTitle.
   ///
-  /// In en, this message translates to:
-  /// **'Confirm Logout'**
+  /// In vi, this message translates to:
+  /// **'Xác nhận đăng xuất'**
   String get logoutTitle;
 
   /// No description provided for @cancelLogout.
   ///
-  /// In en, this message translates to:
-  /// **'Cancel'**
+  /// In vi, this message translates to:
+  /// **'Hủy'**
   String get cancelLogout;
 }
 

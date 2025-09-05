@@ -48,7 +48,11 @@ class AppDrawer extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.close, color: AppColors.black54, size: 24),
+                  icon: Icon(
+                    Icons.close,
+                    color: AppColors.blackClose,
+                    size: 24,
+                  ),
                 ),
               ],
             ),
@@ -147,7 +151,7 @@ class AppDrawer extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-            color: AppColors.black87,
+            color: AppColors.black,
           ),
         ),
         selected: isSelected,

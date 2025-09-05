@@ -153,7 +153,7 @@ class _HistoryPageState extends State<HistoryPage> {
   ) {
     return Container(
       decoration: BoxDecoration(
-        color: index % 2 == 0 ? AppColors.grey50 : AppColors.white,
+        color: AppColors.white,
         borderRadius:
             index == length
                 ? const BorderRadius.only(
@@ -173,7 +173,7 @@ class _HistoryPageState extends State<HistoryPage> {
         child: Row(
           children: [
             SizedBox(
-              width: 40,
+              width: 30,
               child: Text(
                 index.toString(),
                 style: AppTextStyles.tableCell,
