@@ -5,6 +5,7 @@ import 'package:e_food/blocs/statistic_bloc/statistic_event.dart';
 import 'package:e_food/l10n/app_localizations.dart';
 import 'package:e_food/screens/home_screen.dart';
 import 'package:e_food/screens/login_screen.dart';
+import 'package:e_food/services/token_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -64,8 +65,7 @@ class MyApp extends StatelessWidget {
   }
 
   Future<bool> _checkLoginStatus() async {
-    // String? token = await TokenService.getToken('user');
-    // return token != null && token.isNotEmpty;
-    return false;
+    String? token = await TokenService.getToken('user');
+    return token != null && token.isNotEmpty;
   }
 }

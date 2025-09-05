@@ -15,6 +15,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Login';
 
   @override
+  String get logout => 'Log out';
+
+  @override
   String get loginTitle => 'Hello!';
 
   @override
@@ -254,4 +257,13 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get employeeCodeExisted =>
       'Employee ID already exists, please check again!';
+
+  @override
+  String get confirmLogout => 'Are you sure you want to log out?';
+
+  @override
+  String get logoutTitle => 'Confirm Logout';
+
+  @override
+  String get cancelLogout => 'Cancel';
 }

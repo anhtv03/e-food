@@ -21,7 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final localizations = AppLocalizations.of(context);
 
     try {
-      if (event.username.isEmpty) {
+      if (event.username.trim().isEmpty) {
         emit(UsernameError(message: localizations.usernameIsEmpty));
         return;
       }

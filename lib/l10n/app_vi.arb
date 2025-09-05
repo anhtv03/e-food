@@ -3,6 +3,7 @@
 
   "appTitle": "ĐẶT CƠM",
   "login": "Đăng nhập",
+  "logout": "Đăng xuất",
   "loginTitle": "Xin chào!",
   "subLoginTitle": "Đăng nhập để tiếp tục",
   "placeholderUsername": "Tên đăng nhập",
@@ -75,5 +76,8 @@
   "chooseOtherYear": "Hãy chọn tháng/năm khác để xem thống kê",
   "yes": "Đồng ý",
   "usernameExisted": "Tên đăng nhập đã tồn tại",
-  "employeeCodeExisted": "Mã nhân viên đã tồn tại, vui lòng kiểm tra lại!"
+  "employeeCodeExisted": "Mã nhân viên đã tồn tại, vui lòng kiểm tra lại!",
+  "confirmLogout": "Bạn có chắc chắn muốn đăng xuất không?",
+  "logoutTitle": "Xác nhận đăng xuất",
+  "cancelLogout": "Hủy"
 }

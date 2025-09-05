@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get login;
 
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out'**
+  String get logout;
+
   /// No description provided for @loginTitle.
   ///
   /// In en, this message translates to:
@@ -541,6 +547,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Employee ID already exists, please check again!'**
   String get employeeCodeExisted;
+
+  /// No description provided for @confirmLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to log out?'**
+  String get confirmLogout;
+
+  /// No description provided for @logoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Logout'**
+  String get logoutTitle;
+
+  /// No description provided for @cancelLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelLogout;
 }
 
 class _AppLocalizationsDelegate

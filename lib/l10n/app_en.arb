@@ -4,6 +4,7 @@
 
   "appTitle": "ORDER FOOD",
   "login": "Login",
+  "logout": "Log out",
   "loginTitle": "Hello!",
   "subLoginTitle": "Sign in to continue",
   "placeholderUsername": "Username",
@@ -76,5 +77,8 @@
   "chooseOtherYear": "Please choose another month/year to view statistics",
   "yes": "Agree",
   "usernameExisted": "Username already exists",
-  "employeeCodeExisted": "Employee ID already exists, please check again!"
+  "employeeCodeExisted": "Employee ID already exists, please check again!",
+  "confirmLogout": "Are you sure you want to log out?",
+  "logoutTitle": "Confirm Logout",
+  "cancelLogout": "Cancel"
 }

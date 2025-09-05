@@ -20,17 +20,17 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     final localizations = AppLocalizations.of(context);
 
     try {
-      if (event.fullName.isEmpty) {
+      if (event.fullName.trim().isEmpty) {
         emit(NameError(message: localizations.fillFullName));
         return;
       }
 
-      if (event.employeeId.isEmpty) {
+      if (event.employeeId.trim().isEmpty) {
         emit(EmployeeError(message: localizations.fillEmployeeId));
         return;
       }
 
-      if (event.username.isEmpty) {
+      if (event.username.trim().isEmpty) {
         emit(UsernameError(message: localizations.fillUsername));
         return;
       }

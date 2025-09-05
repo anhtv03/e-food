@@ -15,6 +15,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get login => 'Đăng nhập';
 
   @override
+  String get logout => 'Đăng xuất';
+
+  @override
   String get loginTitle => 'Xin chào!';
 
   @override
@@ -251,4 +254,13 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get employeeCodeExisted =>
       'Mã nhân viên đã tồn tại, vui lòng kiểm tra lại!';
+
+  @override
+  String get confirmLogout => 'Bạn có chắc chắn muốn đăng xuất không?';
+
+  @override
+  String get logoutTitle => 'Xác nhận đăng xuất';
+
+  @override
+  String get cancelLogout => 'Hủy';
 }

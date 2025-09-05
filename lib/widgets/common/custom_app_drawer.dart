@@ -4,6 +4,7 @@ import 'package:e_food/screens/login_screen.dart';
 import 'package:e_food/screens/history_screen.dart';
 import 'package:e_food/screens/statistic_screen.dart';
 import 'package:e_food/constants/app_colors.dart';
+import 'package:e_food/services/token_service.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -104,10 +105,10 @@ class AppDrawer extends StatelessWidget {
                   context: context,
                   icon: Icons.logout,
                   iconColor: AppColors.red,
-                  title: 'Đăng xuất',
+                  title: localizations.logout,
                   onTap: () {
                     Navigator.pop(context);
-                    _showLogoutDialog(context);
+                    _showLogoutDialog(context, localizations);
                   },
                 ),
               ],
@@ -158,28 +159,29 @@ class AppDrawer extends StatelessWidget {
     );
   }
 
-  void _showLogoutDialog(BuildContext context) {
+  void _showLogoutDialog(BuildContext context, AppLocalizations localizations) {
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text('Xác nhận đăng xuất'),
-            content: Text('Bạn có chắc chắn muốn đăng xuất không?'),
+            title: Text(localizations.loginTitle),
+            content: Text(localizations.confirmLogout),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Hủy'),
+                child: Text(localizations.cancelLogout),
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
+                  TokenService.deleteToken("user");
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: AppColors.red),
-                child: Text('Đăng xuất'),
+                child: Text(localizations.logout),
               ),
             ],
           ),
