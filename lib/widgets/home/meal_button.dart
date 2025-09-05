@@ -82,6 +82,21 @@ class MealActionButtons extends StatelessWidget {
             ),
           ),
         );
+      case MealState.expired:
+        return Container(
+          height: 27,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          decoration: BoxDecoration(
+            color: AppColors.grey,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Center(
+            child: Text(
+              l10n.expired,
+              style: AppTextStyles.buttonSmall.copyWith(color: AppColors.white),
+            ),
+          ),
+        );
       case MealState.disabled:
         return Container(
           height: 27,

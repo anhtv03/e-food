@@ -167,7 +167,7 @@ class _HomePageState extends State<HomePage> {
       if (isAfterToday || isSameDayAndBeforeDeadline) {
         return MealState.order;
       } else {
-        return MealState.disabled;
+        return MealState.expired;
       }
     }
   }

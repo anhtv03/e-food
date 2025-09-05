@@ -49,5 +49,6 @@ enum MealState {
   order, // Ordered (active)
   cancel, // Canceled (active)
   ordered, // Ordered (disabled)
+  expired, // Expired (disabled)
   disabled, // Ordered (disabled)
 }
