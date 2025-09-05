@@ -37,7 +37,7 @@ class MealCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Container(
-                width: 150,
+                width: 180,
                 height: 94,
                 color: AppColors.grey200,
                 child:
