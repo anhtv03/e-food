@@ -138,7 +138,7 @@ class _StatisticPageState extends State<StatisticPage> {
   Widget _buildTableRow(MealStatistic meal, int index, int length) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: index % 2 == 0 ? AppColors.grey200 : AppColors.white,
         borderRadius:
             index == length
                 ? const BorderRadius.only(
