@@ -24,7 +24,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       emit(HomeLoaded(meals: meals.data, userName: userResult.data.fullName));
     } catch (e) {
-      final errorMessage = event.localizations?.cantCancel;
+      final errorMessage = event.localizations?.noData;
       emit(HomeError(message: errorMessage!));
     }
   }
@@ -44,7 +44,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         final meals = await FoodService.getFoodItemsOnThisWeek(token);
         emit(currentState.copyWith(meals: meals.data));
       } catch (e) {
-        final errorMessage = event.localizations?.cantCancel;
+        final errorMessage = event.localizations?.cantOrder;
         emit(HomeError(message: errorMessage!));
       }
     }

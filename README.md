@@ -47,13 +47,13 @@ bash flutter run
 ## 🏗️ Project structure
 ```
 lib/
-   ├── blocs/ # Business Logic Components
-   ├── constants/ # Constants, colors, styles
-   ├── l10n/ # Multilingual
-   ├── models/ # Data models
-   ├── screens/ # Application screens
-   ├── services/ # Services (API, local storage)
-   └── widgets/ # Reusable widgets
+   ├── blocs/       # Business Logic Components
+   ├── constants/   # Constants, colors, styles
+   ├── l10n/        # Multilingual
+   ├── models/      # Data models
+   ├── screens/     # Application screens
+   ├── services/    # Services (API, local storage)
+   └── widgets/     # Reusable widgets
 ```
 
 ## 🔧 Configuration
@@ -62,8 +62,7 @@ lib/
 Configure API endpoint in `lib/constants/api_constants.dart`:
 
 ```
-dart static const String baseUrl = '[http://your-api-endpoint](http://your-api-endpoint)';
-
+dart static const String baseUrl = '[http://your-api-endpoint]';
 ```
 
 ### Language
