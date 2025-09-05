@@ -247,4 +247,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get yes => 'Agree';
+
+  @override
+  String get usernameExisted => 'Username already exists';
+
+  @override
+  String get employeeCodeExisted =>
+      'Employee ID already exists, please check again!';
 }

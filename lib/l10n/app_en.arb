@@ -74,5 +74,7 @@
   "confirm" : "Confirm",
   "unconfirm": "No",
   "chooseOtherYear": "Please choose another month/year to view statistics",
-  "yes": "Agree"
+  "yes": "Agree",
+  "usernameExisted": "Username already exists",
+  "employeeCodeExisted": "Employee ID already exists, please check again!"
 }

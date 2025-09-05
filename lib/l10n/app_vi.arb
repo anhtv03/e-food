@@ -73,5 +73,7 @@
   "confirm" : "Xác nhận",
   "unconfirm": "Không",
   "chooseOtherYear": "Hãy chọn tháng/năm khác để xem thống kê",
-  "yes": "Đồng ý"
+  "yes": "Đồng ý",
+  "usernameExisted": "Tên đăng nhập đã tồn tại",
+  "employeeCodeExisted": "Mã nhân viên đã tồn tại, vui lòng kiểm tra lại!"
 }

@@ -244,4 +244,11 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get yes => 'Đồng ý';
+
+  @override
+  String get usernameExisted => 'Tên đăng nhập đã tồn tại';
+
+  @override
+  String get employeeCodeExisted =>
+      'Mã nhân viên đã tồn tại, vui lòng kiểm tra lại!';
 }

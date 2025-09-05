@@ -529,6 +529,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Agree'**
   String get yes;
+
+  /// No description provided for @usernameExisted.
+  ///
+  /// In en, this message translates to:
+  /// **'Username already exists'**
+  String get usernameExisted;
+
+  /// No description provided for @employeeCodeExisted.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee ID already exists, please check again!'**
+  String get employeeCodeExisted;
 }
 
 class _AppLocalizationsDelegate
