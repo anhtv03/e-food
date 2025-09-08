@@ -67,7 +67,7 @@ class AppDrawer extends StatelessWidget {
                   context: context,
                   icon: Icons.restaurant_menu,
                   iconColor: AppColors.orange,
-                  isSelected: page == "home" ? true : false,
+                  isSelected: page == "home",
                   title: localizations.weeklyMeals,
                   onTap: () {
                     Navigator.pop(context);
@@ -81,7 +81,7 @@ class AppDrawer extends StatelessWidget {
                   context: context,
                   icon: Icons.history,
                   iconColor: AppColors.blue,
-                  isSelected: page == "history" ? true : false,
+                  isSelected: page == "history",
                   title: localizations.orderHistory,
                   onTap: () {
                     Navigator.pop(context);

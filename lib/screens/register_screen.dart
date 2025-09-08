@@ -31,7 +31,12 @@ class RegisterPageState extends State<RegisterPage> {
       child: BlocConsumer<RegisterBloc, RegisterState>(
         listener: (context, state) {
           if (state is RegisterSuccess) {
-            _showSnackBar(state.message);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+                duration: Duration(seconds: 2),
+              ),
+            );
             Navigator.pop(context);
           }
         },
@@ -158,12 +163,6 @@ class RegisterPageState extends State<RegisterPage> {
   }
 
   //========================handle logic==============================
-  void _showSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), duration: Duration(seconds: 3)),
-    );
-  }
-
   void _handleRegister(BuildContext context) {
     context.read<RegisterBloc>().add(
       RegisterHandleEvent(
