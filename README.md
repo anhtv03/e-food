@@ -31,17 +31,17 @@ E-Food is a mobile application built with Flutter, which helps users easily orde
 
 1. Clone repository:
 ```
-bash git clone https://github.com/anhtv03/e-food
+git clone https://github.com/anhtv03/e-food
 ```
 
 2. Install dependencies:
 ```
-bash flutter pub get
+flutter pub get
 ```
 
 3. Run the application:
 ```
-bash flutter run
+flutter run
 ```
 
 ## 🏗️ Project structure
