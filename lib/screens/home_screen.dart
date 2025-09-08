@@ -65,6 +65,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Header name user
+                  SizedBox(height: 8),
                   UserGreeting(userName: state.userName),
 
                   // Header section
@@ -72,6 +73,13 @@ class _HomePageState extends State<HomePage> {
                     title: l10n.weeklyMeals,
                     icon: Icons.restaurant_menu,
                     iconColor: AppColors.orange,
+                  ),
+                  const Divider(
+                    height: 10,
+                    thickness: 1,
+                    indent: 10,
+                    endIndent: 10,
+                    color: AppColors.darkGreen,
                   ),
                   Container(
                     width: double.infinity,

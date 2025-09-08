@@ -13,7 +13,7 @@ class UserGreeting extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(8),
       color: AppColors.white,
       child: Text(l10n.welcomeUser(userName), style: AppTextStyles.subtitle),
     );
