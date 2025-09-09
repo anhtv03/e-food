@@ -1,3 +1,4 @@
+import 'package:e_food/constants/app_assets.dart';
 import 'package:e_food/l10n/app_localizations.dart';
 import 'package:e_food/screens/home_screen.dart';
 import 'package:e_food/screens/login_screen.dart';
@@ -33,7 +34,7 @@ class AppDrawer extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(Icons.location_on, color: AppColors.red, size: 24),
+                Image.asset(AppAssets.foodIcon, width: 24, height: 24),
                 SizedBox(width: 8),
                 Text(
                   localizations.appTitle,
@@ -65,7 +66,7 @@ class AppDrawer extends StatelessWidget {
               children: [
                 _buildMenuItem(
                   context: context,
-                  icon: Icons.restaurant_menu,
+                  iconPath: AppAssets.mealIcon,
                   iconColor: AppColors.orange,
                   isSelected: page == "home",
                   title: localizations.weeklyMeals,
@@ -79,7 +80,7 @@ class AppDrawer extends StatelessWidget {
                 ),
                 _buildMenuItem(
                   context: context,
-                  icon: Icons.history,
+                  iconPath: AppAssets.historyIcon,
                   iconColor: AppColors.blue,
                   isSelected: page == "history",
                   title: localizations.orderHistory,
@@ -93,7 +94,7 @@ class AppDrawer extends StatelessWidget {
                 ),
                 _buildMenuItem(
                   context: context,
-                  icon: Icons.analytics_outlined,
+                  iconPath: AppAssets.statisticIcon,
                   iconColor: AppColors.green,
                   isSelected: page == "statistic",
                   title: localizations.mealStatistics,
@@ -107,7 +108,7 @@ class AppDrawer extends StatelessWidget {
                 ),
                 _buildMenuItem(
                   context: context,
-                  icon: Icons.logout,
+                  iconPath: AppAssets.logoutIcon,
                   iconColor: AppColors.red,
                   title: localizations.logout,
                   onTap: () {
@@ -125,7 +126,7 @@ class AppDrawer extends StatelessWidget {
 
   Widget _buildMenuItem({
     required BuildContext context,
-    required IconData icon,
+    required String iconPath,
     required Color iconColor,
     required String title,
     bool isSelected = false,
@@ -144,7 +145,7 @@ class AppDrawer extends StatelessWidget {
                     : AppColors.transparent,
             borderRadius: BorderRadius.zero,
           ),
-          child: Icon(icon, color: iconColor, size: 20),
+          child: Image.asset(iconPath, width: 20, height: 20),
         ),
         title: Text(
           title,

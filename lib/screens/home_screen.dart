@@ -1,6 +1,7 @@
 import 'package:e_food/blocs/home_bloc/home_bloc.dart';
 import 'package:e_food/blocs/home_bloc/home_event.dart';
 import 'package:e_food/blocs/home_bloc/home_state.dart';
+import 'package:e_food/constants/app_assets.dart';
 import 'package:e_food/constants/app_text_styles.dart';
 import 'package:e_food/models/meal.dart';
 import 'package:e_food/widgets/common/custom_app_drawer.dart';
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                   // Header section
                   AppHeader(
                     title: l10n.weeklyMeals,
-                    icon: Icons.restaurant_menu,
+                    iconPath: AppAssets.mealIcon,
                     iconColor: AppColors.orange,
                   ),
                   const Divider(

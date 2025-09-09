@@ -1,6 +1,7 @@
 import 'package:e_food/blocs/history_bloc/history_bloc.dart';
 import 'package:e_food/blocs/history_bloc/history_event.dart';
 import 'package:e_food/blocs/history_bloc/history_state.dart';
+import 'package:e_food/constants/app_assets.dart';
 import 'package:e_food/models/history.dart';
 import 'package:e_food/widgets/common/custom_app_drawer.dart';
 import 'package:e_food/widgets/common/custom_app_header.dart';
@@ -65,9 +66,9 @@ class _HistoryPageState extends State<HistoryPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppHeader(
-                      title: l10n.orderHistory,
-                      icon: Icons.access_time,
-                      iconColor: AppColors.blue,
+                      title: l10n.weeklyMeals,
+                      iconPath: AppAssets.historyIcon,
+                      iconColor: AppColors.orange,
                     ),
                     const Divider(
                       height: 10,

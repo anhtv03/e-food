@@ -1,6 +1,7 @@
 import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import '../../constants/app_assets.dart';
 
 class AppMenu extends StatelessWidget implements PreferredSizeWidget {
   const AppMenu({super.key});
@@ -13,13 +14,7 @@ class AppMenu extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: Container(
         margin: EdgeInsets.only(left: 16),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.location_on, color: AppColors.red, size: 20),
-            SizedBox(width: 4),
-          ],
-        ),
+        child: Image.asset(AppAssets.foodIcon, width: 25, height: 25),
       ),
       title: Text(
         localizations.appTitle,

@@ -1,6 +1,7 @@
 import 'package:e_food/blocs/statistic_bloc/statistic_bloc.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_event.dart';
 import 'package:e_food/blocs/statistic_bloc/statistic_state.dart';
+import 'package:e_food/constants/app_assets.dart';
 import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/constants/app_text_styles.dart';
 import 'package:e_food/models/meal_statistic.dart';
@@ -61,9 +62,9 @@ class _StatisticPageState extends State<StatisticPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppHeader(
-                  title: l10n.mealStatistics,
-                  icon: Icons.bar_chart,
-                  iconColor: AppColors.blue,
+                  title: l10n.weeklyMeals,
+                  iconPath: AppAssets.statisticIcon,
+                  iconColor: AppColors.orange,
                 ),
                 const Divider(
                   height: 10,

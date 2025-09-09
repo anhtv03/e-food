@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 
 class AppHeader extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final IconData? icon;
+  final String? iconPath;
   final Color iconColor;
 
   const AppHeader({
     super.key,
     required this.title,
-    required this.icon,
+    this.icon,
+    this.iconPath,
     this.iconColor = AppColors.blue,
   });
 
@@ -22,11 +24,20 @@ class AppHeader extends StatelessWidget {
       color: AppColors.white,
       child: Row(
         children: [
-          Icon(icon, color: iconColor, size: 24),
+          _buildIcon(),
           const SizedBox(width: 8),
           Text(title, style: AppTextStyles.heading3),
         ],
       ),
     );
+  }
+
+  Widget _buildIcon() {
+    if (iconPath != null) {
+      return Image.asset(iconPath!, width: 24, height: 24);
+    } else if (icon != null) {
+      return Icon(icon, color: iconColor, size: 24);
+    }
+    return const SizedBox();
   }
 }
