@@ -18,7 +18,7 @@ class AppHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.only(bottom: 4, left: 16, right: 16, top: 16),
       color: AppColors.white,
       child: Row(
         children: [
