@@ -34,7 +34,7 @@ class AppDrawer extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.asset(AppAssets.foodIcon, width: 24, height: 24),
+                Image.asset(AppAssets.foodIcon, width: 32, height: 32),
                 SizedBox(width: 8),
                 Text(
                   localizations.appTitle,
