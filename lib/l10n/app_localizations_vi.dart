@@ -75,7 +75,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get createAccount => 'Tạo tài khoản mới';
 
   @override
-  String get weeklyMeals => 'Món ăn trong tuần này';
+  String get weeklyMeals => 'Món ăn trong tuần';
 
   @override
   String get noteOrder => 'Lưu ý: đặt cơm chậm nhất trước 10:00 AM';

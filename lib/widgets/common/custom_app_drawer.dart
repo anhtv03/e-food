@@ -25,7 +25,7 @@ class AppDrawer extends StatelessWidget {
           // Header section
           Container(
             width: double.infinity,
-            padding: EdgeInsets.fromLTRB(16, 50, 16, 20),
+            padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
             decoration: BoxDecoration(
               color: AppColors.white,
               border: Border(
@@ -52,7 +52,7 @@ class AppDrawer extends StatelessWidget {
                   icon: Icon(
                     Icons.close,
                     color: AppColors.blackClose,
-                    size: 24,
+                    size: 32,
                   ),
                 ),
               ],
@@ -158,7 +158,7 @@ class AppDrawer extends StatelessWidget {
         selected: isSelected,
         selectedTileColor: AppColors.grey50,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         onTap: onTap,
       ),
     );

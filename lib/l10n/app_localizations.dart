@@ -233,7 +233,7 @@ abstract class AppLocalizations {
   /// No description provided for @weeklyMeals.
   ///
   /// In vi, this message translates to:
-  /// **'Món ăn trong tuần này'**
+  /// **'Món ăn trong tuần'**
   String get weeklyMeals;
 
   /// No description provided for @noteOrder.
