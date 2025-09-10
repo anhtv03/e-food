@@ -1,5 +1,6 @@
 import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/constants/app_text_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppTable extends StatelessWidget {
@@ -41,7 +42,7 @@ class AppTable extends StatelessWidget {
               isLoading
                   ? const Padding(
                     padding: EdgeInsets.all(40),
-                    child: Center(child: CircularProgressIndicator()),
+                    child: Center(child: CupertinoActivityIndicator()),
                   )
                   : rows.isEmpty
                   ? emptyState

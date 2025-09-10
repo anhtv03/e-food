@@ -12,6 +12,7 @@ import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/widgets/home/meal_button.dart';
 import 'package:e_food/widgets/home/meal_card.dart';
 import 'package:e_food/widgets/home/user_greeting.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_food/l10n/app_localizations.dart';
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> {
         },
         builder: (context, state) {
           if (state is HomeLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CupertinoActivityIndicator());
           }
           if (state is HomeLoaded) {
             return RefreshIndicator(

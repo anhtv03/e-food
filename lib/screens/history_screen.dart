@@ -9,6 +9,7 @@ import 'package:e_food/widgets/common/custom_app_menu.dart';
 import 'package:e_food/constants/app_colors.dart';
 import 'package:e_food/constants/app_text_styles.dart';
 import 'package:e_food/widgets/common/custom_app_table.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -48,7 +49,7 @@ class _HistoryPageState extends State<HistoryPage> {
         },
         builder: (context, state) {
           if (state is HistoryLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CupertinoActivityIndicator());
           }
           if (state is HistoryLoaded) {
             return RefreshIndicator(
