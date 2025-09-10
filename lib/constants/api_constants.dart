@@ -1,5 +1,5 @@
 class RouteConstants {
-  static const String baseUrl = 'http://10.2.44.84:7777';
+  static const String baseUrl = 'http://30.30.30.86:7777';
 
   static String getUrl(String endPoint) {
     return "$baseUrl/api$endPoint";
