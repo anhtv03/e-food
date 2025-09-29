@@ -62,7 +62,7 @@ class _StatisticPageState extends State<StatisticPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppHeader(
-                  title: l10n.weeklyMeals,
+                  title: l10n.mealStatistics,
                   iconPath: AppAssets.statisticIcon,
                   iconColor: AppColors.orange,
                 ),

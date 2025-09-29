@@ -18,6 +18,13 @@ dependencies:
   flutter_bloc: ^9.1.1
   equatable: ^2.0.7
   intl: ^0.20.2
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/food-pin.png"
 
 dev_dependencies:
   flutter_test:

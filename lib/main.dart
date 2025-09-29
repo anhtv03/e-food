@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
-    Locale locale = const Locale('vi');
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
@@ -35,9 +34,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         localeResolutionCallback: (deviceLocale, supportedLocales) {
-          return locale;
+          if (deviceLocale != null &&
+              supportedLocales
+                  .map((e) => e.languageCode)
+                  .contains(deviceLocale.languageCode)) {
+            return Locale(deviceLocale.languageCode);
+          }
+          return const Locale('vi');
         },
-        locale: locale,
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,

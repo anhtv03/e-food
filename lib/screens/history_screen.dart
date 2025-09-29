@@ -67,7 +67,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppHeader(
-                      title: l10n.weeklyMeals,
+                      title: l10n.orderHistory,
                       iconPath: AppAssets.historyIcon,
                       iconColor: AppColors.orange,
                     ),
